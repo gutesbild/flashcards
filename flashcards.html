@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>German-Greek Flashcards</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>German-Greek Flashcards</h1>
+  <div id="flashcard">
+    <p id="question">Loading...</p>
+    <button onclick="showAnswer()">Show Answer</button>
+    <p id="answer" style="display:none;"></p>
+    <br>
+    <button onclick="nextCard()">Next</button>
+  </div>
+
+  <script>
+    let flashcards = [];
+    let currentIndex = 0;
+
+    async function loadFlashcards() {
+      try {
+        const response = await fetch('kurzeSaetze.json');
+        flashcards = await response.json();
+        displayCard();
+      } catch (error) {
+        document.getElementById("question").innerText = "Failed to load flashcards.";
+        console.error("Error loading kurzeSaetze.json:", error);
+      }
+    }
+
+    function displayCard() {
+      if (flashcards.length === 0) return;
+      document.getElementById("question").innerText = flashcards[currentIndex].question;
+      document.getElementById("answer").innerText = flashcards[currentIndex].answer;
+      document.getElementById("answer").style.display = "none";
+    }
+
+    function showAnswer() {
+      document.getElementById("answer").style.display = "block";
+    }
+
+    function nextCard() {
+      currentIndex = (currentIndex + 1) % flashcards.length;
+      displayCard();
+    }
+
+    // Load the flashcards when the page starts
+    loadFlashcards();
+  </script>
+</body>
+</html>

@@ -1,22 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>German-Greek Flashcards</title>
   <meta charset="UTF-8">
+  <title>German-Greek Flashcards</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    #flashcard {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .correct { color: green; }
+    .incorrect { color: red; }
+    button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
+
   <h1>German-Greek Flashcards</h1>
+
   <div id="flashcard">
     <p id="question">Loading...</p>
-    <button onclick="showAnswer()">Show Answer</button>
-    <p id="answer" style="display:none;"></p>
-    <br>
+    <input type="text" id="userInput" placeholder="Type your answer here" autocomplete="off" />
+    <div class="feedback" id="feedback"></div>
+    <p id="correctAnswer" style="display: none;"></p>
+    <button onclick="checkAnswer()">Check</button>
     <button onclick="nextCard()">Next</button>
   </div>
+
+  <button onclick="toggleReverse()">Toggle Reverse Mode</button>
+  <button onclick="shuffleCards()">Shuffle</button>
 
   <script>
     let flashcards = [];
     let currentIndex = 0;
+    let reverseMode = false;
 
     async function loadFlashcards() {
       try {
@@ -29,15 +67,40 @@
       }
     }
 
-    function displayCard() {
-      if (flashcards.length === 0) return;
-      document.getElementById("question").innerText = flashcards[currentIndex].question;
-      document.getElementById("answer").innerText = flashcards[currentIndex].answer;
-      document.getElementById("answer").style.display = "none";
+    function normalize(text) {
+      return text.trim().toLowerCase();
     }
 
-    function showAnswer() {
-      document.getElementById("answer").style.display = "block";
+    function displayCard() {
+      if (flashcards.length === 0) return;
+
+      const card = flashcards[currentIndex];
+      document.getElementById("question").innerText = reverseMode ? card.answer : card.question;
+      document.getElementById("userInput").value = "";
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("feedback").className = "feedback";
+      document.getElementById("correctAnswer").style.display = "none";
+    }
+
+    function checkAnswer() {
+      const card = flashcards[currentIndex];
+      const correct = reverseMode ? card.question : card.answer;
+      const userInput = normalize(document.getElementById("userInput").value);
+      const correctNormalized = normalize(correct);
+
+      const feedback = document.getElementById("feedback");
+      const answerBox = document.getElementById("correctAnswer");
+
+      if (userInput === correctNormalized) {
+        feedback.innerText = "✅ Correct!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.innerText = "❌ Incorrect.";
+        feedback.className = "feedback incorrect";
+      }
+
+      answerBox.innerText = `Correct answer: ${correct}`;
+      answerBox.style.display = "block";
     }
 
     function nextCard() {
@@ -45,7 +108,20 @@
       displayCard();
     }
 
-    // Load the flashcards when the page starts
+    function shuffleCards() {
+      for (let i = flashcards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
+      }
+      currentIndex = 0;
+      displayCard();
+    }
+
+    function toggleReverse() {
+      reverseMode = !reverseMode;
+      displayCard();
+    }
+
     loadFlashcards();
   </script>
 </body>

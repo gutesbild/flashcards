@@ -37,6 +37,11 @@
       margin-top: 1rem;
       font-style: italic;
     }
+    #version {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
   </style>
 </head>
 <body>
@@ -55,6 +60,8 @@
 
   <button onclick="toggleReverse()">Toggle Reverse Mode</button>
   <button onclick="shuffleCards()">Shuffle</button>
+
+  <div id="version">Version 1.0.0</div>
 
   <script>
     let allFlashcards = [];
@@ -79,7 +86,88 @@
     function resetSession() {
       remainingFlashcards = [...allFlashcards];
       correctAnswers = 0;
-      shuffleCards();
+      shuffleArray(remainingFlashcards);
+      displayCard();
     }
 
-    function normalize(text)
+    function normalize(text) {
+      return text
+        .toLowerCase()
+        .replace(/[.,!?;:()\[\]'"„“‚’«»\-]/g, "") // remove punctuation
+        .replace(/\s+/g, "") // remove spaces
+        .trim();
+    }
+
+    function displayCard() {
+      if (remainingFlashcards.length === 0) {
+        document.getElementById("question").innerText = "🎉 Alle Fragen korrekt beantwortet!";
+        document.getElementById("userInput").style.display = "none";
+        document.getElementById("feedback").innerText = "";
+        document.getElementById("correctAnswer").style.display = "none";
+        document.getElementById("progress").innerText = `Gesamt: ${totalCards} | Richtig: ${correctAnswers}`;
+        currentCard = null;
+        return;
+      }
+
+      currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
+      document.getElementById("question").innerText = reverseMode ? currentCard.answer : currentCard.question;
+      document.getElementById("userInput").value = "";
+      document.getElementById("userInput").style.display = "inline-block";
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("correctAnswer").style.display = "none";
+      updateProgress();
+    }
+
+    function updateProgress() {
+      document.getElementById("progress").innerText = `Richtig beantwortet: ${correctAnswers} / ${totalCards}`;
+    }
+
+    function checkAnswer() {
+      if (!currentCard) return;
+
+      const userInput = normalize(document.getElementById("userInput").value);
+      const correct = normalize(reverseMode ? currentCard.question : currentCard.answer);
+
+      const feedback = document.getElementById("feedback");
+      const answerBox = document.getElementById("correctAnswer");
+
+      if (userInput === correct) {
+        feedback.innerText = "✅ Richtig!";
+        feedback.className = "feedback correct";
+        correctAnswers++;
+        remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
+      } else {
+        feedback.innerText = "❌ Falsch.";
+        feedback.className = "feedback incorrect";
+      }
+
+      answerBox.innerText = `Lösung: ${reverseMode ? currentCard.question : currentCard.answer}`;
+      answerBox.style.display = "block";
+      updateProgress();
+    }
+
+    function nextCard() {
+      displayCard();
+    }
+
+    function shuffleCards() {
+      shuffleArray(remainingFlashcards);
+      displayCard();
+    }
+
+    function toggleReverse() {
+      reverseMode = !reverseMode;
+      resetSession();
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    loadFlashcards();
+  </script>
+</body>
+</html>

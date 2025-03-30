@@ -53,15 +53,17 @@
     <input type="text" id="userInput" placeholder="Type your answer" autocomplete="off" />
     <div class="feedback" id="feedback"></div>
     <p id="correctAnswer" style="display: none;"></p>
-    <button onclick="checkAnswer()">Check</button>
-    <button onclick="nextCard()">Skip</button>
+    <div id="buttonGroup">
+      <button id="checkBtn" onclick="checkAnswer()">Check</button>
+      <button id="nextBtn" onclick="nextCard()" style="display:none;">Next</button>
+    </div>
     <div id="progress"></div>
   </div>
 
   <button onclick="toggleReverse()">Toggle Reverse Mode</button>
   <button onclick="shuffleCards()">Shuffle</button>
 
-  <div id="version">Version 1.0.0</div>
+  <div id="version">Version 1.1.0</div>
 
   <script>
     let allFlashcards = [];
@@ -70,6 +72,7 @@
     let reverseMode = false;
     let correctAnswers = 0;
     let totalCards = 0;
+    let alreadyAnsweredCorrect = false;
 
     async function loadFlashcards() {
       try {
@@ -104,17 +107,22 @@
         document.getElementById("userInput").style.display = "none";
         document.getElementById("feedback").innerText = "";
         document.getElementById("correctAnswer").style.display = "none";
+        document.getElementById("buttonGroup").style.display = "none";
         document.getElementById("progress").innerText = `Gesamt: ${totalCards} | Richtig: ${correctAnswers}`;
         currentCard = null;
         return;
       }
 
+      alreadyAnsweredCorrect = false;
       currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
+
       document.getElementById("question").innerText = reverseMode ? currentCard.answer : currentCard.question;
       document.getElementById("userInput").value = "";
       document.getElementById("userInput").style.display = "inline-block";
       document.getElementById("feedback").innerText = "";
       document.getElementById("correctAnswer").style.display = "none";
+      document.getElementById("checkBtn").style.display = "inline-block";
+      document.getElementById("nextBtn").style.display = "none";
       updateProgress();
     }
 
@@ -123,7 +131,7 @@
     }
 
     function checkAnswer() {
-      if (!currentCard) return;
+      if (!currentCard || alreadyAnsweredCorrect) return;
 
       const userInput = normalize(document.getElementById("userInput").value);
       const correct = normalize(reverseMode ? currentCard.question : currentCard.answer);
@@ -134,7 +142,12 @@
       if (userInput === correct) {
         feedback.innerText = "✅ Richtig!";
         feedback.className = "feedback correct";
+
+        // Nur einmal zählen!
         correctAnswers++;
+        alreadyAnsweredCorrect = true;
+
+        // Karte entfernen
         remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
       } else {
         feedback.innerText = "❌ Falsch.";
@@ -143,6 +156,10 @@
 
       answerBox.innerText = `Lösung: ${reverseMode ? currentCard.question : currentCard.answer}`;
       answerBox.style.display = "block";
+
+      document.getElementById("checkBtn").style.display = "none";
+      document.getElementById("nextBtn").style.display = "inline-block";
+
       updateProgress();
     }
 

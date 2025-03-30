@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>German-Greek Flashcards</title>
+  <title>Flashcards – German-Greek</title>
   <style>
     body {
       font-family: sans-serif;
@@ -33,6 +33,10 @@
       padding: 0.5rem 1rem;
       font-size: 1rem;
     }
+    #progress {
+      margin-top: 1rem;
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
@@ -41,88 +45,41 @@
 
   <div id="flashcard">
     <p id="question">Loading...</p>
-    <input type="text" id="userInput" placeholder="Type your answer here" autocomplete="off" />
+    <input type="text" id="userInput" placeholder="Type your answer" autocomplete="off" />
     <div class="feedback" id="feedback"></div>
     <p id="correctAnswer" style="display: none;"></p>
     <button onclick="checkAnswer()">Check</button>
-    <button onclick="nextCard()">Next</button>
+    <button onclick="nextCard()">Skip</button>
+    <div id="progress"></div>
   </div>
 
   <button onclick="toggleReverse()">Toggle Reverse Mode</button>
   <button onclick="shuffleCards()">Shuffle</button>
 
   <script>
-    let flashcards = [];
-    let currentIndex = 0;
+    let allFlashcards = [];
+    let remainingFlashcards = [];
+    let currentCard = null;
     let reverseMode = false;
+    let correctAnswers = 0;
+    let totalCards = 0;
 
     async function loadFlashcards() {
       try {
         const response = await fetch('kurzeSaetze.json');
-        flashcards = await response.json();
-        displayCard();
+        allFlashcards = await response.json();
+        totalCards = allFlashcards.length;
+        resetSession();
       } catch (error) {
-        document.getElementById("question").innerText = "Failed to load flashcards.";
-        console.error("Error loading kurzeSaetze.json:", error);
+        document.getElementById("question").innerText = "Fehler beim Laden der Daten.";
+        console.error("JSON-Fehler:", error);
       }
     }
 
-    function normalize(text) {
-      return text.trim().toLowerCase();
+    function resetSession() {
+      remainingFlashcards = [...allFlashcards];
+      correctAnswers = 0;
+      shuffleCards();
     }
 
-    function displayCard() {
-      if (flashcards.length === 0) return;
-
-      const card = flashcards[currentIndex];
-      document.getElementById("question").innerText = reverseMode ? card.answer : card.question;
-      document.getElementById("userInput").value = "";
-      document.getElementById("feedback").innerText = "";
-      document.getElementById("feedback").className = "feedback";
-      document.getElementById("correctAnswer").style.display = "none";
-    }
-
-    function checkAnswer() {
-      const card = flashcards[currentIndex];
-      const correct = reverseMode ? card.question : card.answer;
-      const userInput = normalize(document.getElementById("userInput").value);
-      const correctNormalized = normalize(correct);
-
-      const feedback = document.getElementById("feedback");
-      const answerBox = document.getElementById("correctAnswer");
-
-      if (userInput === correctNormalized) {
-        feedback.innerText = "✅ Correct!";
-        feedback.className = "feedback correct";
-      } else {
-        feedback.innerText = "❌ Incorrect.";
-        feedback.className = "feedback incorrect";
-      }
-
-      answerBox.innerText = `Correct answer: ${correct}`;
-      answerBox.style.display = "block";
-    }
-
-    function nextCard() {
-      currentIndex = (currentIndex + 1) % flashcards.length;
-      displayCard();
-    }
-
-    function shuffleCards() {
-      for (let i = flashcards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
-      }
-      currentIndex = 0;
-      displayCard();
-    }
-
-    function toggleReverse() {
-      reverseMode = !reverseMode;
-      displayCard();
-    }
-
-    loadFlashcards();
-  </script>
-</body>
-</html>
+    function normalize(text)

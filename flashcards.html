@@ -1,61 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Flashcards – German-Greek</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards – German-Greek v1.7</title>
   <style>
     body {
       font-family: sans-serif;
-      max-width: 600px;
-      margin: 2rem auto;
-      text-align: center;
+      margin: 1rem;
+      padding: 0;
+      background: #fff;
+      color: #000;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    #flashcard {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 2rem;
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    #version {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
       margin-bottom: 1rem;
     }
-    input[type="text"] {
+    select, button, input[type="text"] {
+      font-size: 1.2rem;
+      margin: 0.4rem;
       padding: 0.5rem;
-      font-size: 1rem;
-      width: 80%;
+      width: 90%;
+      max-width: 400px;
+    }
+    #flashcard {
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin: 1rem auto;
+    }
+    #question {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    #answer {
+      font-size: 1.4rem;
+      font-family: serif;
+    }
+    #phonetic {
+      font-style: italic;
       margin-bottom: 1rem;
     }
     .feedback {
       font-weight: bold;
       margin-top: 1rem;
     }
-    .correct { color: green; }
-    .incorrect { color: red; }
-    button {
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
     }
     #progress {
       margin-top: 1rem;
-      font-style: italic;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
 
   <h1>German-Greek Flashcards</h1>
+  <div id="version">Version 1.7</div>
+
+  <div style="text-align:center;">
+    <select id="datasetSelect" onchange="loadSelectedDataset()">
+      <option value="kurzeSaetze.json">Kurze Sätze</option>
+      <option value="reiseSaetze.json">Reise Sätze</option>
+    </select>
+  </div>
 
   <div id="flashcard">
-    <p id="question">Loading...</p>
-    <p id="phonetic" style="margin-bottom: 1rem; font-style: italic;"></p>
+    <div id="question">Loading...</div>
+    <div id="phonetic"></div>
     <input type="text" id="userInput" placeholder="Type your answer" autocomplete="off" />
     <div class="feedback" id="feedback"></div>
     <p id="correctAnswer" style="display: none;"></p>
     <button onclick="checkAnswer()">Check</button>
     <button onclick="nextCard()">Skip</button>
+    <button onclick="shuffleCards()">Shuffle</button>
     <div id="progress"></div>
   </div>
 
-  <button onclick="toggleReverse()">Toggle Reverse Mode</button>
-  <button onclick="shuffleCards()">Shuffle</button>
+  <div style="text-align:center;">
+    <button onclick="toggleReverse()">Toggle Reverse Mode</button>
+  </div>
 
   <script>
     let allFlashcards = [];
@@ -63,24 +102,21 @@
     let currentCard = null;
     let reverseMode = false;
     let correctAnswersSet = new Set();
+    let currentDataset = "kurzeSaetze.json";
 
-    async function loadFlashcards() {
+    function normalize(text) {
+      return text.toLowerCase().replace(/[.,!?;:()\[\]"'„“’«»\-]/g, "").replace(/\s+/g, "").trim();
+    }
+
+    async function loadFlashcards(file) {
       try {
-        const response = await fetch('kurzeSaetze.json');
+        const response = await fetch(file);
         allFlashcards = await response.json();
         resetSession();
       } catch (error) {
         document.getElementById("question").innerText = "Fehler beim Laden.";
-        console.error("JSON-Fehler:", error);
+        console.error("Fehler:", error);
       }
-    }
-
-    function normalize(text) {
-      return text
-        .toLowerCase()
-        .replace(/[.,!?;:()\[\]'"„“‚’«»\-]/g, "")
-        .replace(/\s+/g, "")
-        .trim();
     }
 
     function resetSession() {
@@ -131,11 +167,10 @@
       if (userInput === correct) {
         feedback.innerText = "✅ Richtig!";
         feedback.className = "feedback correct";
-
-        const cardKey = (reverseMode ? currentCard.question : currentCard.answer);
-        correctAnswersSet.add(cardKey);
+        const key = reverseMode ? currentCard.question : currentCard.answer;
+        correctAnswersSet.add(key);
         remainingFlashcards = remainingFlashcards.filter(card =>
-          (reverseMode ? card.answer : card.question) !== cardKey
+          (reverseMode ? card.answer : card.question) !== key
         );
       } else {
         feedback.innerText = "❌ Falsch.";
@@ -144,7 +179,6 @@
 
       answerBox.innerText = `Lösung: ${reverseMode ? currentCard.question : currentCard.answer}`;
       answerBox.style.display = "block";
-
       updateProgress();
     }
 
@@ -163,7 +197,14 @@
       displayCard();
     }
 
-    loadFlashcards();
+    function loadSelectedDataset() {
+      const select = document.getElementById("datasetSelect");
+      currentDataset = select.value;
+      loadFlashcards(currentDataset);
+    }
+
+    loadFlashcards(currentDataset);
   </script>
+
 </body>
 </html>

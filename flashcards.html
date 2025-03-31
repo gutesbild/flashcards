@@ -10,38 +10,51 @@
       margin: 2rem auto;
       text-align: center;
     }
+
+    .serif-text {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.2rem;
+    }
+
     #flashcard {
       border: 1px solid #ccc;
       border-radius: 8px;
       padding: 2rem;
       margin-bottom: 1rem;
     }
+
     input[type="text"] {
       padding: 0.5rem;
       font-size: 1rem;
       width: 80%;
       margin-bottom: 1rem;
     }
+
     .feedback {
       font-weight: bold;
       margin-top: 1rem;
     }
+
     .correct { color: green; }
     .incorrect { color: red; }
+
     button {
       margin: 0.5rem;
       padding: 0.5rem 1rem;
       font-size: 1rem;
     }
+
     .phonetic {
       font-style: italic;
       margin-top: 0.5rem;
     }
+
     #datasetSelect {
       margin-bottom: 1rem;
       font-size: 1rem;
       padding: 0.5rem;
     }
+
     footer {
       margin-top: 2rem;
       font-size: 0.9rem;
@@ -49,7 +62,6 @@
     }
   </style>
 
-  <!-- Load the dataset list from an external file -->
   <script src="datasets.js"></script>
 </head>
 <body>
@@ -60,11 +72,11 @@
   <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
 
   <div id="flashcard">
-    <p id="question">Loading...</p>
+    <p id="question" class="serif-text">Loading...</p>
     <input type="text" id="userInput" placeholder="Type your answer here" autocomplete="off" />
     <div class="feedback" id="feedback"></div>
-    <p id="correctAnswer" style="display: none;"></p>
-    <p class="phonetic" id="phoneticLine" style="display: none;"></p>
+    <p id="correctAnswer" class="serif-text" style="display: none;"></p>
+    <p class="phonetic serif-text" id="phoneticLine" style="display: none;"></p>
     <button onclick="checkAnswer()">Check</button>
     <button onclick="nextCard()">Next</button>
   </div>
@@ -73,13 +85,17 @@
   <button onclick="shuffleCards()">Shuffle</button>
 
   <footer>
-    Flashcards App – Version 1.4
+    Flashcards App – Version 1.5
   </footer>
 
   <script>
     let flashcards = [];
     let currentIndex = 0;
     let reverseMode = false;
+
+    function formatBold(text) {
+      return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    }
 
     function populateDatasetDropdown() {
       const select = document.getElementById("datasetSelect");
@@ -89,7 +105,7 @@
         return;
       }
 
-      datasetFiles.sort(); // Alphabetical
+      datasetFiles.sort();
       datasetFiles.forEach(file => {
         const option = document.createElement("option");
         option.value = file;
@@ -157,7 +173,7 @@
       answerBox.style.display = "block";
 
       if (phonetic) {
-        phoneticBox.innerHTML = `Phonetic: ${phonetic}`;
+        phoneticBox.innerHTML = `Phonetic: ${formatBold(phonetic)}`;
         phoneticBox.style.display = "block";
       }
     }
@@ -181,7 +197,7 @@
       displayCard();
     }
 
-    // Init
+    // On load
     populateDatasetDropdown();
     if (typeof datasetFiles !== 'undefined' && datasetFiles.length > 0) {
       loadFlashcards(datasetFiles[0]);

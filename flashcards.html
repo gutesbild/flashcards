@@ -86,6 +86,223 @@
   <button onclick="shuffleCards()">Shuffle</button>
 
   <footer>
+    Flashcards App – Version 1.61
+  </footer>
+
+  <script>
+    let flashcards = [];
+    let currentIndex = 0;
+    let reverseMode = false;
+
+    function formatBold(text) {
+      return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    function populateDatasetDropdown() {
+      const select = document.getElementById("datasetSelect");
+
+      if (!Array.isArray(datasetFiles) || datasetFiles.length === 0) {
+        select.innerHTML = '<option>No datasets found</option>';
+        return;
+      }
+
+      datasetFiles.sort((a, b) => a.label.localeCompare(b.label));
+      datasetFiles.forEach(dataset => {
+        const option = document.createElement("option");
+        option.value = dataset.file;
+        option.textContent = dataset.label;
+        select.appendChild(option);
+      });
+    }
+
+    function loadSelectedDataset() {
+      const selectedFile = document.getElementById("datasetSelect").value;
+      loadFlashcards(selectedFile);
+    }
+
+    async function loadFlashcards(filename) {
+      try {
+        const response = await fetch(filename);
+        flashcards = await response.json();
+        currentIndex = 0;
+        displayCard();
+      } catch (error) {
+        document.getElementById("question").innerText = `Failed to load ${filename}`;
+        console.error("Error loading dataset:", error);
+      }
+    }
+
+    function normalize(text) {
+      return text.trim().toLowerCase();
+    }
+
+    function displayCard() {
+      if (flashcards.length === 0) return;
+
+      const card = flashcards[currentIndex];
+      const questionText = reverseMode ? card.answer : card.question;
+
+      document.getElementById("question").innerText = questionText;
+      document.getElementById("userInput").value = "";
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("feedback").className = "feedback";
+      document.getElementById("correctAnswer").style.display = "none";
+      document.getElementById("phoneticLine").style.display = "none";
+      document.getElementById("userInput").focus(); // Autofocus the input
+    }
+
+    function checkAnswer() {
+      const card = flashcards[currentIndex];
+      const correct = reverseMode ? card.question : card.answer;
+      const phonetic = card.phonetic || "";
+
+      const userInput = normalize(document.getElementById("userInput").value);
+      const correctNormalized = normalize(correct);
+
+      const feedback = document.getElementById("feedback");
+      const answerBox = document.getElementById("correctAnswer");
+      const phoneticBox = document.getElementById("phoneticLine");
+
+      if (userInput === correctNormalized) {
+        feedback.innerText = "✅ Correct!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.innerText = "❌ Incorrect.";
+        feedback.className = "feedback incorrect";
+      }
+
+      answerBox.innerText = `Correct answer: ${correct}`;
+      answerBox.style.display = "block";
+
+      if (phonetic) {
+        phoneticBox.innerHTML = `Phonetic: ${formatBold(phonetic)}`;
+        phoneticBox.style.display = "block";
+      }
+    }
+
+    function nextCard() {
+      currentIndex = (currentIndex + 1) % flashcards.length;
+      displayCard();
+    }
+
+    function shuffleCards() {
+      for (let i = flashcards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
+      }
+      currentIndex = 0;
+      displayCard();
+    }
+
+    function toggleReverse() {
+      reverseMode = !reverseMode;
+      displayCard();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      populateDatasetDropdown();
+      if (typeof datasetFiles !== 'undefined' && datasetFiles.length > 0) {
+        loadFlashcards(datasetFiles[0].file);
+      }
+
+      // Pressing "Enter" submits answer
+      document.getElementById("userInput").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          checkAnswer();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>German-Greek Flashcards</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .serif-text {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.2rem;
+    }
+
+    #flashcard {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .correct { color: green; }
+    .incorrect { color: red; }
+
+    button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+
+    .phonetic {
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    #datasetSelect {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+
+  <!-- Load dataset info -->
+  <script src="datasets.js"></script>
+</head>
+<body>
+
+  <h1>German-Greek Flashcards</h1>
+
+  <label for="datasetSelect">Choose a dataset:</label>
+  <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
+
+  <div id="flashcard">
+    <p id="question" class="serif-text">Loading...</p>
+    <input type="text" id="userInput" placeholder="Type your answer here" autocomplete="off" />
+    <div class="feedback" id="feedback"></div>
+    <p id="correctAnswer" class="serif-text" style="display: none;"></p>
+    <p class="phonetic serif-text" id="phoneticLine" style="display: none;"></p>
+    <button onclick="checkAnswer()">Check</button>
+    <button onclick="nextCard()">Next</button>
+  </div>
+
+  <button id="reverseBtn" onclick="toggleReverse()">GR/DE &lt;&gt; DE/GR</button>
+  <button onclick="shuffleCards()">Shuffle</button>
+
+  <footer>
     Flashcards App – Version 1.6
   </footer>
 

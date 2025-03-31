@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards – German-Greek v2.1.2</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 1rem;
+      padding: 0;
+      background: #fff;
+      color: #000;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    #version {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    select, button, input[type="text"] {
+      font-size: 1.2rem;
+      margin: 0.4rem;
+      padding: 0.5rem;
+      width: 90%;
+      max-width: 400px;
+    }
+    #flashcard {
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin: 1rem auto;
+    }
+    #question {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-family: serif;
+    }
+    #phonetic {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    #progress {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    #bottom-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 500px) {
+      #bottom-buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>German-Greek Flashcards</h1>
+  <div id="version">Version 2.1.2</div>
+
+  <div style="text-align:center;">
+    <select id="datasetSelect" onchange="loadSelectedDataset()">
+      <option value="">Lade Daten ...</option>
+    </select>
+  </div>
+
+  <div id="flashcard">
+    <div id="question">Loading...</div>
+    <div id="phonetic" style="display:none;"></div>
+    <input type="text" id="userInput" placeholder="Type your answer" autocomplete="off" />
+    <div class="feedback" id="feedback"></div>
+    <p id="correctAnswer" style="display: none;"></p>
+    <button onclick="checkAnswer()">Check</button>
+    <button onclick="nextCard()">Next</button>
+    <div id="progress"></div>
+  </div>
+
+  <div id="bottom-buttons">
+    <button onclick="toggleReverse()">Wechsle Richtung</button>
+    <button onclick="shuffleCards()">Shuffle</button>
+    <button onclick="resetProgress()">Reset Fortschritt</button>
+  </div>
+
+  <script src="datasets.js"></script>
+  <script>
+    let allFlashcards = [];
+    let remainingFlashcards = [];
+    let currentCard = null;
+    let reverseMode = false;
+    let correctAnswersSet = new Set();
+    let currentDataset = "";
+
+    function normalize(text) {
+      return text.toLowerCase().replace(/[.,!?;:()\[\]"'„“’«»\-]/g, "").replace(/\s+/g, "").trim();
+    }
+
+    async function loadFlashcards(file) {
+      try {
+        const response = await fetch(file);
+        allFlashcards = await response.json();
+        resetSession();
+      } catch (error) {
+        document.getElementById("question").innerText = "Fehler beim Laden.";
+        console.error("Fehler:", error);
+      }
+    }
+
+    function resetSession() {
+      remainingFlashcards = [...allFlashcards];
+      correctAnswersSet = new Set();
+      shuffleCards();
+    }
+
+    function resetProgress() {
+      resetSession();
+      displayCard();
+    }
+
+    function displayCard() {
+      if (remainingFlashcards.length === 0) {
+        document.getElementById("question").innerText = "🎉 Alle Fragen korrekt beantwortet!";
+        document.getElementById("userInput").style.display = "none";
+        document.getElementById("feedback").innerText = "";
+        document.getElementById("correctAnswer").style.display = "none";
+        document.getElementById("phonetic").style.display = "none";
+        updateProgress();
+        return;
+      }
+
+      currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
+      const q = reverseMode ? currentCard.answer : currentCard.question;
+      document.getElementById("question").innerText = q;
+      document.getElementById("phonetic").style.display = "none";
+      document.getElementById("userInput").value = "";
+      document.getElementById("userInput").style.display = "inline-block";
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("correctAnswer").style.display = "none";
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const total = allFlashcards.length;
+      const correct = correctAnswersSet.size;
+      document.getElementById("progress").innerText = `Richtig beantwortet: ${correct} / ${total}`;
+    }
+
+    function renderPhonetic(text) {
+      return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    }
+
+    function checkAnswer() {
+      if (!currentCard) return;
+      const userInput = normalize(document.getElementById("userInput").value);
+      const correct = normalize(reverseMode ? currentCard.question : currentCard.answer);
+      const feedback = document.getElementById("feedback");
+      const answerBox = document.getElementById("correctAnswer");
+
+      const key = reverseMode ? currentCard.question : currentCard.answer;
+
+      if (userInput === correct) {
+        if (!correctAnswersSet.has(key)) {
+          correctAnswersSet.add(key);
+          remainingFlashcards = remainingFlashcards.filter(card =>
+            (reverseMode ? card.answer : card.question) !== key
+          );
+        }
+        feedback.innerText = "✅ Richtig!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.innerText = "❌ Falsch.";
+        feedback.className = "feedback incorrect";
+      }
+
+      const answer = reverseMode ? currentCard.question : currentCard.answer;
+      const phonetic = currentCard.phonetic || "";
+      document.getElementById("correctAnswer").innerText = "Lösung: " + answer;
+      document.getElementById("correctAnswer").style.display = "block";
+      document.getElementById("phonetic").innerHTML = renderPhonetic(phonetic);
+      document.getElementById("phonetic").style.display = "block";
+      updateProgress();
+    }
+
+    function nextCard() {
+      displayCard();
+    }
+
+    function shuffleCards() {
+      remainingFlashcards.sort(() => Math.random() - 0.5);
+      displayCard();
+    }
+
+    function toggleReverse() {
+      reverseMode = !reverseMode;
+      resetSession();
+      displayCard();
+    }
+
+    function loadSelectedDataset() {
+      const select = document.getElementById("datasetSelect");
+      const value = select.value;
+      if (value) {
+        currentDataset = value;
+        loadFlashcards(currentDataset);
+      }
+    }
+
+    function populateDatasetDropdown() {
+      const select = document.getElementById("datasetSelect");
+      select.innerHTML = "";
+      datasets.forEach(ds => {
+        const opt = document.createElement("option");
+        opt.value = ds.file;
+        opt.textContent = ds.label;
+        select.appendChild(opt);
+      });
+      currentDataset = datasets[0].file;
+      loadFlashcards(currentDataset);
+    }
+
+    document.addEventListener("DOMContentLoaded", populateDatasetDropdown);
+  </script>
+</body>
+</html>

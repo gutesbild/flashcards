@@ -1,5 +1,6 @@
+
 const datasetFiles = [
-  "kurzeSaetze.json",
-  "Restaurant.json",
-   // ← Add new datasets here
+  { file: "kurzeSaetze.json", label: "📍 Kurze Sätze" },
+  { file: "mRestaurant.json", label: " Restaurant" },
+
 ];

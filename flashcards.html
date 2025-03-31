@@ -62,6 +62,7 @@
     }
   </style>
 
+  <!-- Load dataset info -->
   <script src="datasets.js"></script>
 </head>
 <body>
@@ -81,11 +82,11 @@
     <button onclick="nextCard()">Next</button>
   </div>
 
-  <button onclick="toggleReverse()">Toggle Reverse Mode</button>
+  <button id="reverseBtn" onclick="toggleReverse()">GR/DE &lt;&gt; DE/GR</button>
   <button onclick="shuffleCards()">Shuffle</button>
 
   <footer>
-    Flashcards App – Version 1.5
+    Flashcards App – Version 1.6
   </footer>
 
   <script>
@@ -105,11 +106,11 @@
         return;
       }
 
-      datasetFiles.sort();
-      datasetFiles.forEach(file => {
+      datasetFiles.sort((a, b) => a.label.localeCompare(b.label));
+      datasetFiles.forEach(dataset => {
         const option = document.createElement("option");
-        option.value = file;
-        option.textContent = file.replace('.json', '').replace(/([A-Z])/g, ' $1').trim();
+        option.value = dataset.file;
+        option.textContent = dataset.label;
         select.appendChild(option);
       });
     }
@@ -147,6 +148,7 @@
       document.getElementById("feedback").className = "feedback";
       document.getElementById("correctAnswer").style.display = "none";
       document.getElementById("phoneticLine").style.display = "none";
+      document.getElementById("userInput").focus(); // Autofocus the input
     }
 
     function checkAnswer() {
@@ -197,11 +199,19 @@
       displayCard();
     }
 
-    // On load
-    populateDatasetDropdown();
-    if (typeof datasetFiles !== 'undefined' && datasetFiles.length > 0) {
-      loadFlashcards(datasetFiles[0]);
-    }
+    document.addEventListener("DOMContentLoaded", () => {
+      populateDatasetDropdown();
+      if (typeof datasetFiles !== 'undefined' && datasetFiles.length > 0) {
+        loadFlashcards(datasetFiles[0].file);
+      }
+
+      // Pressing "Enter" submits answer
+      document.getElementById("userInput").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          checkAnswer();
+        }
+      });
+    });
   </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flashcards – German-Greek v2.01</title>
+  <title>Flashcards – German-Greek v2.1</title>
   <style>
     body {
       font-family: sans-serif;
@@ -84,7 +84,7 @@
 <body>
 
   <h1>German-Greek Flashcards</h1>
-  <div id="version">Version 2.0</div>
+  <div id="version">Version 2.1</div>
 
   <div style="text-align:center;">
     <select id="datasetSelect" onchange="loadSelectedDataset()">
@@ -94,7 +94,7 @@
 
   <div id="flashcard">
     <div id="question">Loading...</div>
-    <div id="phonetic"></div>
+    <div id="phonetic" style="display:none;"></div>
     <input type="text" id="userInput" placeholder="Type your answer" autocomplete="off" />
     <div class="feedback" id="feedback"></div>
     <p id="correctAnswer" style="display: none;"></p>
@@ -151,14 +151,12 @@
 
       currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
       const q = reverseMode ? currentCard.answer : currentCard.question;
-      const ph = currentCard.phonetic || "";
       document.getElementById("question").innerText = q;
-      document.getElementById("phonetic").innerHTML = ph;
+      document.getElementById("phonetic").style.display = "none";
       document.getElementById("userInput").value = "";
       document.getElementById("userInput").style.display = "inline-block";
       document.getElementById("feedback").innerText = "";
       document.getElementById("correctAnswer").style.display = "none";
-      document.getElementById("phonetic").style.display = "block";
       updateProgress();
     }
 
@@ -166,6 +164,10 @@
       const total = allFlashcards.length;
       const correct = correctAnswersSet.size;
       document.getElementById("progress").innerText = `Richtig beantwortet: ${correct} / ${total}`;
+    }
+
+    function renderPhonetic(text) {
+      return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
     }
 
     function checkAnswer() {
@@ -188,8 +190,12 @@
         feedback.className = "feedback incorrect";
       }
 
-      answerBox.innerText = `Lösung: ${reverseMode ? currentCard.question : currentCard.answer}`;
-      answerBox.style.display = "block";
+      const answer = reverseMode ? currentCard.question : currentCard.answer;
+      const phonetic = currentCard.phonetic || "";
+      document.getElementById("correctAnswer").innerText = "Lösung: " + answer;
+      document.getElementById("correctAnswer").style.display = "block";
+      document.getElementById("phonetic").innerHTML = renderPhonetic(phonetic);
+      document.getElementById("phonetic").style.display = "block";
       updateProgress();
     }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>German-Greek Flashcards</title>
   <style>
     body {
@@ -42,7 +42,15 @@
       font-size: 1rem;
       padding: 0.5rem;
     }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
   </style>
+
+  <!-- Load the dataset list from an external file -->
+  <script src="datasets.js"></script>
 </head>
 <body>
 
@@ -64,16 +72,24 @@
   <button onclick="toggleReverse()">Toggle Reverse Mode</button>
   <button onclick="shuffleCards()">Shuffle</button>
 
-<script src="datasets.js"></script>
-<script>
+  <footer>
+    Flashcards App – Version 1.4
+  </footer>
 
+  <script>
     let flashcards = [];
     let currentIndex = 0;
     let reverseMode = false;
 
     function populateDatasetDropdown() {
       const select = document.getElementById("datasetSelect");
-      datasetFiles.sort(); // Ensure alphabetical order
+
+      if (!Array.isArray(datasetFiles) || datasetFiles.length === 0) {
+        select.innerHTML = '<option>No datasets found</option>';
+        return;
+      }
+
+      datasetFiles.sort(); // Alphabetical
       datasetFiles.forEach(file => {
         const option = document.createElement("option");
         option.value = file;
@@ -165,9 +181,11 @@
       displayCard();
     }
 
-    // On page load
+    // Init
     populateDatasetDropdown();
-    loadFlashcards(datasetFiles[0]);
+    if (typeof datasetFiles !== 'undefined' && datasetFiles.length > 0) {
+      loadFlashcards(datasetFiles[0]);
+    }
   </script>
 </body>
 </html>

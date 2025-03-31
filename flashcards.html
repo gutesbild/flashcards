@@ -37,11 +37,19 @@
       font-style: italic;
       margin-top: 0.5rem;
     }
+    #datasetSelect {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
   </style>
 </head>
 <body>
 
   <h1>German-Greek Flashcards</h1>
+
+  <label for="datasetSelect">Choose a dataset:</label>
+  <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
 
   <div id="flashcard">
     <p id="question">Loading...</p>
@@ -57,18 +65,41 @@
   <button onclick="shuffleCards()">Shuffle</button>
 
   <script>
+    const datasetFiles = [
+      "kurzeSaetze.json",
+      "mitPhonetik.json"
+      // Add more datasets here, e.g. "reise.json"
+    ];
+
     let flashcards = [];
     let currentIndex = 0;
     let reverseMode = false;
 
-    async function loadFlashcards() {
+    function populateDatasetDropdown() {
+      const select = document.getElementById("datasetSelect");
+      datasetFiles.sort(); // Ensure alphabetical order
+      datasetFiles.forEach(file => {
+        const option = document.createElement("option");
+        option.value = file;
+        option.textContent = file.replace('.json', '').replace(/([A-Z])/g, ' $1').trim();
+        select.appendChild(option);
+      });
+    }
+
+    function loadSelectedDataset() {
+      const selectedFile = document.getElementById("datasetSelect").value;
+      loadFlashcards(selectedFile);
+    }
+
+    async function loadFlashcards(filename) {
       try {
-        const response = await fetch('mitPhonetik.json');
+        const response = await fetch(filename);
         flashcards = await response.json();
+        currentIndex = 0;
         displayCard();
       } catch (error) {
-        document.getElementById("question").innerText = "Failed to load flashcards.";
-        console.error("Error loading mitPhonetik.json:", error);
+        document.getElementById("question").innerText = `Failed to load ${filename}`;
+        console.error("Error loading dataset:", error);
       }
     }
 
@@ -113,8 +144,10 @@
       answerBox.innerText = `Correct answer: ${correct}`;
       answerBox.style.display = "block";
 
-      phoneticBox.innerHTML = `Phonetic: ${phonetic}`;
-      phoneticBox.style.display = "block";
+      if (phonetic) {
+        phoneticBox.innerHTML = `Phonetic: ${phonetic}`;
+        phoneticBox.style.display = "block";
+      }
     }
 
     function nextCard() {
@@ -136,7 +169,9 @@
       displayCard();
     }
 
-    loadFlashcards();
+    // On page load
+    populateDatasetDropdown();
+    loadFlashcards(datasetFiles[0]);
   </script>
 </body>
 </html>

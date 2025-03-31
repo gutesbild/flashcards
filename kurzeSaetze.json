@@ -1,25 +1,107 @@
 [
-  { "question": "Wo bist du?", "answer": "Πού είσαι;" },
-  { "question": "Ich bin hier.", "answer": "Είμαι εδώ." },
-  { "question": "Das Buch ist oben.", "answer": "Το βιβλίο είναι πάνω." },
-  { "question": "Das Kind ist drinnen.", "answer": "Το παιδί είναι μέσα." },
-  { "question": "Das Auto ist vorne.", "answer": "Το αυτοκίνητο είναι μπροστά." },
-  { "question": "Die Schule ist in der Nähe.", "answer": "Το σχολείο είναι κοντά." },
-  { "question": "Das Geschäft ist rechts.", "answer": "Το κατάστημα είναι δεξιά." },
-  { "question": "Die Bank ist links.", "answer": "Η τράπεζα είναι αριστερά." },
-  { "question": "Der Park ist zwischen den Häusern.", "answer": "Το πάρκο είναι ανάμεσα στα σπίτια." },
-  { "question": "Der Berg ist hoch.", "answer": "Το βουνό είναι ψηλά." },
-  { "question": "Mir geht es so lala.", "answer": "Έτσι κι έτσι είμαι." },
-  { "question": "Er/Sie ist dort.", "answer": "Είναι εκεί." },
-  { "question": "Der Schlüssel ist unten.", "answer": "Το κλειδί είναι κάτω." },
-  { "question": "Das Auto ist draußen.", "answer": "Το αυτοκίνητο είναι απ' έξω." },
-  { "question": "Das Haus ist hinten.", "answer": "Το σπίτι είναι πίσω." },
-  { "question": "Das Dorf ist weit weg.", "answer": "Το χωριό είναι μακριά." },
-  { "question": "Überall gibt es Blumen.", "answer": "Υπάρχουν λουλούδια παντού." },
-  { "question": "Der Tisch ist niedrig.", "answer": "Το τραπέζι είναι χαμηλά." },
-  { "question": "Wie geht's dir?", "answer": "Πώς είσαι;" },
-  { "question": "Der Tag ist schön.", "answer": "Η μέρα είναι όμορφη." },
-  { "question": "Das Auto ist langsam.", "answer": "Το αυτοκίνητο είναι αργό." },
-  { "question": "Das Wetter ist schlecht.", "answer": "Ο καιρός είναι κακός." },
-  { "question": "Das Haus ist schön.", "answer": "Το σπίτι είναι ωραίο." }
+  {
+    "question": "Wo bist du?",
+    "answer": "Πού είσαι;",
+    "phonetic": "**Poú** íse"
+  },
+  {
+    "question": "Ich bin hier.",
+    "answer": "Είμαι εδώ.",
+    "phonetic": "**Íme** edhó"
+  },
+  {
+    "question": "Das Licht ist oben.",
+    "answer": "Το φως είναι πάνω.",
+    "phonetic": "To fos íne **páno**"
+  },
+  {
+    "question": "Das Kind ist drinnen.",
+    "answer": "Το παιδί είναι μέσα.",
+    "phonetic": "To pedhí íne **mésa**"
+  },
+  {
+    "question": "Das Auto ist schnell.",
+    "answer": "Το αυτοκίνητο είναι γρήγορο.",
+    "phonetic": "To aftokínito íne **gríghoro**"
+  },
+  {
+    "question": "Die Schule ist nah.",
+    "answer": "Το σχολείο είναι κοντά.",
+    "phonetic": "To scholío íne **kondá**"
+  },
+  {
+    "question": "Das Geschäft ist rechts.",
+    "answer": "Το κατάστημα είναι δεξιά.",
+    "phonetic": "To katástima íne thexiá"
+  },
+  {
+    "question": "Die Bäckerei ist links.",
+    "answer": "Ο φούρνος είναι αριστερά.",
+    "phonetic": "O fóurnos íne aristerá"
+  },
+  {
+    "question": "Der Baum ist zwischen der Straße und dem Fluss.",
+    "answer": "Το δέντρο είναι ανάμεσα στον δρόμο και το ποτάμι.",
+    "phonetic": "To **dhéntro** íne anámesa ston **dhómo** ke to potámi"
+  },
+  {
+    "question": "Der Berg ist hoch.",
+    "answer": "Το βουνό είναι ψηλά.",
+    "phonetic": "To vounó íne **psilá**"
+  },
+  {
+    "question": "Mir geht es so lala.",
+    "answer": "Έτσι κι έτσι είμαι.",
+    "phonetic": "**Étsi** ki **étsi** íme"
+  },
+  {
+    "question": "Die Toilette ist dort.",
+    "answer": "Η τουαλέτα είναι εκεί.",
+    "phonetic": "I toualéta íne **ekí**"
+  },
+  {
+    "question": "Der Schlüssel ist verschwunden.",
+    "answer": "Το κλειδί έχει χαθεί.",
+    "phonetic": "To kleidí échi **hathí**"
+  },
+  {
+    "question": "Der Schuh ist unten.",
+    "answer": "Το παπούτσι είναι κάτω.",
+    "phonetic": "To papóutsi íne **káto**"
+  },
+  {
+    "question": "Der Garten ist hinten.",
+    "answer": "Ο κήπος είναι πίσω.",
+    "phonetic": "O kípos íne **píso**"
+  },
+  {
+    "question": "Der Strand ist weit weg.",
+    "answer": "Η παραλία είναι μακριά.",
+    "phonetic": "I paralía íne makriá"
+  },
+  {
+    "question": "Überall sind Blumen.",
+    "answer": "Υπάρχουν λουλούδια παντού.",
+    "phonetic": "Ipárchoun loulúdhia **pandóu**"
+  },
+  {
+    "question": "Der Tisch ist niedrig.",
+    "answer": "Το τραπέζι είναι χαμηλά.",
+    "phonetic": "To trapézi íne **hamilá**"
+  },
+  {
+    "question": "Der Tag ist schön.",
+    "answer": "Η μέρα είναι όμορφη.",
+    "phonetic": "I **méra** íne **ómorfi**"
+  },
+  {
+    "question": "Der Bus ist langsam.",
+    "answer": "Το λεωφορείο είναι αργό.",
+    "phonetic": "To leoforío íne **argó**"
+  },
+  {
+    "question": "Das Wetter ist schlecht.",
+    "answer": "Ο καιρός είναι κακός.",
+    "phonetic": "O kerós íne **kakós**"
+  }
 ]

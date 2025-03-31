@@ -1,0 +1,97 @@
+[
+  {
+    "question": "Das Messer",
+    "answer": "Το μαχαίρι",
+    "phonetic": "To machaíri"
+  },
+  {
+    "question": "Die Gabel",
+    "answer": "Το πιρούνι",
+    "phonetic": "To **piróuni**"
+  },
+  {
+    "question": "Der Löffel",
+    "answer": "Το κουτάλι",
+    "phonetic": "To koutáli"
+  },
+  {
+    "question": "Das Brot",
+    "answer": "Το ψωμί",
+    "phonetic": "To psomí"
+  },
+  {
+    "question": "Das Gemüse",
+    "answer": "Τα λαχανικά",
+    "phonetic": "Ta lachaniká"
+  },
+  {
+    "question": "Der Teller",
+    "answer": "Το πιάτο",
+    "phonetic": "To **piáto**"
+  },
+  {
+    "question": "Das Glas",
+    "answer": "Το ποτήρι",
+    "phonetic": "To potíri"
+  },
+  {
+    "question": "Der Pfeffer",
+    "answer": "Το πιπέρι",
+    "phonetic": "To pipéri"
+  },
+  {
+    "question": "Das Salz",
+    "answer": "Το αλάτι",
+    "phonetic": "To aláti"
+  },
+  {
+    "question": "Der Zucker",
+    "answer": "Η ζάχαρη",
+    "phonetic": "I **záchari**"
+  },
+  {
+    "question": "Das Mehl",
+    "answer": "Το αλεύρι",
+    "phonetic": "To alévri"
+  },
+  {
+    "question": "Der Eiswürfel",
+    "answer": "Ο παγάκι",
+    "phonetic": "O **pagáki**"
+  },
+  {
+    "question": "Das Fleisch",
+    "answer": "Το κρέας",
+    "phonetic": "To **kréas**"
+  },
+  {
+    "question": "Hühnchen",
+    "answer": "Το κοτόπουλο",
+    "phonetic": "To kotópoulo"
+  },
+  {
+    "question": "Der Fisch",
+    "answer": "Το ψάρι",
+    "phonetic": "To psári"
+  },
+  {
+    "question": "Steak",
+    "answer": "Μπριζόλα",
+    "phonetic": "**Brizóla**"
+  },
+  {
+    "question": "Der Essig",
+    "answer": "Το ξύδι",
+    "phonetic": "To **xýdi**"
+  },
+  {
+    "question": "Das Olivenöl",
+    "answer": "Το ελαιόλαδο",
+    "phonetic": "To elaiólado"
+  },
+  {
+    "question": "Das Öl",
+    "answer": "Το λάδι",
+    "phonetic": "To ládi"
+  }
+]

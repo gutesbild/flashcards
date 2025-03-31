@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flashcards – German-Greek v1.7</title>
+  <title>Flashcards – German-Greek v1.9</title>
   <style>
     body {
       font-family: sans-serif;
@@ -66,17 +66,29 @@
       margin-top: 1rem;
       font-size: 1rem;
     }
+    #bottom-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 500px) {
+      #bottom-buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>German-Greek Flashcards</h1>
-  <div id="version">Version 1.7</div>
+  <div id="version">Version 1.9</div>
 
   <div style="text-align:center;">
     <select id="datasetSelect" onchange="loadSelectedDataset()">
-      <option value="kurzeSaetze.json">Kurze Sätze</option>
-      <option value="reiseSaetze.json">Reise Sätze</option>
+      <option value="">Lade Daten ...</option>
     </select>
   </div>
 
@@ -87,22 +99,23 @@
     <div class="feedback" id="feedback"></div>
     <p id="correctAnswer" style="display: none;"></p>
     <button onclick="checkAnswer()">Check</button>
-    <button onclick="nextCard()">Skip</button>
-    <button onclick="shuffleCards()">Shuffle</button>
+    <button onclick="nextCard()">Next</button>
     <div id="progress"></div>
   </div>
 
-  <div style="text-align:center;">
-    <button onclick="toggleReverse()">Toggle Reverse Mode</button>
+  <div id="bottom-buttons">
+    <button onclick="toggleReverse()">Wechsle Richtung</button>
+    <button onclick="shuffleCards()">Shuffle</button>
   </div>
 
+  <script src="dataset.js"></script>
   <script>
     let allFlashcards = [];
     let remainingFlashcards = [];
     let currentCard = null;
     let reverseMode = false;
     let correctAnswersSet = new Set();
-    let currentDataset = "kurzeSaetze.json";
+    let currentDataset = "";
 
     function normalize(text) {
       return text.toLowerCase().replace(/[.,!?;:()\[\]"'„“’«»\-]/g, "").replace(/\s+/g, "").trim();
@@ -157,10 +170,8 @@
 
     function checkAnswer() {
       if (!currentCard) return;
-
       const userInput = normalize(document.getElementById("userInput").value);
       const correct = normalize(reverseMode ? currentCard.question : currentCard.answer);
-
       const feedback = document.getElementById("feedback");
       const answerBox = document.getElementById("correctAnswer");
 
@@ -199,12 +210,27 @@
 
     function loadSelectedDataset() {
       const select = document.getElementById("datasetSelect");
-      currentDataset = select.value;
+      const value = select.value;
+      if (value) {
+        currentDataset = value;
+        loadFlashcards(currentDataset);
+      }
+    }
+
+    function populateDatasetDropdown() {
+      const select = document.getElementById("datasetSelect");
+      select.innerHTML = "";
+      datasets.forEach(ds => {
+        const opt = document.createElement("option");
+        opt.value = ds.file;
+        opt.textContent = ds.label;
+        select.appendChild(opt);
+      });
+      currentDataset = datasets[0].file;
       loadFlashcards(currentDataset);
     }
 
-    loadFlashcards(currentDataset);
+    document.addEventListener("DOMContentLoaded", populateDatasetDropdown);
   </script>
-
 </body>
 </html>

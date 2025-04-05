@@ -1,0 +1,127 @@
+[
+  {
+    "question": "Ich",
+    "answer": "Εγώ",
+    "phonetic": "Eg**ó**"
+  },
+  {
+    "question": "Du",
+    "answer": "Εσύ",
+    "phonetic": "Es**ý**"
+  },
+  {
+    "question": "Er",
+    "answer": "Αυτός",
+    "phonetic": "Aft**ós**"
+  },
+  {
+    "question": "Sie (singular)",
+    "answer": "Αυτή",
+    "phonetic": "Aft**í**"
+  },
+  {
+    "question": "Es",
+    "answer": "Αυτό",
+    "phonetic": "Aft**ó**"
+  },
+  {
+    "question": "Wir",
+    "answer": "Εμείς",
+    "phonetic": "Em**eís**"
+  },
+  {
+    "question": "Ihr",
+    "answer": "Εσείς",
+    "phonetic": "Es**eís**"
+  },
+  {
+    "question": "Sie (plural)",
+    "answer": "Αυτοί",
+    "phonetic": "Aft**í**"
+  },
+  {
+    "question": "Ich bin",
+    "answer": "Είμαι",
+    "phonetic": "**Eí**mai (-μαι für Ich)"
+  },
+  {
+    "question": "Du bist",
+    "answer": "Είσαι",
+    "phonetic": "**Eí**sai (-σαι für Du)"
+  },
+  {
+    "question": "Er ist (auch Sie ist und Es ist)",
+    "answer": "Είναι",
+    "phonetic": "**Eí**nai (-ναι für Er/Sie/Es)"
+  },
+  {
+    "question": "Wir sind (auch andere Pluralformen)",
+    "answer": "Είμαστε",
+    "phonetic": "**Eí**maste (Plural mit -μαστε)"
+  },
+  {
+    "question": "Ihr seid (auch andere Pluralformen)",
+    "answer": "Είστε",
+    "phonetic": "**Eí**ste (Plural mit -στε)"
+  },
+  {
+    "question": "Ich habe",
+    "answer": "Έχω",
+    "phonetic": "**É**cho (-ω für Ich)"
+  },
+  {
+    "question": "Du hast",
+    "answer": "Έχεις",
+    "phonetic": "**É**chis (-εις für Du)"
+  },
+  {
+    "question": "Er hat (auch Sie hat und Es hat)",
+    "answer": "Έχει",
+    "phonetic": "**É**chi"
+  },
+  {
+    "question": "Wir haben (auch andere Pluralformen)",
+    "answer": "Έχουμε",
+    "phonetic": "**É**choume (-ουμε für Wir)"
+  },
+  {
+    "question": "Ihr habt (auch andere Pluralformen)",
+    "answer": "Έχετε",
+    "phonetic": "**É**chete (-ετε für Ihr)"
+  },
+  {
+    "question": "Sie (plural) haben (auch andere Pluralformen)",
+    "answer": "Έχουν",
+    "phonetic": "**É**choun"
+  },
+  {
+    "question": "Ich mache",
+    "answer": "Κάνω",
+    "phonetic": "**Ká**no"
+  },
+  {
+    "question": "Du machst",
+    "answer": "Κάνεις",
+    "phonetic": "**Ká**nis"
+  },
+  {
+    "question": "Er macht (auch Sie macht und Es macht)",
+    "answer": "Κάνει",
+    "phonetic": "**Ká**ni"
+  },
+  {
+    "question": "Wir machen (auch andere Pluralformen)",
+    "answer": "Κάνουμε",
+    "phonetic": "**Ká**noume"
+  },
+  {
+    "question": "Ihr macht (auch andere Pluralformen)",
+    "answer": "Κάνετε",
+    "phonetic": "**Ká**nete"
+  },
+  {
+    "question": "Sie (plural) machen (auch andere Pluralformen)",
+    "answer": "Κάνουν",
+    "phonetic": "**Ká**noun"
+  }
+]

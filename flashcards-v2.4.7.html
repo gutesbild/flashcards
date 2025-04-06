@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcards – German-Greek v2.4.0</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #e6e9ef;
+      margin: 0;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 { text-align: center; font-size: 1.8rem; }
+    #version { text-align: center; font-size: 0.9rem; color: #666; margin-bottom: 1rem; }
+    select, button, input[type="text"] {
+      font-size: 1.2rem; margin: 0.4rem; padding: 0.6rem 1rem;
+      border-radius: 8px; border: none; outline: none;
+      width: 100%; max-width: 400px; box-sizing: border-box;
+    }
+    button {
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      min-height: 48px;
+    }
+    #flashcard {
+      display: flex; flex-direction: column; justify-content: space-between;
+      text-align: center; padding: 1rem;
+      background: white; border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin: 1rem auto; width: 100%; max-width: 500px;
+      min-height: 420px;
+    }
+    #question, #correctAnswer {
+      font-size: 1.4rem; margin-bottom: 0.5rem; font-family: Georgia, serif;
+    }
+    #phonetic {
+      font-style: italic; margin-bottom: 1rem; font-family: Georgia, serif;
+    }
+    .feedback {
+      font-weight: bold; margin-top: 1rem;
+      min-height: 1.6rem; display: flex;
+      align-items: center; justify-content: center;
+    }
+    #correctAnswer {
+      min-height: 1.6rem; display: flex; align-items: center; justify-content: center;
+    }
+    #progress {
+      min-height: 1.6rem; display: flex; justify-content: center; align-items: center;
+    }
+    #tapButtons {
+      display: none; gap: 0.5rem; justify-content: center; margin-top: 1rem;
+    }
+    .card-footer {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.5rem; padding-top: 1rem; min-height: 90px;
+    }
+    input[type="text"] { background-color: #f8f9fb; }
+  </style>
+</head>
+<body>
+
+  <h1>German-Greek Flashcards</h1>
+  <div id="version">Version 2.4.7</div>
+
+  <div style="text-align:center;">
+    <select id="modeToggle" onchange="toggleMode()">
+      <option value="typing">✍️ Tippen</option>
+      <option value="tapping">🟢 Selbsteinschätzung</option>
+    </select>
+    <br/>
+    <select id="datasetSelect" onchange="loadSelectedDataset()">
+      <option value="">Lade Daten ...</option>
+    </select>
+  </div>
+
+  <div id="flashcard">
+    <div id="question">Loading...</div>
+    <div id="phonetic" style="display:none;"></div>
+    <input type="text" id="userInput" placeholder="Type your answer" autocomplete="off" />
+    <div class="feedback" id="feedback"></div>
+    <p id="correctAnswer" style="display: none;"></p>
+
+    <div id="tapButtons" style="display:none; flex-direction: column; align-items: center; visibility: hidden;">
+      <button onclick="selfAssess('no')" style="background-color: #f8d7da;">❌ Nein</button>
+      <button onclick="selfAssess('maybe')" style="background-color: #fff3cd;">🤔 Vielleicht</button>
+      <button onclick="selfAssess('yes')" style="background-color: #d1e7dd;">✅ Ja</button>
+    </div>
+
+    <div class="card-footer">
+  <button onclick="nextCard()">➡️ Weiter</button>
+      <button id="actionButton" onclick="handleAction()">Check</button>
+      <div id="progress"></div>
+    </div>
+  </div>
+
+  <div id="bottom-buttons" style="flex-direction: row; gap: 0.5rem; flex-wrap: wrap;">
+    <button onclick="toggleReverse()" style="background:white; font-size: 1rem;">↔️ Richtung</button>
+    <button onclick="shuffleCards()" style="background:white; font-size: 1rem;">🔀 Mischen</button>
+    <button onclick="resetProgress()" style="background:white; font-size: 1rem;">🔄 Zurücksetzen</button>
+  </div>
+
+  <script src="datasets.js"></script>
+  <script>
+    let allFlashcards = [], remainingFlashcards = [], currentCard = null;
+    let reverseMode = false, correctAnswersSet = new Set();
+    let currentDataset = "", lastActionWasCheck = false;
+    let tapMode = false, maybeCards = new Set();
+
+    function normalize(text) {
+      return text.toLowerCase().replace(/[.,!?;:()\[\]"'„“’«»\-]/g, "").replace(/\s+/g, "").trim();
+    }
+
+    async function loadFlashcards(file) {
+      const response = await fetch(file);
+      allFlashcards = await response.json();
+      resetSession();
+    }
+
+    function resetSession() {
+      remainingFlashcards = [...allFlashcards];
+      correctAnswersSet = new Set();
+      maybeCards = new Set();
+      shuffleCards();
+    }
+
+    function resetProgress() {
+      resetSession(); displayCard();
+    }
+
+    function displayCard() {
+      if (remainingFlashcards.length === 0) {
+        document.getElementById("question").innerText = "🎉 Alle Fragen korrekt beantwortet!";
+        document.getElementById("userInput").style.display = "none";
+        document.getElementById("feedback").innerText = "";
+        document.getElementById("correctAnswer").style.display = "none";
+        document.getElementById("phonetic").style.display = "none";
+        return;
+      }
+
+      currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
+      document.getElementById("question").innerText = reverseMode ? currentCard.answer : currentCard.question;
+      document.getElementById("phonetic").style.display = "none";
+      document.getElementById("userInput").value = "";
+      document.getElementById("userInput").style.display = tapMode ? "none" : "inline-block";
+      document.getElementById("userInput").disabled = false;
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("correctAnswer").style.display = "none";
+      document.getElementById("actionButton").innerText = "Check";
+      document.getElementById("actionButton").style.backgroundColor = "";
+      document.getElementById("actionButton").style.display = tapMode ? "none" : "inline-block";
+      document.getElementById("tapButtons").style.display = tapMode ? "flex" : "none";
+  document.getElementById("tapButtons").style.visibility = "hidden";
+      setTimeout(() => { if (!tapMode) document.getElementById("userInput").focus(); }, 100);
+      lastActionWasCheck = false;
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const total = allFlashcards.length;
+      const correct = correctAnswersSet.size;
+      document.getElementById("progress").innerText = `Richtig beantwortet: ${correct} / ${total}`;
+    }
+
+    function renderPhonetic(text) {
+      return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    }
+
+    function checkAnswer() {
+      if (!currentCard) return;
+      const rawInput = document.getElementById("userInput").value;
+      let userInput = rawInput.replace(/\(.*?\)/g, "").toLowerCase().replace(/[.,!?;:()\[\]"'„“’«»\-]/g, "").replace(/\s+/g, "").trim();
+      let correct = reverseMode ? currentCard.question : currentCard.answer;
+      correct = correct.replace(/\(.*?\)/g, "").toLowerCase().replace(/[.,!?;:()\[\]"'„“’«»\-]/g, "").replace(/\s+/g, "").trim();
+
+      const feedback = document.getElementById("feedback");
+
+      if (userInput === correct) {
+        correctAnswersSet.add(currentCard);
+        remainingFlashcards = remainingFlashcards.filter(card => {
+          const comp = (reverseMode ? card.question : card.answer).replace(/\(.*?\)/g, "").toLowerCase().replace(/[.,!?;:()\[\]"'„“’«»\-]/g, "").replace(/\s+/g, "").trim();
+          return comp !== correct && comp !== userInput;
+        });
+        feedback.innerText = "✅ Richtig!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.innerText = "❌ Falsch.";
+        feedback.className = "feedback incorrect";
+      }
+
+      const answer = reverseMode ? currentCard.question : currentCard.answer;
+      const phonetic = currentCard.phonetic || "";
+      document.getElementById("correctAnswer").innerText = "Lösung: " + answer;
+      document.getElementById("correctAnswer").style.display = "block";
+      document.getElementById("phonetic").innerHTML = renderPhonetic(phonetic);
+      document.getElementById("phonetic").style.display = "block";
+      document.getElementById("userInput").disabled = true;
+      document.getElementById("actionButton").innerText = "Next";
+      document.getElementById("actionButton").style.backgroundColor = feedback.className.includes("correct") ? "#c4e3cb" : "#f5c2c7";
+      lastActionWasCheck = true;
+      updateProgress();
+    }
+
+    function handleAction() {
+  if (tapMode && !lastActionWasCheck) return checkSelfAnswer();
+      if (!lastActionWasCheck) checkAnswer();
+      else nextCard();
+    }
+
+    function selfAssess(type) {
+  if (!lastActionWasCheck) return;
+      if (!currentCard) return;
+      const answer = reverseMode ? currentCard.question : currentCard.answer;
+      const phonetic = currentCard.phonetic || "";
+
+      document.getElementById("correctAnswer").innerText = "Lösung: " + answer;
+      document.getElementById("correctAnswer").style.display = "block";
+      document.getElementById("phonetic").innerHTML = renderPhonetic(phonetic);
+      document.getElementById("phonetic").style.display = "block";
+
+      if (type === "yes") {
+        correctAnswersSet.add(currentCard);
+        remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
+        maybeCards.delete(currentCard);
+      } else if (type === "maybe") {
+        maybeCards.add(currentCard);
+      }
+
+      lastActionWasCheck = true;
+      updateProgress();
+      
+    }
+
+    function nextCard() {
+      if (lastActionWasCheck && maybeCards.has(currentCard)) {
+        maybeCards.delete(currentCard);
+      } else if (lastActionWasCheck) {
+        maybeCards.delete(currentCard);
+      }
+      displayCard();
+    }
+
+    function toggleReverse() {
+      reverseMode = !reverseMode;
+      resetSession(); displayCard();
+    }
+
+    function shuffleCards() {
+      remainingFlashcards.sort(() => Math.random() - 0.5);
+      displayCard();
+    }
+
+    function toggleMode() {
+      const mode = document.getElementById("modeToggle").value;
+      tapMode = mode === "tapping";
+      displayCard();
+    }
+
+    function loadSelectedDataset() {
+      const value = document.getElementById("datasetSelect").value;
+      if (value) {
+        currentDataset = value;
+        loadFlashcards(currentDataset);
+      }
+    }
+
+    
+function populateDatasetDropdown() {
+  const select = document.getElementById("datasetSelect");
+  select.innerHTML = "";
+  datasets.forEach(ds => {
+    const opt = document.createElement("option");
+    opt.value = ds.file;
+    opt.textContent = ds.label;
+    select.appendChild(opt);
+  });
+  if (datasets.length > 0) {
+    select.selectedIndex = 0;
+    currentDataset = datasets[0].file;
+    loadFlashcards(currentDataset);
+  }
+}
+);
+      if (datasets.length > 0) {
+        currentDataset = datasets[0].file;
+        loadFlashcards(currentDataset);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", populateDatasetDropdown);
+  </script>
+</body>
+</html>

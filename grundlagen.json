@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Ich bin Anna.",
+    "answer": "Είμαι η Άννα.",
+    "phonetic": "**Í**me i **Á**nna"
+  },
+  {
+    "question": "Du bist Nikos.",
+    "answer": "Είσαι ο Νίκος.",
+    "phonetic": "**Í**se o **NÍ**kos"
+  },
+  {
+    "question": "Er ist Lehrer.",
+    "answer": "Είναι δάσκαλος.",
+    "phonetic": "**Í**ne **DÁS**kalos"
+  },
+  {
+    "question": "Sie ist Lehrerin.",
+    "answer": "Είναι δασκάλα.",
+    "phonetic": "**Í**ne das**KÁ**la"
+  },
+  {
+    "question": "Das ist ein Tisch.",
+    "answer": "Αυτό είναι ένα τραπέζι.",
+    "phonetic": "af**TÓ** íne **É**na trap**É**zi"
+  },
+  {
+    "question": "Das ist eine Lampe.",
+    "answer": "Αυτό είναι μία λάμπα.",
+    "phonetic": "af**TÓ** íne **MÍ**a **LÁ**ba"
+  },
+  {
+    "question": "Ich habe ein Buch.",
+    "answer": "Έχω ένα βιβλίο.",
+    "phonetic": "**É**cho **É**na viv**LÍ**o"
+  },
+  {
+    "question": "Du hast eine Tasche.",
+    "answer": "Έχεις μία τσάντα.",
+    "phonetic": "**É**chis **MÍ**a **TSÁ**nda"
+  },
+  {
+    "question": "Er hat ein Auto.",
+    "answer": "Έχει ένα αυτοκίνητο.",
+    "phonetic": "**É**chi **É**na afto**KÍ**nito"
+  },
+  {
+    "question": "Wir sind hier.",
+    "answer": "Είμαστε εδώ.",
+    "phonetic": "**Í**maste ed**Ó**"
+  },
+  {
+    "question": "Wir sind Schüler.",
+    "answer": "Είμαστε μαθητές.",
+    "phonetic": "**Í**maste mathi**TÉS**"
+  },
+  {
+    "question": "Ihr seid Lehrer.",
+    "answer": "Είστε δάσκαλοι.",
+    "phonetic": "**Í**ste **DÁS**kali"
+  },
+  {
+    "question": "Sie sind Frauen.",
+    "answer": "Είναι γυναίκες.",
+    "phonetic": "**Í**ne yi**NÉ**kes"
+  },
+  {
+    "question": "Das sind Bücher.",
+    "answer": "Αυτά είναι βιβλία.",
+    "phonetic": "af**TÁ** íne viv**LÍ**a"
+  },
+  {
+    "question": "Wir haben Autos.",
+    "answer": "Έχουμε αυτοκίνητα.",
+    "phonetic": "**É**chume afto**KÍ**nita"
+  },
+  {
+    "question": "Der Baum hat zu viel Wasser.",
+    "answer": "Το δέντρο έχει πάρα πολύ νερό.",
+    "phonetic": "to **DÉN**tro **É**chi **PÁ**ra po**LÍ** ne**RÓ**"
+  },
+  {
+    "question": "Die Pflanze hat zu wenig Sonne.",
+    "answer": "Το φυτό έχει πολύ λίγο ήλιο.",
+    "phonetic": "to fi**TÓ** **É**chi po**LÍ** **LÍ**go **Í**lio"
+  },
+  {
+    "question": "Der Stein soll weg.",
+    "answer": "Η πέτρα πρέπει να φύγει.",
+    "phonetic": "i **PÉ**tra **PRÉ**pi na **FÍ**yi"
+  },
+  {
+    "question": "Um den Baum herum aufräumen.",
+    "answer": "Καθάρισε γύρω από το δέντρο.",
+    "phonetic": "ka**THÁ**rise **GÍ**ro apó to **DÉN**tro"
+  },
+  {
+    "question": "Der Garten soll wild sein.",
+    "answer": "Ο κήπος πρέπει να είναι άγριος.",
+    "phonetic": "o **KÍ**pos **PRÉ**pi na **Í**ne **Á**grios"
+  }
+]

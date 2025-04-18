@@ -1,0 +1,52 @@
+[
+  {
+    "question": "dies",
+    "answer": "αυτό",
+    "phonetic": "af**TÓ**"
+  },
+  {
+    "question": "nicht",
+    "answer": "όχι",
+    "phonetic": "**Ó**chi"
+  },
+  {
+    "question": "Problem",
+    "answer": "πρόβλημα",
+    "phonetic": "**PRÓ**vlima"
+  },
+  {
+    "question": "helfen",
+    "answer": "βοηθάω",
+    "phonetic": "voï**THÁ**o"
+  },
+  {
+    "question": "offen",
+    "answer": "ανοιχτό",
+    "phonetic": "ani**CHTÓ**"
+  },
+  {
+    "question": "geschlossen",
+    "answer": "κλειστό",
+    "phonetic": "kli**STÓ**"
+  },
+  {
+    "question": "kaputt",
+    "answer": "χαλασμένο",
+    "phonetic": "chala**SMÉ**no"
+  },
+  {
+    "question": "kaufen",
+    "answer": "αγοράζω",
+    "phonetic": "agho**RÁ**zo"
+  },
+  {
+    "question": "sprechen",
+    "answer": "μιλάω",
+    "phonetic": "mi**LÁ**o"
+  },
+  {
+    "question": "bitte",
+    "answer": "παρακαλώ",
+    "phonetic": "paraka**LÓ**"
+  }
+]

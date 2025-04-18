@@ -1,0 +1,187 @@
+[
+  {
+    "question": "eins",
+    "answer": "ένα",
+    "phonetic": "**É**na"
+  },
+  {
+    "question": "zwei",
+    "answer": "δύο",
+    "phonetic": "**DÍ**o"
+  },
+  {
+    "question": "drei",
+    "answer": "τρία",
+    "phonetic": "**TRÍ**a"
+  },
+  {
+    "question": "vier",
+    "answer": "τέσσερα",
+    "phonetic": "**TÉ**ssera"
+  },
+  {
+    "question": "fünf",
+    "answer": "πέντε",
+    "phonetic": "**PÉN**de"
+  },
+  {
+    "question": "sechs",
+    "answer": "έξι",
+    "phonetic": "**É**xi"
+  },
+  {
+    "question": "sieben",
+    "answer": "επτά",
+    "phonetic": "ep**TÁ**"
+  },
+  {
+    "question": "acht",
+    "answer": "οκτώ",
+    "phonetic": "ok**TÓ**"
+  },
+  {
+    "question": "neun",
+    "answer": "εννιά",
+    "phonetic": "en**NIÁ**"
+  },
+  {
+    "question": "zehn",
+    "answer": "δέκα",
+    "phonetic": "**DÉ**ka"
+  },
+  {
+    "question": "elf",
+    "answer": "έντεκα",
+    "phonetic": "**ÉN**deka"
+  },
+  {
+    "question": "zwölf",
+    "answer": "δώδεκα",
+    "phonetic": "**THÓ**deka"
+  },
+  {
+    "question": "hundert",
+    "answer": "εκατό",
+    "phonetic": "eka**TÓ**"
+  },
+  {
+    "question": "tausend",
+    "answer": "χίλια",
+    "phonetic": "**CHÍ**lia"
+  },
+  {
+    "question": "aber",
+    "answer": "αλλά",
+    "phonetic": "al**LÁ**"
+  },
+  {
+    "question": "weniger",
+    "answer": "λιγότερο",
+    "phonetic": "li**GÓ**tero"
+  },
+  {
+    "question": "mehr",
+    "answer": "περισσότερο",
+    "phonetic": "peris**Ó**tero"
+  },
+  {
+    "question": "früher",
+    "answer": "πιο νωρίς",
+    "phonetic": "pió no**RÍS**"
+  },
+  {
+    "question": "später",
+    "answer": "πιο αργά",
+    "phonetic": "pió ar**GÁ**"
+  },
+  {
+    "question": "wo",
+    "answer": "πού",
+    "phonetic": "**PÚ**"
+  },
+  {
+    "question": "wann",
+    "answer": "πότε",
+    "phonetic": "**PÓ**te"
+  },
+  {
+    "question": "wie",
+    "answer": "πώς",
+    "phonetic": "**PÓS**"
+  },
+  {
+    "question": "wieviel",
+    "answer": "πόσο",
+    "phonetic": "**PÓ**so"
+  },
+  {
+    "question": "dann",
+    "answer": "τότε",
+    "phonetic": "**TÓ**te"
+  },
+  {
+    "question": "dort",
+    "answer": "εκεί",
+    "phonetic": "e**KÍ**"
+  },
+  {
+    "question": "vielleicht",
+    "answer": "ίσως",
+    "phonetic": "**Í**sos"
+  },
+  {
+    "question": "schlecht",
+    "answer": "κακό",
+    "phonetic": "ka**KÓ**"
+  },
+  {
+    "question": "dies",
+    "answer": "αυτό",
+    "phonetic": "af**TÓ**"
+  },
+  {
+    "question": "nicht",
+    "answer": "όχι",
+    "phonetic": "**Ó**chi"
+  },
+  {
+    "question": "Problem",
+    "answer": "πρόβλημα",
+    "phonetic": "**PRÓ**vlima"
+  },
+  {
+    "question": "helfen",
+    "answer": "βοηθάω",
+    "phonetic": "voï**THÁ**o"
+  },
+  {
+    "question": "offen",
+    "answer": "ανοιχτό",
+    "phonetic": "ani**CHTÓ**"
+  },
+  {
+    "question": "geschlossen",
+    "answer": "κλειστό",
+    "phonetic": "kli**STÓ**"
+  },
+  {
+    "question": "kaputt",
+    "answer": "χαλασμένο",
+    "phonetic": "chala**SMÉ**no"
+  },
+  {
+    "question": "kaufen",
+    "answer": "αγοράζω",
+    "phonetic": "agho**RÁ**zo"
+  },
+  {
+    "question": "sprechen",
+    "answer": "μιλάω",
+    "phonetic": "mi**LÁ**o"
+  },
+  {
+    "question": "bitte",
+    "answer": "παρακαλώ",
+    "phonetic": "paraka**LÓ**"
+  }
+]

@@ -85,6 +85,16 @@
     "phonetic": "pio (komperativ)"
   },
   {
+      "question": "am besten",
+    "answer": "τερο",
+    "phonetic": "tero"
+  },
+    {
+      "question": "wenig",
+    "answer": "λίγο",
+    "phonetic": "ligo"
+  },
+  {
     "question": "früher",
     "answer": "πιο νωρίς",
     "phonetic": "pió no**RÍS**"

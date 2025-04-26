@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Flashcards v2.5.5</title>
+  <title>Flashcards v2.5.6</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@
       max-width: 700px;
       margin: 1rem auto;
     }
-    button {
+    button, select {
       margin: 0.2rem;
       padding: 0.5rem 1rem;
       border: none;
@@ -28,14 +28,10 @@
       cursor: pointer;
       font-size: 1rem;
     }
-    button:hover {
+    button:hover, select:hover {
       background: #0056b3;
     }
-    #mode-switch {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    #top-buttons {
+    #mode-switch, #top-buttons {
       text-align: center;
       margin-bottom: 1rem;
     }
@@ -69,7 +65,7 @@
       #flashcard-container {
         width: 90%;
       }
-      button {
+      button, select {
         font-size: 1.1rem;
         padding: 0.6rem 1rem;
       }
@@ -82,7 +78,11 @@
 
 <body>
 
-<h1 style="text-align: center;">Flashcards Version 2.5.5</h1>
+<h1 style="text-align: center;">Flashcards Version 2.5.6</h1>
+
+<div id="dataset-select" style="text-align: center; margin-bottom: 1rem;">
+  <select id="dataset-dropdown"></select>
+</div>
 
 <div id="top-buttons">
   <button id="reverse-button">Richtung wechseln</button>
@@ -106,18 +106,22 @@
 <div id="progress"></div>
 
 <script>
-const activeData = [
-  { question: "Wo bist du?", answer: "Πού είσαι;", phonetic: "**PÚ** íse" },
-  { question: "Ich bin hier.", answer: "Είμαι εδώ.", phonetic: "**Í**me ed**Ó**" },
-  { question: "Das Buch ist oben.", answer: "Το βιβλίο είναι πάνω.", phonetic: "To vi**VLÍ**o íne **PÁ**no" }
+// Voreingestellte Dataset-Definition
+const datasetFiles = [
+  { file: "kurzeSaetze.json", label: "📍 Kurze Sätze" },
+  { file: "Restaurant.json", label: "🍽️ Restaurant" },
+  { file: "pronounsConjugation.json", label: "🤘 Verb+Pronomen" }
 ];
 
-let dataOrder = [...activeData];
+let activeData = [];
+let dataOrder = [];
 let currentIndex = 0;
 let correctAnswers = [];
 let reversed = false;
 let mode = "tip";
+let datasetLoaded = false;
 
+// Funktionen
 function removeAccents(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
@@ -203,15 +207,39 @@ function showOverview() {
   document.getElementById("progress").style.display = "none";
 }
 
+function populateDropdown() {
+  const dropdown = document.getElementById("dataset-dropdown");
+  datasetFiles.forEach(d => {
+    const option = document.createElement("option");
+    option.value = d.file;
+    option.textContent = d.label;
+    dropdown.appendChild(option);
+  });
+}
+
+async function loadDataset(fileName) {
+  try {
+    const response = await fetch(fileName);
+    const json = await response.json();
+    activeData = json;
+    dataOrder = [...activeData];
+    datasetLoaded = true;
+    resetProgress();
+  } catch (error) {
+    alert("Fehler beim Laden der Daten!");
+    console.error(error);
+  }
+}
+
 // Event Listeners
 document.getElementById("tip-mode").addEventListener("click", () => {
   mode = "tip";
-  location.reload();
+  loadCard();
 });
 
 document.getElementById("self-mode").addEventListener("click", () => {
   mode = "self";
-  location.reload();
+  loadCard();
 });
 
 document.getElementById("overview-button").addEventListener("click", () => {
@@ -239,7 +267,14 @@ document.getElementById("check-button").addEventListener("click", () => {
   }
 });
 
-loadCard();
+document.getElementById("dataset-dropdown").addEventListener("change", (e) => {
+  loadDataset(e.target.value);
+});
+
+// Initial
+populateDropdown();
+loadDataset("kurzeSaetze.json");
+
 </script>
 
 </body>

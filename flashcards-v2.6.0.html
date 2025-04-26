@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Flashcardsaa v2.5.61</title>
+  <title>Flashcards v2.6.0</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -78,7 +78,7 @@
 
 <body>
 
-<h1 style="text-align: center;">Flashcards Version 2.5.6</h1>
+<h1 style="text-align: center;">Flashcards Version 2.6.0</h1>
 
 <div id="dataset-select" style="text-align: center; margin-bottom: 1rem;">
   <select id="dataset-dropdown"></select>
@@ -106,7 +106,7 @@
 <div id="progress"></div>
 
 <script>
-// Voreingestellte Dataset-Definition
+// Datensatz-Definition
 const datasetFiles = [
   { file: "kurzeSaetze.json", label: "📍 Kurze Sätze" },
   { file: "Restaurant.json", label: "🍽️ Restaurant" },
@@ -119,9 +119,7 @@ let currentIndex = 0;
 let correctAnswers = [];
 let reversed = false;
 let mode = "tip";
-let datasetLoaded = false;
 
-// Funktionen
 function removeAccents(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
@@ -223,7 +221,6 @@ async function loadDataset(fileName) {
     const json = await response.json();
     activeData = json;
     dataOrder = [...activeData];
-    datasetLoaded = true;
     resetProgress();
   } catch (error) {
     alert("Fehler beim Laden der Daten!");

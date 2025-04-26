@@ -5,4 +5,6 @@ const datasets = [
     { file: "kurzundzahl2.json", label: "Zahlen und Präpositionen" },
    { file: "grundlagen.json", label: "Grundlagen" },
    { file: "pronounsConjugation.json", label: "🤘Verb+Pronomen" },
+     { file: "OsUndIs.json", label: "Os und Is" },
+
 ];

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards & Lektionen – v2.9.05</title>
+  <title>Flashcards & Lektionen – v2.9.06</title>
   <script src="datasets.js"></script> <!-- Deine Flashcard-Datasets -->
   <style>
     body {
@@ -295,20 +295,20 @@
         };
 
         list.appendChild(btn);
-        list.appendChild(text);
+      list.appendChild(text);
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   populateDatasetDropdown();
 
-  // 🚑 Wichtig: Direkt ersten Datensatz laden
   if (datasets.length > 0) {
     currentDataset = datasets[0].file;
-    loadFlashcards(currentDataset);
+    await loadFlashcards(currentDataset);  // ⬅️ await hinzufügen!
   }
 
-  // Event-Listener für Enter-Taste
+  displayCard(); // ⬅️ erst nach erfolgreichem Laden!
+
   document.getElementById("userInput").addEventListener("keyup", function(event) {
     if (event.key === "Enter" && mode === "typing") {
       if (!lastActionWasCheck) {

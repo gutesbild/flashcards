@@ -301,7 +301,27 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       populateDatasetDropdown();
-    });
+    });document.addEventListener("DOMContentLoaded", () => {
+  populateDatasetDropdown();
+
+  // 🚑 Wichtig: Direkt ersten Datensatz laden
+  if (datasets.length > 0) {
+    currentDataset = datasets[0].file;
+    loadFlashcards(currentDataset);
+  }
+
+  // Event-Listener für Enter-Taste
+  document.getElementById("userInput").addEventListener("keyup", function(event) {
+    if (event.key === "Enter" && mode === "typing") {
+      if (!lastActionWasCheck) {
+        handleAction();
+      } else {
+        nextCard();
+      }
+    }
+  });
+});
+
   </script>
 </body>
 </html>

@@ -1,62 +1,92 @@
 [
   {
     "title": "1. Das griechische Alphabet – Buchstaben und Aussprache",
-    "content": "Das griechische Alphabet hat 24 Buchstaben. Jeder Buchstabe steht für einen Laut. Die Aussprache ist regelmäßig und eindeutig.\n\nΑ α – a wie in Papa\nΒ β – w wie in Wasser\nΓ γ – g oder j je nach Position\nΔ δ – th wie in this\nΕ ε – e wie in Bett\nΖ ζ – sd\nΗ η – i\nΘ θ – stimmloses th wie in think\nΙ ι – i\nΚ κ – k\nΛ λ – l\nΜ μ – m\nΝ ν – n\nΞ ξ – ks\nΟ ο – o\nΠ π – p\nΡ ρ – gerolltes r\nΣ σ/ς – s (ς am Wortende)\nΤ τ – t\nΥ υ – i\nΦ φ – f\nΧ χ – raues ch wie in Bach\nΨ ψ – ps\nΩ ω – langes o\n\nHinweis: Sigma (ς) wird nur am Wortende verwendet. Alle Buchstaben werden ausgesprochen."
+    "content": "Das griechische Alphabet hat 24 Buchstaben. Jeder Buchstabe steht für einen Laut. Die Aussprache ist größtenteils regelmäßig.\n\nΑ α – a wie in Papa\nΒ β – w wie in Wasser\nΓ γ – g oder j je nach Position: vor e/i klingt es wie j, sonst wie g\nΔ δ – stimmhaftes th wie in this (Zungenspitze zwischen die Zähne)\nΕ ε – e wie in Bett\nΖ ζ – s mit stimmhaftem d, ähnlich wie in Ds\nΗ η – i (langes i wie in Lied)\nΘ θ – stimmloses th wie in think (Zungenspitze zwischen die Zähne)\nΙ ι – i wie in mit\nΚ κ – k\nΛ λ – l\nΜ μ – m\nΝ ν – n\nΞ ξ – ks (wie x in Box)\nΟ ο – o wie in Post\nΠ π – p\nΡ ρ – gerolltes r wie im Spanischen\nΣ σ/ς – s (ς am Wortende)\nΤ τ – t\nΥ υ – i (wie in Typ)\nΦ φ – f\nΧ χ – raues ch wie in Bach\nΨ ψ – ps (wie in Psychologie)\nΩ ω – o (wie in Post, historisch länger als ο)\n\nHinweis: \n- Sigma (σ) wird am Wortanfang und in der Wortmitte verwendet\n- Endsigma (ς) wird nur am Wortende verwendet\n- Alle Buchstaben werden ausgesprochen"
   },
   {
     "title": "2. Lautkombinationen und Besonderheiten",
-    "content": "Häufige Vokalkombinationen:\nαι – gesprochen wie 'e'\nει – gesprochen wie 'i'\nοι – gesprochen wie 'i'\nαυ – 'av' oder 'af' je nach Umgebung\nευ – 'ev' oder 'ef'\nου – gesprochen wie 'u'\n\nHäufige Konsonantenkombinationen:\nμπ – b\nντ – d\nγκ – g\nτσ – ts\nτζ – dz\n\nBeispielwörter:\nκαιρός (Wetter), ευχαριστώ (Danke), οικογένεια (Familie)."
+    "content": "Vokalkombinationen (Diphthonge):\nαι – gesprochen wie 'e' (wie in Bett)\nει – gesprochen wie 'i' (wie in Lied)\nοι – gesprochen wie 'i' (wie in Lied)\nυι – gesprochen wie 'i' (wie in Lied)\nαυ – 'av' vor Vokalen und stimmhaften Konsonanten, 'af' vor stimmlosen Konsonanten\nευ – 'ev' vor Vokalen und stimmhaften Konsonanten, 'ef' vor stimmlosen Konsonanten\nου – gesprochen wie 'u' (wie in Schule)\n\nKonsonantenkombinationen:\nμπ – am Wortanfang wie 'b', sonst wie 'mb'\nντ – am Wortanfang wie 'd', sonst wie 'nd'\nγκ – am Wortanfang wie 'g', sonst wie 'ng'\nτσ – wie 'ts' in Katze\nτζ – wie 'ds' in Holzdecke\n\nBeispiele:\nκαιρός (e-ROS) – Wetter\nαυτός (af-TOS) – er\nουρανός (u-ra-NOS) – Himmel\nμπαμπάς (ba-BAS) – Papa\nντομάτα (do-MA-ta) – Tomate"
   },
   {
-    "title": "3. Bestimmte Artikel im Singular",
-    "content": "Im Griechischen gibt es drei bestimmte Artikel im Singular:\nο (o) – der (maskulin)\nη (i) – die (feminin)\nτο (to) – das (neutral)\n\nBeispiele:\nο φίλος – der Freund\nη φίλη – die Freundin\nτο παιδί – das Kind"
+    "title": "3. Betonung und Akzente",
+    "content": "Im Griechischen wird jedes Wort mit mehr als einer Silbe betont. Der Akzent (τόνος) zeigt die betonte Silbe an.\n\nRegeln:\n- Jedes Wort hat nur einen Akzent\n- Der Akzent kann nur auf einer der letzten drei Silben stehen\n- Der Akzent wird auf den Vokal gesetzt\n\nBeispiele:\nμητέρα (mi-TE-ra) – Mutter\nπατέρας (pa-TE-ras) – Vater\nαδελφός (a-del-FOS) – Bruder\nαδελφή (a-del-FI) – Schwester\n\nAussprachetipp: Betonte Silben werden lauter und etwas länger ausgesprochen."
   },
   {
-    "title": "4. Bestimmte Artikel im Plural",
-    "content": "Die Pluralformen der bestimmten Artikel sind:\nοι – für maskulin und feminin\nτα – für neutral\n\nBeispiele:\nοι φίλοι – die Freunde\nοι φίλες – die Freundinnen\nτα παιδιά – die Kinder"
+    "title": "4. Bestimmte Artikel im Singular",
+    "content": "Im Griechischen hat jedes Substantiv ein grammatisches Geschlecht (männlich, weiblich oder neutral). Die Artikel helfen, das Geschlecht zu erkennen.\n\nBestimmte Artikel im Singular:\nο (o) – der (maskulin)\nη (i) – die (feminin)\nτο (to) – das (neutral)\n\nBeispiele:\nο άντρας – der Mann\nο φίλος – der Freund\nη γυναίκα – die Frau\nη φίλη – die Freundin\nτο παιδί – das Kind\nτο σπίτι – das Haus\n\nWichtig: Der Artikel muss mit dem Substantiv im Geschlecht übereinstimmen."
   },
   {
-    "title": "5. Substantive im Singular und Plural",
-    "content": "Regeln zur Pluralbildung:\nMaskulin:\n-ος → -οι\nEx: φίλος → φίλοι\n\nFeminin:\n-α/-η → -ες\nEx: γυναίκα → γυναίκες\n\nNeutrum:\n-ο/-ι → -α\nEx: παιδί → παιδιά"
+    "title": "5. Bestimmte Artikel im Plural",
+    "content": "Die Pluralformen der bestimmten Artikel sind:\nοι (i) – für maskulin und feminin\nτα (ta) – für neutral\n\nBeispiele:\nοι άντρες – die Männer\nοι φίλοι – die Freunde (männlich)\nοι γυναίκες – die Frauen\nοι φίλες – die Freundinnen\nτα παιδιά – die Kinder\nτα σπίτια – die Häuser\n\nBeachte, dass sich nicht nur der Artikel, sondern auch die Endung des Substantivs im Plural ändert."
   },
   {
-    "title": "6. Personalpronomen",
-    "content": "Singular:\nεγώ – ich\nεσύ – du\nαυτός – er\nαυτή – sie\nαυτό – es\n\nPlural:\nεμείς – wir\nεσείς – ihr/Sie\naυτοί – sie (maskulin)\nαυτές – sie (feminin)\nαυτά – sie (neutral)"
+    "title": "6. Unbestimmte Artikel",
+    "content": "Die unbestimmten Artikel im Griechischen sind:\n\nSingular:\nένας (e-nas) – ein (maskulin)\nμία/μια (MI-a/mja) – eine (feminin)\nένα (E-na) – ein (neutral)\n\nBeispiele:\nένας άντρας – ein Mann\nμία γυναίκα – eine Frau\nένα παιδί – ein Kind\n\nWichtig: Im Plural gibt es keinen unbestimmten Artikel. Stattdessen wird das Substantiv ohne Artikel verwendet.\n\nBeispiele:\nάντρες – (einige) Männer\nγυναίκες – (einige) Frauen\nπαιδιά – (einige) Kinder"
   },
   {
-    "title": "7. Präsens regelmäßiger Verben",
-    "content": "Beispiel παίζω (spielen):\nεγώ παίζω – ich spiele\nεσύ παίζεις – du spielst\nαυτός παίζει – er spielt\nεμείς παίζουμε – wir spielen\nεσείς παίζετε – ihr spielt\naυτοί παίζουν – sie spielen\n\nRegel: Der Verbstamm bleibt stabil, die Endung variiert."
+    "title": "7. Substantive im Singular und Plural",
+    "content": "Die häufigsten Regeln zur Pluralbildung:\n\nMaskulin:\n-ας → -ες: ο άντρας → οι άντρες (der Mann → die Männer)\n-ος → -οι: ο φίλος → οι φίλοι (der Freund → die Freunde)\n-ης → -ες: ο μαθητής → οι μαθητές (der Schüler → die Schüler)\n\nFeminin:\n-α → -ες: η γυναίκα → οι γυναίκες (die Frau → die Frauen)\n-η → -ες: η φίλη → οι φίλες (die Freundin → die Freundinnen)\n\nNeutrum:\n-ι → -ια: το παιδί → τα παιδιά (das Kind → die Kinder)\n-ο → -α: το βιβλίο → τα βιβλία (das Buch → die Bücher)\n-μα → -ματα: το μάθημα → τα μαθήματα (die Lektion → die Lektionen)\n\nEs gibt Ausnahmen, aber diese Regeln decken viele häufige Wörter ab."
   },
   {
-    "title": "8. Häufige Verben im Alltag",
-    "content": "Wichtige Verben:\nείμαι – sein\nέχω – haben\nπηγαίνω – gehen\nβλέπω – sehen\nκάνω – machen\n\nBeispiele:\nΕγώ έχω ένα σπίτι. – Ich habe ein Haus."
+    "title": "8. Personalpronomen – Subjektform",
+    "content": "Personalpronomen (Subjektform) werden oft weggelassen, da die Verbform bereits die Person anzeigt. Sie werden vor allem zur Betonung verwendet.\n\nSingular:\nεγώ (e-GO) – ich\nεσύ (e-SI) – du\nαυτός (af-TOS) – er\nαυτή (af-TI) – sie\nαυτό (af-TO) – es\n\nPlural:\nεμείς (e-MIS) – wir\nεσείς (e-SIS) – ihr/Sie\nαυτοί (af-TI) – sie (maskulin)\nαυτές (af-TES) – sie (feminin)\nαυτά (af-TA) – sie (neutral)\n\nBeispiele:\nΕγώ είμαι από τη Γερμανία. – Ich bin aus Deutschland.\nΕσύ μιλάς ελληνικά; – Sprichst du Griechisch?\nΑυτός μένει στην Αθήνα. – Er wohnt in Athen."
   },
   {
-    "title": "9. Fragen im Griechischen",
-    "content": "Fragewörter:\nτι – was\nποιος – wer\nπού – wo\nπότε – wann\nγιατί – warum\n\nBeispiele:\nΤι κάνεις; – Was machst du?\nΠού είναι το παιδί; – Wo ist das Kind?"
+    "title": "9. Personalpronomen – Objektform",
+    "content": "Die Objektformen der Personalpronomen werden anders als die Subjektformen gebildet und stehen meist vor dem Verb.\n\nSingular:\nμε (me) – mich\nσε (se) – dich\nτον (ton) – ihn\nτην (tin) – sie\nτο (to) – es\n\nPlural:\nμας (mas) – uns\nσας (sas) – euch/Sie\nτους (tus) – sie (maskulin/gemischt)\nτις (tis) – sie (feminin)\nτα (ta) – sie (neutral)\n\nBeispiele:\nΜε βλέπεις; – Siehst du mich?\nΣε αγαπώ. – Ich liebe dich.\nΤον ξέρω. – Ich kenne ihn.\nΜας καταλαβαίνετε; – Verstehen Sie uns?"
   },
   {
-    "title": "10. Verneinung mit δεν",
-    "content": "Nicht wird mit δεν gebildet:\nΔεν πηγαίνω. – Ich gehe nicht.\nΔεν βλέπω. – Ich sehe nicht.\n\n'Δεν' steht immer direkt vor dem Verb."
+    "title": "10. Präsens regelmäßiger Verben auf -ω",
+    "content": "Die größte Gruppe der griechischen Verben endet auf -ω. Hier ist die Konjugation im Präsens am Beispiel von παίζω (spielen):\n\nεγώ παίζω (PE-zo) – ich spiele\nεσύ παίζεις (PE-zis) – du spielst\nαυτός/αυτή/αυτό παίζει (PE-zi) – er/sie/es spielt\n\nεμείς παίζουμε (PE-zu-me) – wir spielen\nεσείς παίζετε (PE-ze-te) – ihr spielt/Sie spielen\nαυτοί/αυτές/αυτά παίζουν (PE-zun) – sie spielen\n\nWeitere Beispiele:\nμιλάω/μιλώ (sprechen): μιλάω, μιλάς, μιλάει, μιλάμε, μιλάτε, μιλάνε\nαγαπάω/αγαπώ (lieben): αγαπάω, αγαπάς, αγαπάει, αγαπάμε, αγαπάτε, αγαπάνε"
   },
   {
-    "title": "11. Die vielen 'i'-Laute",
-    "content": "i wird geschrieben als:\nι, η, υ, ει, οι, υι\n\nAlle klingen gleich, korrektes Schreiben lernt man durch Lesen und Üben."
+    "title": "11. Das Verb 'είμαι' (sein)",
+    "content": "Das Verb 'sein' ist unregelmäßig und sehr wichtig:\n\nεγώ είμαι (I-me) – ich bin\nεσύ είσαι (I-se) – du bist\nαυτός/αυτή/αυτό είναι (I-ne) – er/sie/es ist\n\nεμείς είμαστε (I-ma-ste) – wir sind\nεσείς είστε (I-ste) – ihr seid/Sie sind\nαυτοί/αυτές/αυτά είναι (I-ne) – sie sind\n\nBeispiele:\nΕίμαι 30 χρονών. – Ich bin 30 Jahre alt.\nΕίσαι από την Ελλάδα; – Bist du aus Griechenland?\nΕίναι καθηγητής. – Er ist Lehrer.\nΕίμαστε φοιτητές. – Wir sind Studenten."
   },
   {
-    "title": "12. Präpositionen im Griechischen",
-    "content": "Wichtige Präpositionen:\nσε – in, an, auf\nμε – mit\nαπό – von, aus\nγια – für\n\nBeispiel:\nΤο βιβλίο είναι πάνω στο τραπέζι. – Das Buch ist auf dem Tisch."
+    "title": "12. Das Verb 'έχω' (haben)",
+    "content": "Das Verb 'haben' wird häufig verwendet:\n\nεγώ έχω (E-ho) – ich habe\nεσύ έχεις (E-his) – du hast\nαυτός/αυτή/αυτό έχει (E-hi) – er/sie/es hat\n\nεμείς έχουμε (E-hu-me) – wir haben\nεσείς έχετε (E-he-te) – ihr habt/Sie haben\nαυτοί/αυτές/αυτά έχουν (E-hun) – sie haben\n\nBeispiele:\nΈχω ένα αυτοκίνητο. – Ich habe ein Auto.\nΈχεις αδέλφια; – Hast du Geschwister?\nΈχει δύο παιδιά. – Er/Sie hat zwei Kinder.\nΈχουμε μάθημα στις 9. – Wir haben Unterricht um 9 Uhr."
   },
   {
-    "title": "13. Zahlen 1 bis 20",
-    "content": "1 – ένα\n2 – δύο\n3 – τρία\n4 – τέσσερα\n5 – πέντε\n6 – έξι\n7 – επτά\n8 – οκτώ\n9 – εννιά\n10 – δέκα\n11 – έντεκα\n12 – δώδεκα\n13 – δεκατρία\n14 – δεκατέσσερα\n15 – δεκαπέντε\n16 – δεκαέξι\n17 – δεκαεπτά\n18 – δεκαοκτώ\n19 – δεκαεννιά\n20 – είκοσι"
+    "title": "13. Häufige Verben im Alltag",
+    "content": "Wichtige Verben für den Alltag:\n\nπηγαίνω (pi-GE-no) – gehen\nβλέπω (VLE-po) – sehen\nκάνω (KA-no) – machen\nαγοράζω (a-go-RA-zo) – kaufen\nμαθαίνω (ma-THE-no) – lernen\nδουλεύω (du-LE-vo) – arbeiten\nτρώω (TRO-o) – essen\nπίνω (PI-no) – trinken\nμένω (ME-no) – wohnen, bleiben\nακούω (a-KU-o) – hören\nγράφω (GRA-fo) – schreiben\nδιαβάζω (dja-VA-zo) – lesen\n\nBeispiele:\nΠηγαίνω στη δουλειά. – Ich gehe zur Arbeit.\nΒλέπω τηλεόραση. – Ich sehe fern.\nΜαθαίνω ελληνικά. – Ich lerne Griechisch.\nΔουλεύω σε εστιατόριο. – Ich arbeite in einem Restaurant."
   },
   {
-    "title": "14. Uhrzeiten einfach erklären",
-    "content": "Fragen nach der Uhrzeit:\nΤι ώρα είναι; – Wie spät ist es?\n\nAntworten:\nΕίναι δύο. – Es ist zwei Uhr.\nΕίναι τέσσερις και τέταρτο. – Es ist Viertel nach vier."
+    "title": "14. Fragen im Griechischen",
+    "content": "Fragewörter:\nτι (ti) – was\nποιος/ποια/ποιο (PJOS/PJA/PJO) – wer/welcher/welche/welches\nπού (pu) – wo\nπότε (PO-te) – wann\nγιατί (ja-TI) – warum\nπώς (pos) – wie\nπόσο (PO-so) – wie viel\n\nFragesätze werden durch Intonation gebildet (steigende Tonhöhe am Ende) oder mit Fragewörtern.\n\nBeispiele:\nΤι κάνεις; – Wie geht's? (wörtlich: Was machst du?)\nΠοιος είναι αυτός; – Wer ist das?\nΠού μένεις; – Wo wohnst du?\nΠότε φεύγεις; – Wann gehst du?\nΓιατί σπουδάζεις ελληνικά; – Warum lernst du Griechisch?\nΠώς σε λένε; – Wie heißt du? (wörtlich: Wie nennen sie dich?)"
   },
   {
-    "title": "15. Kurze Redewendungen",
-    "content": "Nützliche Redewendungen:\nΚαλημέρα! – Guten Morgen!\nΚαλησπέρα! – Guten Abend!\nΕυχαριστώ. – Danke.\nΠαρακαλώ. – Bitte.\nΣυγγνώμη. – Entschuldigung."
-  }
-]
+    "title": "15. Verneinung",
+    "content": "Im Griechischen gibt es zwei Hauptformen der Verneinung:\n\n1. δεν (den) – für Verben\nΔεν πηγαίνω. – Ich gehe nicht.\nΔεν βλέπω. – Ich sehe nicht.\nΔεν καταλαβαίνω. – Ich verstehe nicht.\n\n2. όχι (O-hi) – nein, nicht (alleinstehend oder für andere Wortarten)\nΌχι, ευχαριστώ. – Nein, danke.\nΌχι αύριο, σήμερα. – Nicht morgen, heute.\n\nWichtig: 'Δεν' steht immer direkt vor dem Verb."
+  },
+  {
+    "title": "16. Die vielen 'i'-Laute",
+    "content": "Der i-Laut wird auf verschiedene Arten geschrieben:\n\nι – iota (häufigstes i)\nη – eta\nυ – ypsilon\nει – epsilon+iota\nοι – omikron+iota\nυι – ypsilon+iota\n\nAlle klingen gleich, aber werden unterschiedlich geschrieben. Die korrekte Schreibweise lernt man am besten durch Lesen und Üben.\n\nBeispiele:\nφίλος (FI-los) – Freund (mit ι)\nγλώσση (GLO-si) – Sprache (mit η)\nξύλο (KSI-lo) – Holz (mit υ)\nείμαι (I-me) – ich bin (mit ει)\nοικογένεια (i-ko-GE-ni-a) – Familie (mit οι)\n\nTipp: Achte besonders auf die Schreibweise, wenn du neue Wörter lernst."
+  },
+  {
+    "title": "17. Adjektive und Übereinstimmung",
+    "content": "Adjektive müssen in Geschlecht, Zahl und Fall mit dem Substantiv übereinstimmen.\n\nBeispiel: καλός (gut)\nMaskulin: καλός (ka-LOS)\nFeminin: καλή (ka-LI)\nNeutral: καλό (ka-LO)\n\nBeispiele im Singular:\nο καλός φίλος – der gute Freund\nη καλή φίλη – die gute Freundin\nτο καλό παιδί – das gute Kind\n\nBeispiele im Plural:\nοι καλοί φίλοι – die guten Freunde\nοι καλές φίλες – die guten Freundinnen\nτα καλά παιδιά – die guten Kinder\n\nWeitere häufige Adjektive:\nμεγάλος/μεγάλη/μεγάλο – groß\nμικρός/μικρή/μικρό – klein\nωραίος/ωραία/ωραίο – schön\nνέος/νέα/νέο – neu, jung\nπαλιός/παλιά/παλιό – alt"
+  },
+  {
+    "title": "18. Präpositionen",
+    "content": "Wichtige Präpositionen:\nσε (se) – in, an, auf, zu, nach (+ Akkusativ)\nαπό (a-PO) – von, aus, seit (+ Akkusativ)\nμε (me) – mit (+ Akkusativ)\nγια (ja) – für, um zu (+ Akkusativ)\nχωρίς (ho-RIS) – ohne (+ Akkusativ)\n\nBeispiele:\nΠηγαίνω στο σχολείο. – Ich gehe zur Schule. (σε + το = στο)\nΈρχομαι από την Ελλάδα. – Ich komme aus Griechenland.\nΜιλάω με τον φίλο μου. – Ich spreche mit meinem Freund.\nΑυτό είναι για σένα. – Das ist für dich.\nΚαφές χωρίς ζάχαρη. – Kaffee ohne Zucker.\n\nHinweis: Die Präposition 'σε' verschmilzt oft mit dem Artikel:\nσε + τον = στον\nσε + την = στην\nσε + το = στο"
+  },
+  {
+    "title": "19. Zahlen 1 bis 20",
+    "content": "Die Zahlen auf Griechisch:\n\n1 – ένα (E-na)\n2 – δύο (DI-o)\n3 – τρία (TRI-a)\n4 – τέσσερα (TE-se-ra)\n5 – πέντε (PEN-de)\n6 – έξι (E-ksi)\n7 – επτά (e-PTA) / εφτά (e-FTA) umgangssprachlich\n8 – οκτώ (o-KTO) / οχτώ (o-HTO) umgangssprachlich\n9 – εννιά (e-NI-a)\n10 – δέκα (DE-ka)\n11 – έντεκα (EN-de-ka)\n12 – δώδεκα (DO-de-ka)\n13 – δεκατρία (de-ka-TRI-a)\n14 – δεκατέσσερα (de-ka-TE-se-ra)\n15 – δεκαπέντε (de-ka-PEN-de)\n16 – δεκαέξι (de-ka-E-ksi)\n17 – δεκαεπτά (de-ka-e-PTA) / δεκαεφτά (de-ka-e-FTA)\n18 – δεκαοκτώ (de-ka-o-KTO) / δεκαοχτώ (de-ka-o-HTO)\n19 – δεκαεννιά (de-ka-e-NI-a)\n20 – είκοσι (I-ko-si)\n\nZahladjektive (1-4) ändern ihre Form je nach Geschlecht:\nMaskulin: ένας, δύο, τρεις, τέσσερις\nFeminin: μία/μια, δύο, τρεις, τέσσερις\nNeutral: ένα, δύο, τρία, τέσσερα"
+  },
+  {
+    "title": "20. Uhrzeiten",
+    "content": "Fragen nach der Uhrzeit:\nΤι ώρα είναι; – Wie spät ist es?\n\nAntworten:\nΕίναι μία (ακριβώς). – Es ist (genau) ein Uhr.\nΕίναι δύο (η ώρα). – Es ist zwei Uhr.\n\nMinuten:\nΕίναι δύο και δέκα. – Es ist zehn nach zwei. (wörtlich: zwei und zehn)\nΕίναι τρεις και τέταρτο. – Es ist Viertel nach drei.\nΕίναι τέσσερις και μισή. – Es ist halb fünf. (wörtlich: vier und halb)\nΕίναι πέντε παρά τέταρτο. – Es ist Viertel vor fünf. (wörtlich: fünf minus viertel)\nΕίναι έξι παρά δέκα. – Es ist zehn vor sechs.\n\nTageszeiten:\nπρωί (pro-I) – Morgen\nμεσημέρι (me-si-ME-ri) – Mittag\nαπόγευμα (a-PO-jev-ma) – Nachmittag\nβράδυ (VRA-di) – Abend\nνύχτα (NI-hta) – Nacht\n\nBeispiele:\nΣτις οκτώ το πρωί – Um acht Uhr morgens\nΣτις τρεις το μεσημέρι – Um drei Uhr mittags"
+  },
+  {
+    "title": "21. Wochentage, Monate und Jahreszeiten",
+    "content": "Wochentage (mit Artikel):\nη Δευτέρα (i def-TE-ra) – Montag\nη Τρίτη (i TRI-ti) – Dienstag\nη Τετάρτη (i te-TAR-ti) – Mittwoch\nη Πέμπτη (i PEM-pti) – Donnerstag\nη Παρασκευή (i pa-ra-ske-VI) – Freitag\nτο Σάββατο (to SA-va-to) – Samstag\nη Κυριακή (i ki-ri-a-KI) – Sonntag\n\nMonate:\nο Ιανουάριος (i-a-nu-A-ri-os) – Januar\nο Φεβρουάριος (fe-vru-A-ri-os) – Februar\nο Μάρτιος (MAR-ti-os) – März\nο Απρίλιος (a-PRI-li-os) – April\nο Μάιος (MA-i-os) – Mai\nο Ιούνιος (I-U-ni-os) – Juni\nο Ιούλιος (I-U-li-os) – Juli\nο Αύγουστος (AV-gu-stos) – August\nο Σεπτέμβριος (sep-TEM-vri-os) – September\nο Οκτώβριος (ok-TO-vri-os) – Oktober\nο Νοέμβριος (no-EM-vri-os) – November\nο Δεκέμβριος (de-KEM-vri-os) – Dezember\n\nJahreszeiten:\nη άνοιξη (i A-ni-ksi) – Frühling\nτο καλοκαίρι (to ka-lo-KE-ri) – Sommer\nτο φθινόπωρο (to fthi-NO-po-ro) – Herbst\nο χειμώνας (o hi-MO-nas) – Winter"
+  },
+  {
+    "title": "22. Besitzverhältnisse – Besitzanzeigende Adjektive",
+    "content": "Besitzanzeigende Adjektive werden nach dem Substantiv gesetzt:\n\nμου (mu) – mein/meine\nσου (su) – dein/deine\nτου (tu) – sein/seine\nτης (tis) – ihr/ihre\nτου (tu) – sein/seine (neutral)\n\nμας (mas) – unser/unsere\nσας (sas) – euer/eure/Ihr/Ihre\nτους (tus) – ihr/ihre (maskulin/feminin/neutral)\n\nBeispiele:\nο πατέρας μου – mein Vater\nη μητέρα σου – deine Mutter\nτο σπίτι του – sein Haus\nοι φίλοι μας – unsere Freunde\nτα βιβλία σας – eure/Ihre Bücher\n\nHinweis: Diese Formen sind unbetont und werden direkt an das Substantiv angehängt (keine Lücke)."
+  },
+  {
+    "title": "23. Kurze Redewendungen für Anfänger",
+    "content": "Grundlegende Begrüßungen und Höflichkeitsformeln:\n\nΓεια σου! (YA su) – Hallo! (informal, Singular)\nΓεια σας! (YA sas) – Hallo! (formal oder Plural)\nΚαλημέρα! (ka-li-ME-ra) – Guten Morgen!\nΚαλησπέρα! (ka-li-SPE-ra) – Guten Abend!\nΚαληνύχτα! (ka-li-NI-hta) – Gute Nacht!\nΧαίρω πολύ! (HE-ro po-LI) – Freut mich!\nΤι κάνεις; (ti KA-nis) – Wie geht's? (informal)\nΤι κάνετε; (ti KA-ne-te) – Wie geht's? (formal)\nΚαλά, ευχαριστώ! (ka-LA, ef-ha-ri-STO) – Gut, danke!\nΕυχαριστώ! (ef-ha-ri-STO) – Danke!\nΠαρακαλώ! (pa-ra-ka-LO) – Bitte! / Gern geschehen!\nΣυγγνώμη! (si-GNO-mi) – Entschuldigung!\nΓεια μας! (YA mas) – Prost! (beim Anstoßen)\nΚαλή

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards – v2.7.0</title>
+  <title>Flashcards – v3.7.1</title>
   <script src="datasets.js"></script>
   <style>
     body {
@@ -123,7 +123,7 @@
       margin-bottom: 1.5rem;
     }
 
-    /* NEU: Styling für den Lektionsmodus */
+    /* Styling für den Lektionsmodus */
     #lessonsContent {
       display: none;
       width: 100%;
@@ -173,11 +173,27 @@
       text-align: center;
       margin-bottom: 1.5rem;
     }
+    
+    /* Neues Styling für das Übungsfeld im Einschätzmodus */
+    #practiceContainer {
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 400px;
+      display: none;
+    }
+    
+    #practiceLabel {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.3rem;
+      text-align: left;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
   <h1>German-Greek Flashcards</h1>
-  <div id="version">Version 2.7.0</div>
+  <div id="version">Version 2.7.1</div>
 
   <select id="modeToggle" onchange="toggleMode()">
     <option value="typing">✍️ Tippen</option>
@@ -195,10 +211,15 @@
     <div class="feedback" id="feedback"></div>
     <p id="correctAnswer" style="display:none;"></p>
 
+    <!-- Neu: Container für das Übungsfeld im Einschätzmodus -->
+    <div id="practiceContainer">
+      <div id="practiceLabel">Zum Lernen hier die Lösung abtippen:</div>
+      <textarea id="practiceTipField" placeholder="Tippe die Lösung ab, um sie besser zu lernen..."></textarea>
+    </div>
+
     <div id="selfAssessButtons">
       <button onclick="selfAssess('no')" style="background-color: #f8d7da;">❌ Nicht gewusst</button>
       <button onclick="selfAssess('yes')" style="background-color: #d1e7dd; margin-top: 0.5rem;">✅ Gewusst</button>
-      <textarea id="selfPractice" placeholder="Antwort hier abschreiben..."></textarea>
     </div>
 
     <button id="actionButton" onclick="handleAction()">Check</button>
@@ -210,7 +231,7 @@
     <div id="overviewCards"></div>
   </div>
 
-  <!-- NEU: Container für den Lektionsmodus -->
+  <!-- Container für den Lektionsmodus -->
   <div id="lessonsContent">
     <h2 id="lessonsTitle">Griechisch Lektionen</h2>
     <div id="lessonsContainer"></div>
@@ -227,7 +248,7 @@
     let correctAnswersSet = new Set(), currentDataset = "";
     let reverseMode = false, lastActionWasCheck = false;
     let mode = "typing";
-    let lessons = []; // NEU: Variable für die Lektionen
+    let lessons = []; // Variable für die Lektionen
 
     function renderPhonetic(text) {
       return text ? text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") : "";
@@ -247,7 +268,7 @@
         showOverview();
       } else if (mode === "lessons") {
         document.getElementById("lessonsContent").style.display = "block";
-        loadLessons(); // NEU: Lektionen laden
+        loadLessons(); // Lektionen laden
       } else {
         document.getElementById("flashcard").style.display = "flex";
         displayCard();
@@ -273,7 +294,7 @@
       }
     }
 
-    // NEU: Laden der Lektionen aus der JSON-Datei
+    // Laden der Lektionen aus der JSON-Datei
     async function loadLessons() {
       try {
         const response = await fetch('lessons.json');
@@ -286,7 +307,7 @@
       }
     }
 
-    // NEU: Anzeigen der Lektionen
+    // Anzeigen der Lektionen
     function renderLessons() {
       const container = document.getElementById("lessonsContainer");
       container.innerHTML = "";
@@ -313,7 +334,7 @@
       });
     }
 
-    // NEU: Aufklappen/Zuklappen von Lektionsinhalten
+    // Aufklappen/Zuklappen von Lektionsinhalten
     function toggleLessonContent(index) {
       const contentElement = document.getElementById(`lesson-content-${index}`);
       const titleElements = document.querySelectorAll('.lesson-title');
@@ -357,6 +378,7 @@
         document.getElementById("userInput").style.display = "none";
         document.getElementById("actionButton").style.display = "none";
         document.getElementById("selfAssessButtons").style.display = "none";
+        document.getElementById("practiceContainer").style.display = "none";
         return;
       }
 
@@ -370,6 +392,8 @@
       document.getElementById("feedback").innerText = "";
       document.getElementById("correctAnswer").style.display = "none";
       document.getElementById("selfAssessButtons").style.display = "none";
+      document.getElementById("practiceContainer").style.display = "none";
+      document.getElementById("practiceTipField").value = "";
       document.getElementById("actionButton").innerText = "Check";
       document.getElementById("actionButton").style.display = mode === "overview" || mode === "lessons" ? "none" : "inline-block";
       lastActionWasCheck = false;
@@ -419,8 +443,10 @@
       document.getElementById("phonetic").innerHTML = renderPhonetic(currentCard.phonetic || "");
       document.getElementById("phonetic").style.display = "block";
       document.getElementById("selfAssessButtons").style.display = "flex";
-      document.getElementById("selfPractice").value = "";
-      document.getElementById("selfPractice").style.display = "block";
+      
+      // Neu: Anzeigen des Übungsfelds
+      document.getElementById("practiceContainer").style.display = "block";
+      
       document.getElementById("actionButton").style.display = "none";
       lastActionWasCheck = true;
     }
@@ -433,7 +459,7 @@
       updateProgress();
       lastActionWasCheck = false;
       document.getElementById("actionButton").style.display = "inline-block";
-      document.getElementById("selfPractice").style.display = "none";
+      document.getElementById("practiceContainer").style.display = "none";
       nextCard();
     }
 
@@ -507,7 +533,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       populateDatasetDropdown();
-      // NEU: Lessons voraus laden
+      // Lessons voraus laden
       loadLessons();
       
       document.getElementById("userInput").addEventListener("keyup", function(event) {

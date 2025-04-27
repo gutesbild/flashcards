@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards & Lektionen – v2.7.0</title>
-  <script src="datasets.js"></script> <!-- <- bleibt -->
+  <title>Flashcards & Lektionen – v2.8.0</title>
+  <script src="datasets.js"></script> <!-- Deine Flashcard-Datasets -->
   <style>
-    /* bestehende Styles bleiben unverändert */
+    /* Basis-Design bleibt */
     body {
       font-family: system-ui, sans-serif;
       background-color: #e6e9ef;
@@ -19,7 +19,7 @@
     #version { font-size: 0.9rem; color: #666; margin-bottom: 1rem; }
 
     select, button, input[type="text"], textarea {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin: 0.4rem;
       padding: 0.6rem 1rem;
       border-radius: 8px;
@@ -77,26 +77,26 @@
       display: none;
     }
 
+    /* Übersicht und Lektionen */
     #overviewContent, #lessonContent {
       display: none;
       width: 100%;
       max-width: 800px;
       background: white;
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 2rem;
       margin-top: 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
-    .overview-card, .lesson-card {
+    .overview-card {
       border-bottom: 1px solid #e0e0e0;
       padding: 1rem 0;
       margin-bottom: 0.5rem;
-      cursor: pointer;
     }
-    .overview-card:last-child, .lesson-card:last-child {
+    .overview-card:last-child {
       border-bottom: none;
     }
-    .overview-question, .lesson-title {
+    .overview-question {
       font-weight: bold;
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
@@ -105,10 +105,30 @@
       font-size: 1.1rem;
       margin-bottom: 0.3rem;
     }
+
+    /* Lektionen */
+    .lesson-button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      background-color: #f0f2f5;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: left;
+      transition: background 0.3s;
+    }
+    .lesson-button:hover {
+      background-color: #e0e0e0;
+    }
     .lesson-content {
+      margin-top: 2rem;
+      background: #fafafa;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       white-space: pre-wrap;
-      font-size: 1rem;
-      margin-top: 1rem;
     }
     #overviewTitle, #lessonTitle {
       text-align: center;
@@ -127,9 +147,10 @@
     }
   </style>
 </head>
+
 <body>
   <h1>German-Greek Flashcards</h1>
-  <div id="version">Version 2.7.0</div>
+  <div id="version">Version 2.8.0</div>
 
   <select id="modeToggle" onchange="toggleMode()">
     <option value="typing">✍️ Tippen</option>
@@ -165,7 +186,7 @@
 
   <!-- Lektionen -->
   <div id="lessonContent">
-    <h2 id="lessonTitle">Lektionen</h2>
+    <h2 id="lessonTitle">📖 Lektionen</h2>
     <div id="lessonList"></div>
     <div id="lessonText" class="lesson-content"></div>
   </div>
@@ -183,10 +204,6 @@
     let mode = "typing";
     let lessons = [];
 
-    function renderPhonetic(text) {
-      return text ? text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") : "";
-    }
-
     function toggleMode() {
       mode = document.getElementById("modeToggle").value;
       
@@ -197,14 +214,6 @@
       if (mode === "overview") showOverview();
       if (mode === "lessons") loadLessons();
       if (mode === "typing" || mode === "self") displayCard();
-    }
-
-    function normalize(text) {
-      return text.toLowerCase()
-        .replace(/[.,!?;:()\[\]"'„"'«»\-]/g, "")
-        .replace(/\s+/g, "")
-        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        .trim();
     }
 
     async function loadFlashcards(file) {
@@ -238,14 +247,13 @@
         document.getElementById("selfAssessButtons").style.display = "none";
         return;
       }
-
       currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
       document.getElementById("question").innerText = reverseMode ? currentCard.answer : currentCard.question;
       document.getElementById("phonetic").innerHTML = "";
       document.getElementById("phonetic").style.display = "none";
       document.getElementById("userInput").value = "";
-      document.getElementById("userInput").style.display = mode === "typing" ? "inline-block" : "none";
       document.getElementById("userInput").disabled = false;
+      document.getElementById("userInput").style.display = mode === "typing" ? "inline-block" : "none";
       document.getElementById("feedback").innerText = "";
       document.getElementById("correctAnswer").style.display = "none";
       document.getElementById("selfAssessButtons").style.display = "none";
@@ -257,73 +265,6 @@
 
     function updateProgress() {
       document.getElementById("progress").innerText = `Richtig: ${correctAnswersSet.size} / ${allFlashcards.length}`;
-    }
-
-    function handleAction() {
-      if (mode === "typing") {
-        if (!lastActionWasCheck) checkAnswer();
-        else nextCard();
-      } else if (mode === "self") {
-        if (!lastActionWasCheck) showSelfAnswer();
-      }
-    }
-
-    function checkAnswer() {
-      const userInput = normalize(document.getElementById("userInput").value.replace(/\(.*?\)/g, ""));
-      const correct = normalize((reverseMode ? currentCard.question : currentCard.answer).replace(/\(.*?\)/g, ""));
-      const feedback = document.getElementById("feedback");
-
-      if (userInput === correct) {
-        correctAnswersSet.add(currentCard);
-        remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
-        feedback.innerText = "✅ Richtig!";
-      } else {
-        feedback.innerText = "❌ Falsch.";
-      }
-
-      document.getElementById("correctAnswer").innerText = "Lösung: " + (reverseMode ? currentCard.question : currentCard.answer);
-      document.getElementById("correctAnswer").style.display = "block";
-      document.getElementById("phonetic").innerHTML = renderPhonetic(currentCard.phonetic || "");
-      document.getElementById("phonetic").style.display = "block";
-      document.getElementById("userInput").disabled = true;
-      document.getElementById("actionButton").innerText = "Next";
-      lastActionWasCheck = true;
-      updateProgress();
-    }
-
-    function showSelfAnswer() {
-      const answer = reverseMode ? currentCard.question : currentCard.answer;
-      document.getElementById("correctAnswer").innerText = "Lösung: " + answer;
-      document.getElementById("correctAnswer").style.display = "block";
-      document.getElementById("phonetic").innerHTML = renderPhonetic(currentCard.phonetic || "");
-      document.getElementById("phonetic").style.display = "block";
-      document.getElementById("selfAssessButtons").style.display = "flex";
-      document.getElementById("selfPractice").value = "";
-      document.getElementById("selfPractice").style.display = "block";
-      document.getElementById("actionButton").style.display = "none";
-      lastActionWasCheck = true;
-    }
-
-    function selfAssess(type) {
-      if (type === "yes") {
-        correctAnswersSet.add(currentCard);
-        remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
-      }
-      updateProgress();
-      lastActionWasCheck = false;
-      document.getElementById("actionButton").style.display = "inline-block";
-      document.getElementById("selfPractice").style.display = "none";
-      nextCard();
-    }
-
-    function nextCard() {
-      displayCard();
-    }
-
-    function toggleReverse() {
-      reverseMode = !reverseMode;
-      if (mode === "overview") showOverview();
-      else resetSession();
     }
 
     function loadSelectedDataset() {
@@ -350,32 +291,26 @@
       }
     }
 
-    function showOverview() {
-      const datasetName = document.getElementById("datasetSelect").options[document.getElementById("datasetSelect").selectedIndex].text;
-      document.getElementById("overviewTitle").innerText = `Übersicht: ${datasetName} ${reverseMode ? '(Griechisch→Deutsch)' : '(Deutsch→Griechisch)'}`;
+    function toggleReverse() {
+      reverseMode = !reverseMode;
+      if (mode === "overview") showOverview();
+      else resetSession();
+    }
 
+    function showOverview() {
       const cardsContainer = document.getElementById("overviewCards");
       cardsContainer.innerHTML = "";
-
       allFlashcards.forEach(card => {
         const cardDiv = document.createElement("div");
         cardDiv.className = "overview-card";
-
         const question = document.createElement("div");
         question.className = "overview-question";
         question.innerText = reverseMode ? card.answer : card.question;
-
         const answer = document.createElement("div");
         answer.className = "overview-answer";
         answer.innerText = reverseMode ? card.question : card.answer;
-
-        const phonetic = document.createElement("div");
-        phonetic.className = "overview-phonetic";
-        phonetic.innerHTML = renderPhonetic(card.phonetic || "");
-
         cardDiv.appendChild(question);
         cardDiv.appendChild(answer);
-        cardDiv.appendChild(phonetic);
         cardsContainer.appendChild(cardDiv);
       });
     }
@@ -392,27 +327,18 @@
       text.innerHTML = "";
 
       lessons.forEach((lesson, index) => {
-        const item = document.createElement('div');
-        item.className = 'lesson-card';
-        item.innerText = lesson.title;
-        item.onclick = () => {
-          text.innerText = lesson.content;
+        const btn = document.createElement('button');
+        btn.className = 'lesson-button';
+        btn.textContent = lesson.title;
+        btn.onclick = () => {
+          text.textContent = lesson.content;
         };
-        list.appendChild(item);
+        list.appendChild(btn);
       });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       populateDatasetDropdown();
-      document.getElementById("userInput").addEventListener("keyup", function(event) {
-        if (event.key === "Enter" && mode === "typing") {
-          if (!lastActionWasCheck) {
-            checkAnswer();
-          } else {
-            nextCard();
-          }
-        }
-      });
     });
   </script>
 </body>

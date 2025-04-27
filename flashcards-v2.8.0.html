@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcards & Lektionen – v2.8.0</title>
+  <script src="datasets.js"></script> <!-- Deine Flashcard-Datasets -->
+  <style>
+    /* Basis-Design bleibt */
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #e6e9ef;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.2rem; }
+    #version { font-size: 0.9rem; color: #666; margin-bottom: 1rem; }
+
+    select, button, input[type="text"], textarea {
+      font-size: 1.1rem;
+      margin: 0.4rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      box-sizing: border-box;
+    }
+    button { cursor: pointer; }
+    #flashcard {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #question, #correctAnswer {
+      font-size: 1.4rem;
+      font-family: Georgia, serif;
+      margin: 0.5rem 0;
+    }
+    #phonetic {
+      font-style: italic;
+      font-family: Georgia, serif;
+      display: none;
+    }
+    .feedback { min-height: 1.4rem; font-weight: bold; margin-top: 0.5rem; }
+    #userInput { width: 100%; max-width: 400px; background-color: #f8f9fb; }
+    #actionButton { margin-top: 1rem; }
+    #progress { margin-top: 0.5rem; }
+
+    #selfAssessButtons {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    #selfPractice {
+      width: 100%;
+      max-width: 400px;
+      height: 80px;
+      font-size: 1rem;
+      margin-top: 1rem;
+      background-color: #f8f9fb;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 0.5rem;
+      resize: vertical;
+      display: none;
+    }
+
+    /* Übersicht und Lektionen */
+    #overviewContent, #lessonContent {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .overview-card {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1rem 0;
+      margin-bottom: 0.5rem;
+    }
+    .overview-card:last-child {
+      border-bottom: none;
+    }
+    .overview-question {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .overview-answer {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Lektionen */
+    .lesson-button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      background-color: #f0f2f5;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: left;
+      transition: background 0.3s;
+    }
+    .lesson-button:hover {
+      background-color: #e0e0e0;
+    }
+    .lesson-content {
+      margin-top: 2rem;
+      background: #fafafa;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      white-space: pre-wrap;
+    }
+    #overviewTitle, #lessonTitle {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    #bottom-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    #bottom-buttons button {
+      background: white;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>German-Greek Flashcards</h1>
+  <div id="version">Version 2.8.0</div>
+
+  <select id="modeToggle" onchange="toggleMode()">
+    <option value="typing">✍️ Tippen</option>
+    <option value="self">🧠 Einschätzen</option>
+    <option value="overview">📚 Übersicht</option>
+    <option value="lessons">📖 Lektionen</option> <!-- NEU -->
+  </select>
+  <br/>
+  <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
+
+  <div id="flashcard">
+    <div id="question">Lade Karte...</div>
+    <div id="phonetic"></div>
+    <input type="text" id="userInput" placeholder="Antwort eingeben..." autocomplete="off" />
+    <div class="feedback" id="feedback"></div>
+    <p id="correctAnswer" style="display:none;"></p>
+
+    <div id="selfAssessButtons">
+      <button onclick="selfAssess('no')" style="background-color: #f8d7da;">❌ Nicht gewusst</button>
+      <button onclick="selfAssess('yes')" style="background-color: #d1e7dd; margin-top: 0.5rem;">✅ Gewusst</button>
+      <textarea id="selfPractice" placeholder="Antwort hier abschreiben..."></textarea>
+    </div>
+
+    <button id="actionButton" onclick="handleAction()">Check</button>
+    <div id="progress"></div>
+  </div>
+
+  <!-- Übersicht -->
+  <div id="overviewContent">
+    <h2 id="overviewTitle">Übersicht lädt...</h2>
+    <div id="overviewCards"></div>
+  </div>
+
+  <!-- Lektionen -->
+  <div id="lessonContent">
+    <h2 id="lessonTitle">📖 Lektionen</h2>
+    <div id="lessonList"></div>
+    <div id="lessonText" class="lesson-content"></div>
+  </div>
+
+  <div id="bottom-buttons">
+    <button onclick="toggleReverse()">↔️ Richtung</button>
+    <button onclick="shuffleCards()">🔀 Mischen</button>
+    <button onclick="resetProgress()">🔄 Zurücksetzen</button>
+  </div>
+
+  <script>
+    let allFlashcards = [], remainingFlashcards = [], currentCard = null;
+    let correctAnswersSet = new Set(), currentDataset = "";
+    let reverseMode = false, lastActionWasCheck = false;
+    let mode = "typing";
+    let lessons = [];
+
+    function toggleMode() {
+      mode = document.getElementById("modeToggle").value;
+      
+      document.getElementById("flashcard").style.display = mode === "typing" || mode === "self" ? "flex" : "none";
+      document.getElementById("overviewContent").style.display = mode === "overview" ? "block" : "none";
+      document.getElementById("lessonContent").style.display = mode === "lessons" ? "block" : "none";
+
+      if (mode === "overview") showOverview();
+      if (mode === "lessons") loadLessons();
+      if (mode === "typing" || mode === "self") displayCard();
+    }
+
+    async function loadFlashcards(file) {
+      const response = await fetch(file);
+      allFlashcards = await response.json();
+      resetSession();
+      if (mode === "overview") showOverview();
+    }
+
+    function resetSession() {
+      remainingFlashcards = [...allFlashcards];
+      correctAnswersSet = new Set();
+      shuffleCards();
+    }
+
+    function shuffleCards() {
+      remainingFlashcards.sort(() => Math.random() - 0.5);
+      displayCard();
+    }
+
+    function resetProgress() {
+      resetSession();
+      displayCard();
+    }
+
+    function displayCard() {
+      if (remainingFlashcards.length === 0) {
+        document.getElementById("question").innerText = "🎉 Alle Fragen korrekt beantwortet!";
+        document.getElementById("userInput").style.display = "none";
+        document.getElementById("actionButton").style.display = "none";
+        document.getElementById("selfAssessButtons").style.display = "none";
+        return;
+      }
+      currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
+      document.getElementById("question").innerText = reverseMode ? currentCard.answer : currentCard.question;
+      document.getElementById("phonetic").innerHTML = "";
+      document.getElementById("phonetic").style.display = "none";
+      document.getElementById("userInput").value = "";
+      document.getElementById("userInput").disabled = false;
+      document.getElementById("userInput").style.display = mode === "typing" ? "inline-block" : "none";
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("correctAnswer").style.display = "none";
+      document.getElementById("selfAssessButtons").style.display = "none";
+      document.getElementById("actionButton").innerText = "Check";
+      document.getElementById("actionButton").style.display = "inline-block";
+      lastActionWasCheck = false;
+      updateProgress();
+    }
+
+    function updateProgress() {
+      document.getElementById("progress").innerText = `Richtig: ${correctAnswersSet.size} / ${allFlashcards.length}`;
+    }
+
+    function loadSelectedDataset() {
+      const value = document.getElementById("datasetSelect").value;
+      if (value) {
+        currentDataset = value;
+        loadFlashcards(currentDataset);
+      }
+    }
+
+    function populateDatasetDropdown() {
+      const select = document.getElementById("datasetSelect");
+      select.innerHTML = "";
+      datasets.forEach(ds => {
+        const opt = document.createElement("option");
+        opt.value = ds.file;
+        opt.textContent = ds.label;
+        select.appendChild(opt);
+      });
+      if (datasets.length > 0) {
+        select.selectedIndex = 0;
+        currentDataset = datasets[0].file;
+        loadFlashcards(currentDataset);
+      }
+    }
+
+    function toggleReverse() {
+      reverseMode = !reverseMode;
+      if (mode === "overview") showOverview();
+      else resetSession();
+    }
+
+    function showOverview() {
+      const cardsContainer = document.getElementById("overviewCards");
+      cardsContainer.innerHTML = "";
+      allFlashcards.forEach(card => {
+        const cardDiv = document.createElement("div");
+        cardDiv.className = "overview-card";
+        const question = document.createElement("div");
+        question.className = "overview-question";
+        question.innerText = reverseMode ? card.answer : card.question;
+        const answer = document.createElement("div");
+        answer.className = "overview-answer";
+        answer.innerText = reverseMode ? card.question : card.answer;
+        cardDiv.appendChild(question);
+        cardDiv.appendChild(answer);
+        cardsContainer.appendChild(cardDiv);
+      });
+    }
+
+    async function loadLessons() {
+      if (lessons.length === 0) {
+        const response = await fetch('lessons.json');
+        lessons = await response.json();
+      }
+
+      const list = document.getElementById('lessonList');
+      const text = document.getElementById('lessonText');
+      list.innerHTML = "";
+      text.innerHTML = "";
+
+      lessons.forEach((lesson, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'lesson-button';
+        btn.textContent = lesson.title;
+        btn.onclick = () => {
+          text.textContent = lesson.content;
+        };
+        list.appendChild(btn);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      populateDatasetDropdown();
+    });
+  </script>
+</body>
+</html>

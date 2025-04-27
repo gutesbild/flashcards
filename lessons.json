@@ -1,82 +1,82 @@
 [
   {
-    "title": "1. Das griechische Alphabet – Einführung",
-    "content": "Das griechische Alphabet hat 24 Buchstaben.\n\nWichtige Buchstaben:\nΑ α (Alpha) – a\nΒ β (Beta) – w\nΓ γ (Gamma) – g oder weiches j\nΔ δ (Delta) – th wie in 'this'\n\nBesonderheiten:\n- Viele Buchstaben klingen anders als sie aussehen.\n- Klein- und Großbuchstaben unterscheiden sich manchmal stark.\n\nTipp: Übe zuerst das Alphabet laut vorzulesen!"
+    "title": "1. Das griechische Alphabet – Grundlagen",
+    "content": "Das griechische Alphabet besteht aus 24 Buchstaben. Es ist eines der ältesten Schriftsysteme Europas. Einige Buchstaben ähneln dem lateinischen Alphabet, andere sind völlig neu.\n\nDie Buchstaben:\nΑ α (Alpha) – wie das deutsche 'a'\nΒ β (Beta) – wie 'w'\nΓ γ (Gamma) – je nach Kontext 'g' oder 'j'\nΔ δ (Delta) – 'th' wie in 'this'\n\nBesonderheiten:\n- Griechische Klein- und Großbuchstaben sehen unterschiedlich aus.\n- Manche Buchstabenpaare ergeben neue Laute: μπ (b), ντ (d), γκ (g).\n\nÜbung:\n- Lerne jeden Tag 5 Buchstaben mit Lauten.\n- Sprich sie laut und schreibe sie mehrmals auf."
   },
   {
-    "title": "2. Die Aussprache von Doppellauten",
-    "content": "Im Griechischen gibt es Buchstabenkombinationen, die einen eigenen Klang haben:\n\n- μπ – gesprochen wie 'b'\n- ντ – gesprochen wie 'd'\n- γκ – gesprochen wie 'g'\n\nBeispiele:\n- μπαμπάς (babas) – Papa\n- ντομάτα (domata) – Tomate\n\nTipp: Langsam lesen und auf den Klang achten."
+    "title": "2. Die Aussprache von Vokalen und Konsonanten",
+    "content": "Im Griechischen haben Vokale klare, kurze Laute. Es gibt keine langen Vokale wie im Deutschen.\n\nVokale:\n- α (a) – offen wie 'Papa'\n- ε (e) – kurz wie 'Bett'\n- η, ι, υ, ει, οι, υι – alle klingen wie 'i'\n- ο (o) – kurz wie 'offen'\n- ω (o) – ebenfalls kurz, oft betont\n\nKonsonanten:\n- μπ – 'b'\n- ντ – 'd'\n- τσ – 'ts'\n- τζ – 'dz'\n\nTipp:\nHör griechische Wörter und sprich sie langsam nach. Die Aussprache ist regelmäßiger als im Deutschen."
   },
   {
-    "title": "3. Die bestimmten Artikel – Singular",
-    "content": "Im Singular gibt es 3 bestimmte Artikel:\n\n- ο (o) – für männliche Wörter\n- η (i) – für weibliche Wörter\n- το (to) – für sächliche Wörter\n\nBeispiele:\n- ο φίλος – der Freund\n- η φίλη – die Freundin\n- το παιδί – das Kind"
+    "title": "3. Die bestimmten Artikel im Singular",
+    "content": "Im Griechischen gibt es 3 bestimmte Artikel, die sich nach dem Genus richten:\n\n- ο (o) – männlich\n- η (i) – weiblich\n- το (to) – neutral\n\nBeispiele:\n- ο φίλος (der Freund)\n- η φίλη (die Freundin)\n- το παιδί (das Kind)\n\nHinweis:\n- Der Artikel wird immer mit dem Substantiv gelernt.\n- Auch der Fall (Kasus) beeinflusst die Form. Zuerst lerne Nominativ!"
   },
   {
-    "title": "4. Die bestimmten Artikel – Plural",
-    "content": "Im Plural verändern sich die Artikel:\n\n- οι (i) – für maskulin/feminin\n- τα (ta) – für neutral\n\nBeispiele:\n- οι φίλοι – die Freunde\n- οι φίλες – die Freundinnen\n- τα παιδιά – die Kinder"
+    "title": "4. Die bestimmten Artikel im Plural",
+    "content": "Im Plural verändern sich die Artikel:\n\n- οι (i) – für männlich und weiblich\n- τα (ta) – für neutral\n\nBeispiele:\n- οι φίλοι (die Freunde)\n- οι φίλες (die Freundinnen)\n- τα παιδιά (die Kinder)\n\nTipp:\nPluralformen sehen oft anders aus als Singularformen. Das Lernen der Endungen hilft!"
   },
   {
-    "title": "5. Substantive im Singular und Plural",
-    "content": "Im Griechischen ändern viele Substantive im Plural ihre Endung.\n\nBeispiele:\nSingular → Plural:\n- φίλος → φίλοι\n- βιβλίο → βιβλία\n- δάσκαλος → δάσκαλοι\n\nTipp: Maskuline Wörter enden oft auf -οι, Neutrale auf -α."
+    "title": "5. Substantive: Bildung von Pluralformen",
+    "content": "Die Pluralbildung folgt meist einfachen Regeln, abhängig vom Genus.\n\nMaskuline:\nSingular auf -ος → Plural auf -οι\nBeispiel: ο φίλος → οι φίλοι\n\nFeminine:\nSingular auf -α oder -η → Plural auf -ες\nBeispiel: η μητέρα → οι μητέρες\n\nNeutrale:\nSingular auf -ο oder -ι → Plural auf -α\nBeispiel: το βιβλίο → τα βιβλία\n\nÜbung:\nLerne die Endungen systematisch!"
   },
   {
-    "title": "6. Personalpronomen und ihre Verwendung",
-    "content": "Die wichtigsten Personalpronomen sind:\n\n- εγώ – ich\n- εσύ – du\n- αυτός – er\n- αυτή – sie\n- εμείς – wir\n- εσείς – ihr/Sie\n- αυτοί – sie (Plural)\n\nBeispiel im Satz:\nΕγώ είμαι μαθητής. – Ich bin Schüler."
+    "title": "6. Personalpronomen im Alltag",
+    "content": "Griechische Personalpronomen:\n\nSingular:\n- εγώ (ich)\n- εσύ (du)\n- αυτός (er)\n- αυτή (sie)\n- αυτό (es)\n\nPlural:\n- εμείς (wir)\n- εσείς (ihr/Sie)\n- αυτοί (sie – maskulin)\n- αυτές (sie – feminin)\n- αυτά (sie – neutral)\n\nBeispiele im Satz:\n- Εγώ μιλάω. – Ich spreche.\n- Εσύ βλέπεις. – Du siehst."
   },
   {
-    "title": "7. Präsens regelmäßiger Verben",
-    "content": "Regelmäßige Verben im Präsens:\n\nVerb 'spielen' – παίζω\n\nKonjugation:\n- εγώ παίζω – ich spiele\n- εσύ παίζεις – du spielst\n- αυτός παίζει – er spielt\n- εμείς παίζουμε – wir spielen\n- εσείς παίζετε – ihr spielt\n- αυτοί παίζουν – sie spielen"
+    "title": "7. Einführung ins Präsens",
+    "content": "Im Präsens wird eine Handlung in der Gegenwart beschrieben.\n\nBeispiel (παίζω – spielen):\n- εγώ παίζω – ich spiele\n- εσύ παίζεις – du spielst\n- αυτός παίζει – er spielt\n- εμείς παίζουμε – wir spielen\n- εσείς παίζετε – ihr spielt\n- αυτοί παίζουν – sie spielen\n\nRegel:\nVerben enden in der 1. Person Singular fast immer auf -ω."
   },
   {
-    "title": "8. Häufige Verben im Alltag",
-    "content": "Wichtige Verben:\n\n- πηγαίνω – gehen\n- έρχομαι – kommen\n- βλέπω – sehen\n- λέω – sagen\n\nBeispiel:\nΠηγαίνω στο σχολείο. – Ich gehe zur Schule."
+    "title": "8. Häufige Verben im Alltag – Teil 1",
+    "content": "Nützliche Verben:\n\n- είμαι – sein\n- έχω – haben\n- πηγαίνω – gehen\n- κάνω – machen\n- λέω – sagen\n\nSätze:\n- Εγώ είμαι δάσκαλος. – Ich bin Lehrer.\n- Εσύ έχεις βιβλίο. – Du hast ein Buch."
   },
   {
-    "title": "9. Fragen stellen – Fragewörter",
-    "content": "Fragewörter:\n\n- ποιος – wer\n- τι – was\n- πού – wo\n- πότε – wann\n\nBeispiel:\nΤι κάνεις; – Was machst du?"
+    "title": "9. Fragen stellen – einfache Strukturen",
+    "content": "Fragen werden meist gebildet durch Betonung oder Fragewörter.\n\nFragewörter:\n- τι – was\n- ποιος – wer\n- πού – wo\n\nBeispiel:\n- Τι κάνεις; – Was machst du?\n- Πού είναι το βιβλίο; – Wo ist das Buch?"
   },
   {
-    "title": "10. Verneinung im Griechischen",
-    "content": "Um zu verneinen, benutzt man:\n\n- δεν + Verb\n\nBeispiel:\nΔεν πηγαίνω. – Ich gehe nicht."
+    "title": "10. Verneinung im Griechischen – Basis",
+    "content": "Für die Verneinung benutzt man 'δεν'.\n\nFormel:\nδεν + konjugiertes Verb\n\nBeispiele:\n- Δεν πηγαίνω. – Ich gehe nicht.\n- Δεν βλέπω. – Ich sehe nicht.\n\nTipp:\n'δεν' steht direkt vor dem Verb."
   },
   {
-    "title": "11. Rechtschreibung – die vielen 'i'-Laute",
-    "content": "Das 'i' wird im Griechischen unterschiedlich geschrieben:\n\n- ι, η, υ, ει, οι, υι\n\nBeispiel:\n- σπίτι (Haus)\n- ήλιος (Sonne)\n- παιδιά (Kinder)\n\nTipp: Häufiges Lesen hilft beim Merken!"
+    "title": "11. Besonderheiten bei den i-Lauten",
+    "content": "Die i-Laute sind oft ein Problem:\n\n- ι, η, υ, ει, οι, υι → alle klingen gleich wie 'i'\n\nEs gibt keine klare Regel, welche Schreibweise wo vorkommt. Manche Tipps:\n- Viele weibliche Substantive enden auf -η.\n- Plurale enden oft auf -οι.\n\nLösung:\nWörter immer zusammen mit der richtigen Schreibweise lernen!"
   },
   {
-    "title": "12. Präpositionen im Alltag",
-    "content": "Häufige Präpositionen:\n\n- πάνω σε – auf\n- κάτω από – unter\n- μέσα σε – in\n\nBeispiel:\nΤο βιβλίο είναι πάνω στο τραπέζι. – Das Buch ist auf dem Tisch."
+    "title": "12. Präpositionen – Grundlagen",
+    "content": "Wichtige Präpositionen:\n\n- σε – in, auf, an\n- με – mit\n- από – von, aus\n- για – für\n\nBeispiele:\n- Πηγαίνω στο σχολείο. – Ich gehe zur Schule.\n- Το δώρο είναι για εσένα. – Das Geschenk ist für dich."
   },
   {
-    "title": "13. Zahlwörter 1–20",
-    "content": "Die Zahlen 1–10:\n1 – ένα\n2 – δύο\n3 – τρία\n4 – τέσσερα\n5 – πέντε\n6 – έξι\n7 – επτά\n8 – οκτώ\n9 – εννιά\n10 – δέκα\n\n11–20 werden zusammengesetzt:\n- έντεκα (11)\n- δώδεκα (12)\n..."
+    "title": "13. Zahlen – 1 bis 100",
+    "content": "Grundzahlen:\n\n1 – ένα\n2 – δύο\n3 – τρία\n...\n10 – δέκα\n\nAb 11:\n- έντεκα (11)\n- δώδεκα (12)\n\nDutzende:\n- είκοσι (20)\n- τριάντα (30)\n- σαράντα (40)"
   },
   {
-    "title": "14. Uhrzeiten auf Griechisch",
-    "content": "Wichtige Begriffe:\n\n- ώρα – Stunde\n- λεπτό – Minute\n\nFragen:\nΤι ώρα είναι; – Wie spät ist es?\n\nAntwort:\nΕίναι τρεις. – Es ist drei Uhr."
+    "title": "14. Uhrzeiten und Datum",
+    "content": "Fragen nach der Uhrzeit:\n\n- Τι ώρα είναι; – Wie spät ist es?\n\nAntworten:\n- Είναι τρεις. – Es ist drei Uhr.\n- Είναι τρεις και τέταρτο. – Es ist Viertel nach drei.\n\nDatum:\n- Σήμερα είναι δέκα Μαΐου. – Heute ist der zehnte Mai."
   },
   {
     "title": "15. Adjektive und ihre Steigerung",
-    "content": "Beispiel:\n\n- μεγάλος – groß\n- μεγαλύτερος – größer\n- ο μεγαλύτερος – der größte\n\nRegel:\nPositiv → Komparativ → Superlativ."
+    "content": "Adjektive passen sich im Genus an:\n\nBeispiel:\n- μεγάλος – groß (maskulin)\n- μεγάλη – groß (feminin)\n- μεγάλο – groß (neutral)\n\nSteigerung:\n- μεγαλύτερος – größer\n- ο μεγαλύτερος – der größte"
   },
   {
-    "title": "16. Redewendungen im Alltag",
-    "content": "Beispiele:\n\n- Καλημέρα! – Guten Morgen!\n- Καλησπέρα! – Guten Abend!\n- Καλό ταξίδι! – Gute Reise!"
+    "title": "16. Redewendungen und kurze Sätze",
+    "content": "Nützliche Redewendungen:\n\n- Καλημέρα! – Guten Morgen!\n- Καλησπέρα! – Guten Abend!\n- Ευχαριστώ! – Danke!\n- Συγγνώμη – Entschuldigung"
   },
   {
-    "title": "17. Verben: Vergangenheit (Aorist) Einführung",
-    "content": "Beispiel für einfache Vergangenheit:\n\n- πήγα – ich ging\n- είδα – ich sah\n- είπα – ich sagte\n\nTipp: Im Aorist ändern sich die Verbstämme oft leicht."
+    "title": "17. Vergangenheit (Aorist) – Einführung",
+    "content": "Beispiele:\n\n- πήγα – ich ging\n- είδα – ich sah\n- είπα – ich sagte\n\nDer Aorist beschreibt abgeschlossene Handlungen."
   },
   {
-    "title": "18. Kasus – einfach erklärt",
-    "content": "Nominativ: Subjekt\nΟ άντρας μιλάει. – Der Mann spricht.\n\nAkkusativ: Objekt\nΒλέπω τον άντρα. – Ich sehe den Mann.\n\nGenitiv: Besitz\nΤο σπίτι του άντρα. – Das Haus des Mannes."
+    "title": "18. Kasus im Griechischen – Überblick",
+    "content": "Vier Fälle:\n\n- Nominativ (Subjekt)\n- Akkusativ (Objekt)\n- Genitiv (Besitz)\n- Vokativ (Anrede)\n\nBeispiel:\n- Ο φίλος μιλάει. (Nominativ)\n- Βλέπω τον φίλο. (Akkusativ)"
   },
   {
-    "title": "19. Kleine Dialoge für Anfänger",
-    "content": "Beispiel:\n\n– Γεια σου! Πώς σε λένε;\n– Με λένε Μαρία. Εσένα;\n– Με λένε Νίκος.\n\n– Hallo! Wie heißt du?\n– Ich heiße Maria. Und du?\n– Ich heiße Nikos."
+    "title": "19. Kleine Alltagsdialoge",
+    "content": "Einfacher Dialog:\n\n– Γεια σου! Τι κάνεις;\n– Καλά, ευχαριστώ. Εσύ;\n– Κι εγώ καλά.\n\nÜbung:\nLies und sprich Dialoge laut nach."
   },
   {
-    "title": "20. Tipps für selbstständiges Lernen.",
-    "content": "- Täglich kleine Portionen üben\n- Laut lesen\n- Hörbücher auf Griechisch anhören\n- Mut zur Wiederholung!\n- Fehler machen gehört dazu!"
+    "title": "20. Tipps für das Lernen",
+    "content": "Tipps:\n\n- Übe jeden Tag 10 Minuten.\n- Mache kleine Dialoge.\n- Höre griechische Musik.\n- Schau einfache Serien.\n- Akzeptiere Fehler – sie gehören dazu!"
   }
 ]

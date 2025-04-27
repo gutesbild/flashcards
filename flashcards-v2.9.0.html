@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards & Lektionen – v2.8.0</title>
+  <title>Flashcards & Lektionen – v2.9.0</title>
   <script src="datasets.js"></script> <!-- Deine Flashcard-Datasets -->
   <style>
-    /* Basis-Design bleibt */
     body {
       font-family: system-ui, sans-serif;
       background-color: #e6e9ef;
@@ -28,6 +27,7 @@
       box-sizing: border-box;
     }
     button { cursor: pointer; }
+
     #flashcard {
       background: white;
       border-radius: 12px;
@@ -41,15 +41,11 @@
       align-items: center;
       text-align: center;
     }
+
     #question, #correctAnswer {
       font-size: 1.4rem;
       font-family: Georgia, serif;
       margin: 0.5rem 0;
-    }
-    #phonetic {
-      font-style: italic;
-      font-family: Georgia, serif;
-      display: none;
     }
     .feedback { min-height: 1.4rem; font-weight: bold; margin-top: 0.5rem; }
     #userInput { width: 100%; max-width: 400px; background-color: #f8f9fb; }
@@ -62,7 +58,6 @@
       align-items: center;
       margin-top: 1rem;
     }
-
     #selfPractice {
       width: 100%;
       max-width: 400px;
@@ -88,52 +83,37 @@
       margin-top: 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
-    .overview-card {
-      border-bottom: 1px solid #e0e0e0;
-      padding: 1rem 0;
-      margin-bottom: 0.5rem;
-    }
-    .overview-card:last-child {
-      border-bottom: none;
-    }
-    .overview-question {
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .overview-answer {
-      font-size: 1.1rem;
-      margin-bottom: 0.3rem;
-    }
 
-    /* Lektionen */
     .lesson-button {
-      display: block;
       width: 100%;
+      text-align: left;
+      background-color: #f0f2f5;
       margin: 0.5rem 0;
       padding: 0.8rem;
       font-size: 1.1rem;
-      background-color: #f0f2f5;
-      border: 1px solid #ccc;
       border-radius: 8px;
-      text-align: left;
+      border: 1px solid #ccc;
       transition: background 0.3s;
     }
     .lesson-button:hover {
       background-color: #e0e0e0;
     }
-    .lesson-content {
-      margin-top: 2rem;
-      background: #fafafa;
-      padding: 1.5rem;
-      border-radius: 12px;
+
+    .lesson-text {
+      margin: 0.5rem 0 1rem 0;
+      padding: 1rem;
+      background-color: #fafafa;
+      border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: none;
       white-space: pre-wrap;
     }
+
     #overviewTitle, #lessonTitle {
       text-align: center;
       margin-bottom: 1.5rem;
     }
+
     #bottom-buttons {
       display: flex;
       justify-content: center;
@@ -150,7 +130,7 @@
 
 <body>
   <h1>German-Greek Flashcards</h1>
-  <div id="version">Version 2.8.0</div>
+  <div id="version">Version 2.9.0</div>
 
   <select id="modeToggle" onchange="toggleMode()">
     <option value="typing">✍️ Tippen</option>
@@ -163,7 +143,6 @@
 
   <div id="flashcard">
     <div id="question">Lade Karte...</div>
-    <div id="phonetic"></div>
     <input type="text" id="userInput" placeholder="Antwort eingeben..." autocomplete="off" />
     <div class="feedback" id="feedback"></div>
     <p id="correctAnswer" style="display:none;"></p>
@@ -188,7 +167,6 @@
   <div id="lessonContent">
     <h2 id="lessonTitle">📖 Lektionen</h2>
     <div id="lessonList"></div>
-    <div id="lessonText" class="lesson-content"></div>
   </div>
 
   <div id="bottom-buttons">
@@ -206,7 +184,6 @@
 
     function toggleMode() {
       mode = document.getElementById("modeToggle").value;
-      
       document.getElementById("flashcard").style.display = mode === "typing" || mode === "self" ? "flex" : "none";
       document.getElementById("overviewContent").style.display = mode === "overview" ? "block" : "none";
       document.getElementById("lessonContent").style.display = mode === "lessons" ? "block" : "none";
@@ -249,11 +226,8 @@
       }
       currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
       document.getElementById("question").innerText = reverseMode ? currentCard.answer : currentCard.question;
-      document.getElementById("phonetic").innerHTML = "";
-      document.getElementById("phonetic").style.display = "none";
       document.getElementById("userInput").value = "";
       document.getElementById("userInput").disabled = false;
-      document.getElementById("userInput").style.display = mode === "typing" ? "inline-block" : "none";
       document.getElementById("feedback").innerText = "";
       document.getElementById("correctAnswer").style.display = "none";
       document.getElementById("selfAssessButtons").style.display = "none";
@@ -297,24 +271,6 @@
       else resetSession();
     }
 
-    function showOverview() {
-      const cardsContainer = document.getElementById("overviewCards");
-      cardsContainer.innerHTML = "";
-      allFlashcards.forEach(card => {
-        const cardDiv = document.createElement("div");
-        cardDiv.className = "overview-card";
-        const question = document.createElement("div");
-        question.className = "overview-question";
-        question.innerText = reverseMode ? card.answer : card.question;
-        const answer = document.createElement("div");
-        answer.className = "overview-answer";
-        answer.innerText = reverseMode ? card.question : card.answer;
-        cardDiv.appendChild(question);
-        cardDiv.appendChild(answer);
-        cardsContainer.appendChild(cardDiv);
-      });
-    }
-
     async function loadLessons() {
       if (lessons.length === 0) {
         const response = await fetch('lessons.json');
@@ -322,18 +278,24 @@
       }
 
       const list = document.getElementById('lessonList');
-      const text = document.getElementById('lessonText');
       list.innerHTML = "";
-      text.innerHTML = "";
 
       lessons.forEach((lesson, index) => {
         const btn = document.createElement('button');
         btn.className = 'lesson-button';
         btn.textContent = lesson.title;
+        const text = document.createElement('div');
+        text.className = 'lesson-text';
+        text.textContent = lesson.content;
+
         btn.onclick = () => {
-          text.textContent = lesson.content;
+          const allTexts = document.querySelectorAll('.lesson-text');
+          allTexts.forEach(t => t.style.display = 'none');
+          text.style.display = 'block';
         };
+
         list.appendChild(btn);
+        list.appendChild(text);
       });
     }
 

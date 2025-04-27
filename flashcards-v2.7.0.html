@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards – v2.6.1</title>
-  <script src="datasets.js"></script>
+  <title>Flashcards & Lektionen – v2.7.0</title>
+  <script src="datasets.js"></script> <!-- <- bleibt -->
   <style>
+    /* bestehende Styles bleiben unverändert */
     body {
       font-family: system-ui, sans-serif;
       background-color: #e6e9ef;
@@ -61,17 +62,6 @@
       align-items: center;
       margin-top: 1rem;
     }
-    #bottom-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-    #bottom-buttons button {
-      background: white;
-      font-size: 1rem;
-    }
 
     #selfPractice {
       width: 100%;
@@ -87,7 +77,7 @@
       display: none;
     }
 
-    #overviewContent {
+    #overviewContent, #lessonContent {
       display: none;
       width: 100%;
       max-width: 800px;
@@ -97,15 +87,16 @@
       margin-top: 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
-    .overview-card {
+    .overview-card, .lesson-card {
       border-bottom: 1px solid #e0e0e0;
       padding: 1rem 0;
       margin-bottom: 0.5rem;
+      cursor: pointer;
     }
-    .overview-card:last-child {
+    .overview-card:last-child, .lesson-card:last-child {
       border-bottom: none;
     }
-    .overview-question {
+    .overview-question, .lesson-title {
       font-weight: bold;
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
@@ -114,24 +105,37 @@
       font-size: 1.1rem;
       margin-bottom: 0.3rem;
     }
-    .overview-phonetic {
-      font-style: italic;
-      color: #666;
+    .lesson-content {
+      white-space: pre-wrap;
+      font-size: 1rem;
+      margin-top: 1rem;
     }
-    #overviewTitle {
+    #overviewTitle, #lessonTitle {
       text-align: center;
       margin-bottom: 1.5rem;
+    }
+    #bottom-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    #bottom-buttons button {
+      background: white;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
   <h1>German-Greek Flashcards</h1>
-  <div id="version">Version 2.6.1</div>
+  <div id="version">Version 2.7.0</div>
 
   <select id="modeToggle" onchange="toggleMode()">
     <option value="typing">✍️ Tippen</option>
     <option value="self">🧠 Einschätzen</option>
     <option value="overview">📚 Übersicht</option>
+    <option value="lessons">📖 Lektionen</option> <!-- NEU -->
   </select>
   <br/>
   <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
@@ -153,9 +157,17 @@
     <div id="progress"></div>
   </div>
 
+  <!-- Übersicht -->
   <div id="overviewContent">
     <h2 id="overviewTitle">Übersicht lädt...</h2>
     <div id="overviewCards"></div>
+  </div>
+
+  <!-- Lektionen -->
+  <div id="lessonContent">
+    <h2 id="lessonTitle">Lektionen</h2>
+    <div id="lessonList"></div>
+    <div id="lessonText" class="lesson-content"></div>
   </div>
 
   <div id="bottom-buttons">
@@ -169,6 +181,7 @@
     let correctAnswersSet = new Set(), currentDataset = "";
     let reverseMode = false, lastActionWasCheck = false;
     let mode = "typing";
+    let lessons = [];
 
     function renderPhonetic(text) {
       return text ? text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") : "";
@@ -177,34 +190,28 @@
     function toggleMode() {
       mode = document.getElementById("modeToggle").value;
       
-      if (mode === "overview") {
-        document.getElementById("flashcard").style.display = "none";
-        document.getElementById("overviewContent").style.display = "block";
-        showOverview();
-      } else {
-        document.getElementById("flashcard").style.display = "flex";
-        document.getElementById("overviewContent").style.display = "none";
-        displayCard();
-      }
+      document.getElementById("flashcard").style.display = mode === "typing" || mode === "self" ? "flex" : "none";
+      document.getElementById("overviewContent").style.display = mode === "overview" ? "block" : "none";
+      document.getElementById("lessonContent").style.display = mode === "lessons" ? "block" : "none";
+
+      if (mode === "overview") showOverview();
+      if (mode === "lessons") loadLessons();
+      if (mode === "typing" || mode === "self") displayCard();
     }
 
     function normalize(text) {
-      let normalized = text.toLowerCase()
+      return text.toLowerCase()
         .replace(/[.,!?;:()\[\]"'„"'«»\-]/g, "")
         .replace(/\s+/g, "")
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         .trim();
-      
-      normalized = normalized.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      return normalized;
     }
 
     async function loadFlashcards(file) {
       const response = await fetch(file);
       allFlashcards = await response.json();
       resetSession();
-      if (mode === "overview") {
-        showOverview();
-      }
+      if (mode === "overview") showOverview();
     }
 
     function resetSession() {
@@ -243,7 +250,7 @@
       document.getElementById("correctAnswer").style.display = "none";
       document.getElementById("selfAssessButtons").style.display = "none";
       document.getElementById("actionButton").innerText = "Check";
-      document.getElementById("actionButton").style.display = mode === "overview" ? "none" : "inline-block";
+      document.getElementById("actionButton").style.display = "inline-block";
       lastActionWasCheck = false;
       updateProgress();
     }
@@ -315,12 +322,8 @@
 
     function toggleReverse() {
       reverseMode = !reverseMode;
-      if (mode === "overview") {
-        showOverview();
-      } else {
-        resetSession();
-        displayCard();
-      }
+      if (mode === "overview") showOverview();
+      else resetSession();
     }
 
     function loadSelectedDataset() {
@@ -374,6 +377,28 @@
         cardDiv.appendChild(answer);
         cardDiv.appendChild(phonetic);
         cardsContainer.appendChild(cardDiv);
+      });
+    }
+
+    async function loadLessons() {
+      if (lessons.length === 0) {
+        const response = await fetch('lessons.json');
+        lessons = await response.json();
+      }
+
+      const list = document.getElementById('lessonList');
+      const text = document.getElementById('lessonText');
+      list.innerHTML = "";
+      text.innerHTML = "";
+
+      lessons.forEach((lesson, index) => {
+        const item = document.createElement('div');
+        item.className = 'lesson-card';
+        item.innerText = lesson.title;
+        item.onclick = () => {
+          text.innerText = lesson.content;
+        };
+        list.appendChild(item);
       });
     }
 

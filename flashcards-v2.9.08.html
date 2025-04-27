@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards & Lektionen – v2.9.06</title>
+  <title>Flashcards & Lektionen – v2.9.08</title>
   <script src="datasets.js"></script> <!-- Deine Flashcard-Datasets -->
   <style>
     body {
@@ -296,6 +296,30 @@
 
         list.appendChild(btn);
       list.appendChild(text);
+  });
+}
+function showOverview() {
+  const datasetName = document.getElementById("datasetSelect").options[document.getElementById("datasetSelect").selectedIndex]?.text || "";
+  document.getElementById("overviewTitle").innerText = `Übersicht: ${datasetName}`;
+
+  const cardsContainer = document.getElementById("overviewCards");
+  cardsContainer.innerHTML = "";
+
+  allFlashcards.forEach(card => {
+    const cardDiv = document.createElement("div");
+    cardDiv.className = "overview-card";
+
+    const question = document.createElement("div");
+    question.className = "overview-question";
+    question.innerText = reverseMode ? card.answer : card.question;
+
+    const answer = document.createElement("div");
+    answer.className = "overview-answer";
+    answer.innerText = reverseMode ? card.question : card.answer;
+
+    cardDiv.appendChild(question);
+    cardDiv.appendChild(answer);
+    cardsContainer.appendChild(cardDiv);
   });
 }
 

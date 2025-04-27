@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcards – v2.7.0</title>
+  <script src="datasets.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #e6e9ef;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.2rem; }
+    #version { font-size: 0.9rem; color: #666; margin-bottom: 1rem; }
+
+    select, button, input[type="text"], textarea {
+      font-size: 1.2rem;
+      margin: 0.4rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      box-sizing: border-box;
+    }
+    button { cursor: pointer; }
+    #flashcard {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #question, #correctAnswer {
+      font-size: 1.4rem;
+      font-family: Georgia, serif;
+      margin: 0.5rem 0;
+    }
+    #phonetic {
+      font-style: italic;
+      font-family: Georgia, serif;
+      display: none;
+    }
+    .feedback { min-height: 1.4rem; font-weight: bold; margin-top: 0.5rem; }
+    #userInput { width: 100%; max-width: 400px; background-color: #f8f9fb; }
+    #actionButton { margin-top: 1rem; }
+    #progress { margin-top: 0.5rem; }
+
+    #selfAssessButtons {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    #bottom-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    #bottom-buttons button {
+      background: white;
+      font-size: 1rem;
+    }
+
+    #selfPractice {
+      width: 100%;
+      max-width: 400px;
+      height: 80px;
+      font-size: 1rem;
+      margin-top: 1rem;
+      background-color: #f8f9fb;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 0.5rem;
+      resize: vertical;
+      display: none;
+    }
+
+    #overviewContent {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .overview-card {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1rem 0;
+      margin-bottom: 0.5rem;
+    }
+    .overview-card:last-child {
+      border-bottom: none;
+    }
+    .overview-question {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .overview-answer {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+    .overview-phonetic {
+      font-style: italic;
+      color: #666;
+    }
+    #overviewTitle {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* NEU: Styling für den Lektionsmodus */
+    #lessonsContent {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .lesson-item {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0.8rem 0;
+    }
+    .lesson-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .lesson-title:hover {
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+    .lesson-content {
+      display: none;
+      padding: 1rem;
+      margin-top: 0.5rem;
+      background-color: #f8f9fb;
+      border-radius: 8px;
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+    .lesson-title::after {
+      content: "▼";
+      font-size: 0.8rem;
+      color: #666;
+      transition: transform 0.3s ease;
+    }
+    .lesson-title.active::after {
+      transform: rotate(180deg);
+    }
+    #lessonsTitle {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>German-Greek Flashcards</h1>
+  <div id="version">Version 2.7.0</div>
+
+  <select id="modeToggle" onchange="toggleMode()">
+    <option value="typing">✍️ Tippen</option>
+    <option value="self">🧠 Einschätzen</option>
+    <option value="overview">📚 Übersicht</option>
+    <option value="lessons">📖 Lektionen</option>
+  </select>
+  <br/>
+  <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
+
+  <div id="flashcard">
+    <div id="question">Lade Karte...</div>
+    <div id="phonetic"></div>
+    <input type="text" id="userInput" placeholder="Antwort eingeben..." autocomplete="off" />
+    <div class="feedback" id="feedback"></div>
+    <p id="correctAnswer" style="display:none;"></p>
+
+    <div id="selfAssessButtons">
+      <button onclick="selfAssess('no')" style="background-color: #f8d7da;">❌ Nicht gewusst</button>
+      <button onclick="selfAssess('yes')" style="background-color: #d1e7dd; margin-top: 0.5rem;">✅ Gewusst</button>
+      <textarea id="selfPractice" placeholder="Antwort hier abschreiben..."></textarea>
+    </div>
+
+    <button id="actionButton" onclick="handleAction()">Check</button>
+    <div id="progress"></div>
+  </div>
+
+  <div id="overviewContent">
+    <h2 id="overviewTitle">Übersicht lädt...</h2>
+    <div id="overviewCards"></div>
+  </div>
+
+  <!-- NEU: Container für den Lektionsmodus -->
+  <div id="lessonsContent">
+    <h2 id="lessonsTitle">Griechisch Lektionen</h2>
+    <div id="lessonsContainer"></div>
+  </div>
+
+  <div id="bottom-buttons">
+    <button onclick="toggleReverse()">↔️ Richtung</button>
+    <button onclick="shuffleCards()">🔀 Mischen</button>
+    <button onclick="resetProgress()">🔄 Zurücksetzen</button>
+  </div>
+
+  <script>
+    let allFlashcards = [], remainingFlashcards = [], currentCard = null;
+    let correctAnswersSet = new Set(), currentDataset = "";
+    let reverseMode = false, lastActionWasCheck = false;
+    let mode = "typing";
+    let lessons = []; // NEU: Variable für die Lektionen
+
+    function renderPhonetic(text) {
+      return text ? text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") : "";
+    }
+
+    function toggleMode() {
+      mode = document.getElementById("modeToggle").value;
+      
+      // Alle Modi ausblenden
+      document.getElementById("flashcard").style.display = "none";
+      document.getElementById("overviewContent").style.display = "none";
+      document.getElementById("lessonsContent").style.display = "none";
+      
+      // Gewählten Modus anzeigen
+      if (mode === "overview") {
+        document.getElementById("overviewContent").style.display = "block";
+        showOverview();
+      } else if (mode === "lessons") {
+        document.getElementById("lessonsContent").style.display = "block";
+        loadLessons(); // NEU: Lektionen laden
+      } else {
+        document.getElementById("flashcard").style.display = "flex";
+        displayCard();
+      }
+    }
+
+    function normalize(text) {
+      let normalized = text.toLowerCase()
+        .replace(/[.,!?;:()\[\]"'„"'«»\-]/g, "")
+        .replace(/\s+/g, "")
+        .trim();
+      
+      normalized = normalized.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      return normalized;
+    }
+
+    async function loadFlashcards(file) {
+      const response = await fetch(file);
+      allFlashcards = await response.json();
+      resetSession();
+      if (mode === "overview") {
+        showOverview();
+      }
+    }
+
+    // NEU: Laden der Lektionen aus der JSON-Datei
+    async function loadLessons() {
+      try {
+        const response = await fetch('lessons.json');
+        lessons = await response.json();
+        renderLessons();
+      } catch (error) {
+        console.error("Fehler beim Laden der Lektionen:", error);
+        document.getElementById("lessonsContainer").innerHTML = 
+          "<p>Fehler beim Laden der Lektionen. Bitte überprüfe, ob die Datei 'lessons.json' verfügbar ist.</p>";
+      }
+    }
+
+    // NEU: Anzeigen der Lektionen
+    function renderLessons() {
+      const container = document.getElementById("lessonsContainer");
+      container.innerHTML = "";
+      
+      lessons.forEach((lesson, index) => {
+        const lessonDiv = document.createElement("div");
+        lessonDiv.className = "lesson-item";
+        
+        const titleDiv = document.createElement("div");
+        titleDiv.className = "lesson-title";
+        titleDiv.textContent = lesson.title;
+        titleDiv.onclick = function() {
+          toggleLessonContent(index);
+        };
+        
+        const contentDiv = document.createElement("div");
+        contentDiv.className = "lesson-content";
+        contentDiv.id = `lesson-content-${index}`;
+        contentDiv.textContent = lesson.content;
+        
+        lessonDiv.appendChild(titleDiv);
+        lessonDiv.appendChild(contentDiv);
+        container.appendChild(lessonDiv);
+      });
+    }
+
+    // NEU: Aufklappen/Zuklappen von Lektionsinhalten
+    function toggleLessonContent(index) {
+      const contentElement = document.getElementById(`lesson-content-${index}`);
+      const titleElements = document.querySelectorAll('.lesson-title');
+      const contentElements = document.querySelectorAll('.lesson-content');
+      
+      // Alle Lektionen schließen
+      contentElements.forEach(el => {
+        el.style.display = "none";
+      });
+      
+      titleElements.forEach(el => {
+        el.classList.remove("active");
+      });
+      
+      // Ausgewählte Lektion öffnen, wenn sie nicht die aktive war
+      if (contentElement.style.display !== "block") {
+        contentElement.style.display = "block";
+        titleElements[index].classList.add("active");
+      }
+    }
+
+    function resetSession() {
+      remainingFlashcards = [...allFlashcards];
+      correctAnswersSet = new Set();
+      shuffleCards();
+    }
+
+    function shuffleCards() {
+      remainingFlashcards.sort(() => Math.random() - 0.5);
+      displayCard();
+    }
+
+    function resetProgress() {
+      resetSession();
+      displayCard();
+    }
+
+    function displayCard() {
+      if (remainingFlashcards.length === 0) {
+        document.getElementById("question").innerText = "🎉 Alle Fragen korrekt beantwortet!";
+        document.getElementById("userInput").style.display = "none";
+        document.getElementById("actionButton").style.display = "none";
+        document.getElementById("selfAssessButtons").style.display = "none";
+        return;
+      }
+
+      currentCard = remainingFlashcards[Math.floor(Math.random() * remainingFlashcards.length)];
+      document.getElementById("question").innerText = reverseMode ? currentCard.answer : currentCard.question;
+      document.getElementById("phonetic").innerHTML = "";
+      document.getElementById("phonetic").style.display = "none";
+      document.getElementById("userInput").value = "";
+      document.getElementById("userInput").style.display = mode === "typing" ? "inline-block" : "none";
+      document.getElementById("userInput").disabled = false;
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("correctAnswer").style.display = "none";
+      document.getElementById("selfAssessButtons").style.display = "none";
+      document.getElementById("actionButton").innerText = "Check";
+      document.getElementById("actionButton").style.display = mode === "overview" || mode === "lessons" ? "none" : "inline-block";
+      lastActionWasCheck = false;
+      updateProgress();
+    }
+
+    function updateProgress() {
+      document.getElementById("progress").innerText = `Richtig: ${correctAnswersSet.size} / ${allFlashcards.length}`;
+    }
+
+    function handleAction() {
+      if (mode === "typing") {
+        if (!lastActionWasCheck) checkAnswer();
+        else nextCard();
+      } else if (mode === "self") {
+        if (!lastActionWasCheck) showSelfAnswer();
+      }
+    }
+
+    function checkAnswer() {
+      const userInput = normalize(document.getElementById("userInput").value.replace(/\(.*?\)/g, ""));
+      const correct = normalize((reverseMode ? currentCard.question : currentCard.answer).replace(/\(.*?\)/g, ""));
+      const feedback = document.getElementById("feedback");
+
+      if (userInput === correct) {
+        correctAnswersSet.add(currentCard);
+        remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
+        feedback.innerText = "✅ Richtig!";
+      } else {
+        feedback.innerText = "❌ Falsch.";
+      }
+
+      document.getElementById("correctAnswer").innerText = "Lösung: " + (reverseMode ? currentCard.question : currentCard.answer);
+      document.getElementById("correctAnswer").style.display = "block";
+      document.getElementById("phonetic").innerHTML = renderPhonetic(currentCard.phonetic || "");
+      document.getElementById("phonetic").style.display = "block";
+      document.getElementById("userInput").disabled = true;
+      document.getElementById("actionButton").innerText = "Next";
+      lastActionWasCheck = true;
+      updateProgress();
+    }
+
+    function showSelfAnswer() {
+      const answer = reverseMode ? currentCard.question : currentCard.answer;
+      document.getElementById("correctAnswer").innerText = "Lösung: " + answer;
+      document.getElementById("correctAnswer").style.display = "block";
+      document.getElementById("phonetic").innerHTML = renderPhonetic(currentCard.phonetic || "");
+      document.getElementById("phonetic").style.display = "block";
+      document.getElementById("selfAssessButtons").style.display = "flex";
+      document.getElementById("selfPractice").value = "";
+      document.getElementById("selfPractice").style.display = "block";
+      document.getElementById("actionButton").style.display = "none";
+      lastActionWasCheck = true;
+    }
+
+    function selfAssess(type) {
+      if (type === "yes") {
+        correctAnswersSet.add(currentCard);
+        remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
+      }
+      updateProgress();
+      lastActionWasCheck = false;
+      document.getElementById("actionButton").style.display = "inline-block";
+      document.getElementById("selfPractice").style.display = "none";
+      nextCard();
+    }
+
+    function nextCard() {
+      displayCard();
+    }
+
+    function toggleReverse() {
+      reverseMode = !reverseMode;
+      if (mode === "overview") {
+        showOverview();
+      } else {
+        resetSession();
+        displayCard();
+      }
+    }
+
+    function loadSelectedDataset() {
+      const value = document.getElementById("datasetSelect").value;
+      if (value) {
+        currentDataset = value;
+        loadFlashcards(currentDataset);
+      }
+    }
+
+    function populateDatasetDropdown() {
+      const select = document.getElementById("datasetSelect");
+      select.innerHTML = "";
+      datasets.forEach(ds => {
+        const opt = document.createElement("option");
+        opt.value = ds.file;
+        opt.textContent = ds.label;
+        select.appendChild(opt);
+      });
+      if (datasets.length > 0) {
+        select.selectedIndex = 0;
+        currentDataset = datasets[0].file;
+        loadFlashcards(currentDataset);
+      }
+    }
+
+    function showOverview() {
+      const datasetName = document.getElementById("datasetSelect").options[document.getElementById("datasetSelect").selectedIndex].text;
+      document.getElementById("overviewTitle").innerText = `Übersicht: ${datasetName} ${reverseMode ? '(Griechisch→Deutsch)' : '(Deutsch→Griechisch)'}`;
+
+      const cardsContainer = document.getElementById("overviewCards");
+      cardsContainer.innerHTML = "";
+
+      allFlashcards.forEach(card => {
+        const cardDiv = document.createElement("div");
+        cardDiv.className = "overview-card";
+
+        const question = document.createElement("div");
+        question.className = "overview-question";
+        question.innerText = reverseMode ? card.answer : card.question;
+
+        const answer = document.createElement("div");
+        answer.className = "overview-answer";
+        answer.innerText = reverseMode ? card.question : card.answer;
+
+        const phonetic = document.createElement("div");
+        phonetic.className = "overview-phonetic";
+        phonetic.innerHTML = renderPhonetic(card.phonetic || "");
+
+        cardDiv.appendChild(question);
+        cardDiv.appendChild(answer);
+        cardDiv.appendChild(phonetic);
+        cardsContainer.appendChild(cardDiv);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      populateDatasetDropdown();
+      // NEU: Lessons voraus laden
+      loadLessons();
+      
+      document.getElementById("userInput").addEventListener("keyup", function(event) {
+        if (event.key === "Enter" && mode === "typing") {
+          if (!lastActionWasCheck) {
+            checkAnswer();
+          } else {
+            nextCard();
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

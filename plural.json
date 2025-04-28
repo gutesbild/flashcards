@@ -14,6 +14,17 @@
     "answer": "η γυναίκα – οι γυναίκες",
     "phonetic": "i yi**ná**ka – i yi**né**kes"
   },
+
+   {
+    "question": "mein, dein, sein, ihr, sein (Singular)",
+    "answer": "μου, σου, του, της, του",
+    "phonetic": "**Mou**, **Sou**, **Tou**, **Tis**, **Tou**"
+  },
+  {
+    "question": "unser, euer, ihr (Plural)",
+    "answer": "μας, σας, τους",
+    "phonetic": "**Mas**, **Sas**, **Tous**"
+  },
   {
     "question": "die Tochter – die Töchter",
     "answer": "η κόρη – οι κόρες",

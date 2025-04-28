@@ -5,58 +5,48 @@
     "phonetic": "**O**, **I**, **To**"
   },
   {
-    "question": "die (m), die (f), die (n)",
-    "answer": "οι (m), οι (f), τα (n)",
-    "phonetic": "**I** (maskulin), **I** (feminin), **Ta** (neutral)"
+    "question": "die (maskulin), die (feminin), die (neutrum)",
+    "answer": "οι, οι, τα",
+    "phonetic": "**I**, **I**, **Ta**"
   },
   {
-    "question": "die Frau / die Frauen",
-    "answer": "η γυναίκα / οι γυναίκες",
-    "phonetic": "i yi**ná**ka / i yi**né**kes"
+    "question": "die Frau – die Frauen",
+    "answer": "η γυναίκα – οι γυναίκες",
+    "phonetic": "i yi**ná**ka – i yi**né**kes"
   },
   {
-    "question": "eine Frau / Frauen",
-    "answer": "μία γυναίκα / γυναίκες",
-    "phonetic": "**Mí**a yi**ná**ka / yi**né**kes"
+    "question": "die Tochter – die Töchter",
+    "answer": "η κόρη – οι κόρες",
+    "phonetic": "i **KÓ**ri – i **KÓ**res"
   },
   {
-    "question": "der Freund / die Freunde",
-    "answer": "ο φίλος / οι φίλοι",
-    "phonetic": "**O** **fí**los / i **fí**li"
+    "question": "der Freund – die Freunde",
+    "answer": "ο φίλος – οι φίλοι",
+    "phonetic": "o **FÍ**los – i **FÍ**li"
   },
   {
-    "question": "ein Freund / Freunde",
-    "answer": "ένας φίλος / φίλοι",
-    "phonetic": "**É**nas **fí**los / **fí**li"
+    "question": "das Kind – die Kinder",
+    "answer": "το παιδί – τα παιδιά",
+    "phonetic": "to pe**DÍ** – ta pedi**Á**"
   },
   {
-    "question": "die Freundin / die Freundinnen",
-    "answer": "η φίλη / οι φίλες",
-    "phonetic": "i **fí**li / i **fí**les"
+    "question": "das Buch – die Bücher",
+    "answer": "το βιβλίο – τα βιβλία",
+    "phonetic": "to viv**LÍ**o – ta viv**LÍ**a"
   },
   {
-    "question": "eine Freundin / Freundinnen",
-    "answer": "μία φίλη / φίλες",
-    "phonetic": "**Mí**a **fí**li / **fí**les"
+    "question": "die Blume – die Blumen",
+    "answer": "το λουλούδι – τα λουλούδια",
+    "phonetic": "to lou**LOÚ**ði – ta loul**ÓÚ**ðia"
   },
   {
-    "question": "das Kind / die Kinder",
-    "answer": "το παιδί / τα παιδιά",
-    "phonetic": "to pe**dí** / ta pe**di**á"
+    "question": "die Stunde – die Stunden",
+    "answer": "η ώρα – οι ώρες",
+    "phonetic": "i **Ó**ra – i **Ó**res"
   },
   {
-    "question": "ein Kind / Kinder",
-    "answer": "ένα παιδί / παιδιά",
-    "phonetic": "**É**na pe**dí** / pe**di**á"
-  },
-  {
-    "question": "die Lektion / die Lektionen",
-    "answer": "το μάθημα / τα μαθήματα",
-    "phonetic": "to **má**thima / ta **má**thimata"
-  },
-  {
-    "question": "eine Lektion / Lektionen",
-    "answer": "ένα μάθημα / μαθήματα",
-    "phonetic": "**É**na **má**thima / **má**thimata"
+    "question": "das Thema – die Themen",
+    "answer": "το θέμα – τα θέματα",
+    "phonetic": "to **THÉ**ma – ta **THÉ**mata"
   }
 ]

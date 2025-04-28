@@ -1,1 +1,62 @@
-
+[
+  {
+    "question": "der, die, das",
+    "answer": "ο, η, το",
+    "phonetic": "**O**, **I**, **To**"
+  },
+  {
+    "question": "die (m), die (f), die (n)",
+    "answer": "οι (m), οι (f), τα (n)",
+    "phonetic": "**I** (maskulin), **I** (feminin), **Ta** (neutral)"
+  },
+  {
+    "question": "die Frau / die Frauen",
+    "answer": "η γυναίκα / οι γυναίκες",
+    "phonetic": "i yi**ná**ka / i yi**né**kes"
+  },
+  {
+    "question": "eine Frau / Frauen",
+    "answer": "μία γυναίκα / γυναίκες",
+    "phonetic": "**Mí**a yi**ná**ka / yi**né**kes"
+  },
+  {
+    "question": "der Freund / die Freunde",
+    "answer": "ο φίλος / οι φίλοι",
+    "phonetic": "**O** **fí**los / i **fí**li"
+  },
+  {
+    "question": "ein Freund / Freunde",
+    "answer": "ένας φίλος / φίλοι",
+    "phonetic": "**É**nas **fí**los / **fí**li"
+  },
+  {
+    "question": "die Freundin / die Freundinnen",
+    "answer": "η φίλη / οι φίλες",
+    "phonetic": "i **fí**li / i **fí**les"
+  },
+  {
+    "question": "eine Freundin / Freundinnen",
+    "answer": "μία φίλη / φίλες",
+    "phonetic": "**Mí**a **fí**li / **fí**les"
+  },
+  {
+    "question": "das Kind / die Kinder",
+    "answer": "το παιδί / τα παιδιά",
+    "phonetic": "to pe**dí** / ta pe**di**á"
+  },
+  {
+    "question": "ein Kind / Kinder",
+    "answer": "ένα παιδί / παιδιά",
+    "phonetic": "**É**na pe**dí** / pe**di**á"
+  },
+  {
+    "question": "die Lektion / die Lektionen",
+    "answer": "το μάθημα / τα μαθήματα",
+    "phonetic": "to **má**thima / ta **má**thimata"
+  },
+  {
+    "question": "eine Lektion / Lektionen",
+    "answer": "ένα μάθημα / μαθήματα",
+    "phonetic": "**É**na **má**thima / **má**thimata"
+  }
+]

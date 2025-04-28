@@ -6,5 +6,6 @@ const datasets = [
    { file: "grundlagen.json", label: "Grundlagen" },
    { file: "pronounsConjugation.json", label: "🤘Verb+Pronomen" },
      { file: "OsUndIs.json", label: "Os und Is" },
+   { file: "plurak.json", label: "Plural" },
 
 ];

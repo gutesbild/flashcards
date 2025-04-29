@@ -1,36 +1,35 @@
 body {
-  font-family: serif;
-  background-color: #f9f9f6;
+  font-family: Georgia, serif;
+  background-color: #ffffff;
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: black;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.5;
 }
 
 h1 {
   margin-bottom: 1rem;
+  font-size: 1.25rem;
 }
 
 #version {
   margin-top: 2rem;
-  font-size: 0.9rem;
+  font-size: 0.9rem;x
   color: black;
 }
 
 select,
-button,
-input[type="text"],
-textarea {
-  font-family: serif;
+button {
+  font-family: Georgia, serif;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  margin: 0.4rem;
   border: 1px solid black;
   border-radius: 0;
-  background-color: #fff9c4;
+  background-color: white;
   color: black;
   box-sizing: border-box;
 }
@@ -40,13 +39,15 @@ button {
 }
 
 #flashcard {
-  background: #f9f9f6;
+  background: #ffffff;
   padding: 1.5rem;
   width: 100%;
   max-width: 500px;
   border: 1px solid black;
   text-align: left;
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 #question,
@@ -68,21 +69,23 @@ button {
 
 #userInput {
   width: 100%;
-  background-color: #eaf4ff;
-  border: 1px solid black;
+  background-color: #e6f0fb;
+  border: none;
   padding: 1rem;
   margin: 0.5rem 0 1rem;
   font-size: 1rem;
+  box-sizing: border-box;
 }
 
 #actionButton {
-  margin-top: 1rem;
-  padding: 0.5rem 1.5rem;
+  margin-top: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  align-self: start;
 }
 
 #progress {
   text-align: right;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   font-size: 1rem;
 }
 
@@ -101,21 +104,22 @@ button {
   margin-top: 2rem;
   padding: 1rem;
   border: 1px solid black;
-  background-color: #f9f9f6;
+  background-color: white;
   width: 100%;
   max-width: 600px;
 }
 
 #bottom-buttons button {
-  background: #fff;
+  background: white;
   border: 1px solid black;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1.2rem;
+  font-size: 1rem;
 }
 
 #overviewContent,
 #lessonsContent {
   display: none;
-  background: #f9f9f6;
+  background: white;
   border: 1px solid black;
   width: 100%;
   max-width: 800px;
@@ -140,3 +144,61 @@ button {
   margin-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.lesson-title::after {
+  content: "\25BC";
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.lesson-title.active::after {
+  transform: rotate(180deg);
+}
+
+.lesson-content {
+  display: none;
+  background: #e6f0fb;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  white-space: pre-line;
+  border: none;
+  font-family: Georgia, serif;
+}
+
+#practiceContainer {
+  display: none;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+#practiceLabel {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+#practiceTipField {
+  background-color: #e6f0fb;
+  border: none;
+  padding: 1rem;
+  width: 100%;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Icons als reine Textsymbole, schwarz/weiß-kompatibel */
+.icon-reverse::before {
+  content: "\21C4";
+}
+
+.icon-shuffle::before {
+  content: "\2738";
+}
+
+.icon-reset::before {
+  content: "\25CB";
+}

@@ -1,0 +1,191 @@
+body {
+  font-family: serif;
+  background-color: #f9f9f6;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  font-size: 1rem;
+}
+h1 {
+  margin-bottom: 0.2rem;
+}
+#version {
+  margin-bottom: 1rem;
+}
+
+select,
+button,
+input[type="text"],
+textarea {
+  font-size: 1rem;
+  margin: 0.4rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #000;
+  border-radius: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: serif;
+  background-color: #fff9c4;
+  color: black;
+}
+button {
+  cursor: pointer;
+}
+#flashcard {
+  background: #f9f9f6;
+  padding: 1rem;
+  width: 100%;
+  max-width: 500px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#question,
+#correctAnswer {
+  font-family: serif;
+  margin: 0.5rem 0;
+}
+#phonetic {
+  font-style: italic;
+  font-family: serif;
+  display: none;
+}
+.feedback {
+  min-height: 1.4rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+#userInput {
+  width: 100%;
+  max-width: 400px;
+}
+#actionButton {
+  margin-top: 1rem;
+}
+#progress {
+  margin-top: 0.5rem;
+}
+
+#selfAssessButtons {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+#bottom-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+#bottom-buttons button {
+  font-size: 1rem;
+  background-color: #f9f9f6;
+}
+
+#selfPractice {
+  width: 100%;
+  max-width: 400px;
+  height: 80px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  background-color: #fff9c4;
+  border: 1px solid #000;
+  padding: 0.5rem;
+  resize: vertical;
+  display: none;
+  border-radius: 0;
+}
+
+#overviewContent {
+  display: none;
+  width: 100%;
+  max-width: 800px;
+  background: #f9f9f6;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+.overview-card {
+  border-bottom: 1px solid #000;
+  padding: 1rem 0;
+  margin-bottom: 0.5rem;
+}
+.overview-card:last-child {
+  border-bottom: none;
+}
+.overview-question {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.overview-answer {
+  margin-bottom: 0.3rem;
+}
+.overview-phonetic {
+  font-style: italic;
+}
+#overviewTitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#lessonsContent {
+  display: none;
+  width: 100%;
+  max-width: 800px;
+  background: #f9f9f6;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+.lesson-item {
+  border-bottom: 1px solid #000;
+  padding: 0.8rem 0;
+}
+.lesson-title {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lesson-title:hover {
+  background-color: #f0f0e8;
+}
+.lesson-content {
+  display: none;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background-color: #fff9c4;
+  white-space: pre-line;
+  line-height: 1.5;
+}
+.lesson-title::after {
+  content: "\25BC";
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+.lesson-title.active::after {
+  transform: rotate(180deg);
+}
+#lessonsTitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#practiceContainer {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 400px;
+  display: none;
+}
+#practiceLabel {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  text-align: left;
+  width: 100%;
+}

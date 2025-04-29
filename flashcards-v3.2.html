@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards – v3.7.1</title>
+  <title>German-Greek Flashcards</title>
   <script src="datasets.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>German-Greek Flashcards</h1>
-  <div id="version">Version 2.7.1</div>
 
-  <select id="modeToggle" onchange="toggleMode()">
-    <option value="typing">✍️ Tippen</option>
-    <option value="self">🧠 Einschätzen</option>
-    <option value="overview">📚 Übersicht</option>
-    <option value="lessons">📖 Lektionen</option>
-  </select>
-  <br/>
-  <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
+  <div>
+    <select id="modeToggle" onchange="toggleMode()">
+      <option value="typing">Tippen</option>
+      <option value="self">Einschätzen</option>
+      <option value="overview">Übersicht</option>
+      <option value="lessons">Lektion</option>
+    </select>
+    <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
+  </div>
 
   <div id="flashcard">
     <div id="question">Lade Karte...</div>
@@ -29,16 +29,24 @@
 
     <div id="practiceContainer">
       <div id="practiceLabel">Zum Lernen hier die Lösung abtippen:</div>
-      <textarea id="practiceTipField" placeholder="Tippe die Lösung ab, um sie besser zu lernen..."></textarea>
+      <textarea id="practiceTipField" placeholder="Tippe die Lösung ab..."></textarea>
     </div>
 
     <div id="selfAssessButtons">
-      <button onclick="selfAssess('no')" style="background-color: #f8d7da;">❌ Nicht gewusst</button>
-      <button onclick="selfAssess('yes')" style="background-color: #d1e7dd; margin-top: 0.5rem;">✅ Gewusst</button>
+      <button onclick="selfAssess('no')">❌ Nicht gewusst</button>
+      <button onclick="selfAssess('yes')">✅ Gewusst</button>
     </div>
 
-    <button id="actionButton" onclick="handleAction()">Check</button>
-    <div id="progress"></div>
+    <div id="check-row">
+      <button id="actionButton" onclick="handleAction()">Check</button>
+      <div id="progress">Richtig: 0 / 21</div>
+    </div>
+  </div>
+
+  <div id="bottom-buttons">
+    <button onclick="toggleReverse()"><span class="icon-reverse"></span> Richtung</button>
+    <button onclick="shuffleCards()"><span class="icon-shuffle"></span> Mischen</button>
+    <button onclick="resetProgress()"><span class="icon-reset"></span> Zurücksetzen</button>
   </div>
 
   <div id="overviewContent">
@@ -51,11 +59,7 @@
     <div id="lessonsContainer"></div>
   </div>
 
-  <div id="bottom-buttons">
-    <button onclick="toggleReverse()">↔️ Richtung</button>
-    <button onclick="shuffleCards()">🔀 Mischen</button>
-    <button onclick="resetProgress()">🔄 Zurücksetzen</button>
-  </div>
+  <div id="version">German-Greek Flashcards / Version 2.7.1</div>
 
   <script>
     let allFlashcards = [], remainingFlashcards = [], currentCard = null;

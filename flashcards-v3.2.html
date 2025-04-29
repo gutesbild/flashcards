@@ -8,17 +8,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>German-Greek Flashcards</h1>
+<div id="control-bar">
+  <select id="modeToggle" onchange="toggleMode()">
+    <option value="typing">Tippen</option>
+    <option value="self">Einschätzen</option>
+    <option value="overview">Übersicht</option>
+    <option value="lessons">Lektion</option>
+  </select>
+  <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
+</div>
 
-  <div>
-    <select id="modeToggle" onchange="toggleMode()">
-      <option value="typing">Tippen</option>
-      <option value="self">Einschätzen</option>
-      <option value="overview">Übersicht</option>
-      <option value="lessons">Lektion</option>
-    </select>
-    <select id="datasetSelect" onchange="loadSelectedDataset()"></select>
-  </div>
+
 
   <div id="flashcard">
     <div id="question">Lade Karte...</div>

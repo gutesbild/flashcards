@@ -6,19 +6,8 @@ body {
   flex-direction: column;
   align-items: center;
   color: black;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.5;
-}
-
-h1 {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-
-#version {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: black;
 }
 
 select,
@@ -26,34 +15,50 @@ button {
   font-family: Georgia, serif;
   font-size: 1rem;
   padding: 0.5rem 1.2rem;
-  margin: 0.4rem;
   border: 1px solid black;
   border-radius: 0;
   background-color: white;
   color: black;
   box-sizing: border-box;
   appearance: none;
+  background-image: none;
 }
 
-select {
-  background-image: none;
+select::after {
+  content: "\25BC";
+  color: black;
 }
 
 button {
   cursor: pointer;
 }
 
+/* Box 1 – Dropdowns oben */
+#control-bar {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid black;
+  border-bottom: none;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+/* Box 2 – Flashcard */
 #flashcard {
   background: #ffffff;
   padding: 1.5rem;
   width: 100%;
   max-width: 500px;
   border: 1px solid black;
+  border-top: none;
   text-align: left;
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  box-sizing: border-box;
 }
 
 #question,
@@ -78,9 +83,15 @@ button {
   background-color: #e6f0fb;
   border: none;
   padding: 1rem;
-  margin: 0.5rem 0 0;
   font-size: 1rem;
+  font-family: Georgia, serif;
   box-sizing: border-box;
+}
+
+input::placeholder, textarea::placeholder {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #666;
 }
 
 #check-row {
@@ -100,13 +111,7 @@ button {
   font-size: 1rem;
 }
 
-#selfAssessButtons {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
-}
-
+/* Box 3 – Untere Buttons */
 #bottom-buttons {
   display: flex;
   justify-content: center;
@@ -118,6 +123,7 @@ button {
   background-color: white;
   width: 100%;
   max-width: 500px;
+  box-sizing: border-box;
 }
 
 #bottom-buttons button {
@@ -127,6 +133,7 @@ button {
   font-size: 1rem;
 }
 
+/* Zusatzbereiche */
 #overviewContent,
 #lessonsContent {
   display: none;
@@ -136,6 +143,7 @@ button {
   max-width: 800px;
   padding: 1.5rem;
   margin-top: 2rem;
+  box-sizing: border-box;
 }
 
 .overview-card,
@@ -177,6 +185,8 @@ button {
   white-space: pre-line;
   border: none;
   font-family: Georgia, serif;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
 #practiceContainer {
@@ -184,6 +194,7 @@ button {
   margin-top: 1rem;
   width: 100%;
   max-width: 400px;
+  box-sizing: border-box;
 }
 
 #practiceLabel {
@@ -201,15 +212,21 @@ button {
   box-sizing: border-box;
 }
 
-/* Schwarz-weiße Text-Icons */
+/* Icontext (Unicode) */
 .icon-reverse::before {
   content: "\21C4";
 }
-
 .icon-shuffle::before {
   content: "\2738";
 }
-
 .icon-reset::before {
   content: "\25CB";
+}
+
+/* Fußzeile */
+#version {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: black;
+  text-align: center;
 }

@@ -9,11 +9,7 @@
     "answer": "οι, οι, τα",
     "phonetic": "**I**, **I**, **Ta**"
   },
-  {
-    "question": "die Frau – die Frauen",
-    "answer": "η γυναίκα – οι γυναίκες",
-    "phonetic": "i yi**ná**ka – i yi**né**kes"
-  },
+
 
    {
     "question": "mein, dein, sein, ihr, sein (Singular)",
@@ -25,39 +21,62 @@
     "answer": "μας, σας, τους",
     "phonetic": "**Mas**, **Sas**, **Tous**"
   },
-  {
-    "question": "die Tochter – die Töchter",
-    "answer": "η κόρη – οι κόρες",
+  
+    {
+    "question": "die Tochter die Töchter",
+    "answer": "η κόρη οι κόρες",
     "phonetic": "i **KÓ**ri – i **KÓ**res"
   },
   {
-    "question": "der Freund – die Freunde",
-    "answer": "ο φίλος – οι φίλοι",
+    "question": "die Frau die Frauen",
+    "answer": "η γυναίκα οι γυναίκες",
+    "phonetic": "i yi**NÁ**ka – i yi**NÉ**kes"
+  },
+  {
+    "question": "der Freund die Freunde",
+    "answer": "ο φίλος οι φίλοι",
     "phonetic": "o **FÍ**los – i **FÍ**li"
   },
   {
-    "question": "das Kind – die Kinder",
-    "answer": "το παιδί – τα παιδιά",
-    "phonetic": "to pe**DÍ** – ta pedi**Á**"
+    "question": "die Straße die Straßen",
+    "answer": "η δρόμος οι δρόμοι",
+    "phonetic": "i **DRÓ**mos – i **DRÓ**mi"
   },
   {
-    "question": "das Buch – die Bücher",
-    "answer": "το βιβλίο – τα βιβλία",
+    "question": "das Buch die Bücher",
+    "answer": "το βιβλίο τα βιβλία",
     "phonetic": "to viv**LÍ**o – ta viv**LÍ**a"
   },
   {
-    "question": "die Blume – die Blumen",
-    "answer": "το λουλούδι – τα λουλούδια",
-    "phonetic": "to lou**LOÚ**ði – ta loul**ÓÚ**ðia"
+    "question": "das Kind die Kinder",
+    "answer": "το παιδί τα παιδιά",
+    "phonetic": "to pe**DÍ** – ta pedi**Á**"
   },
   {
-    "question": "die Stunde – die Stunden",
-    "answer": "η ώρα – οι ώρες",
+    "question": "die Stunde die Stunden",
+    "answer": "η ώρα οι ώρες",
     "phonetic": "i **Ó**ra – i **Ó**res"
   },
   {
-    "question": "das Thema – die Themen",
-    "answer": "το θέμα – τα θέματα",
+    "question": "das Thema die Themen",
+    "answer": "το θέμα τα θέματα",
     "phonetic": "to **THÉ**ma – ta **THÉ**mata"
+  },
+  {
+    "question": "die Lektion die Lektionen",
+    "answer": "το μάθημα τα μαθήματα",
+    "phonetic": "to **MÁ**thima – ta **MÁ**thimata"
+  },
+  {
+    "question": "der Schüler die Schüler",
+    "answer": "ο μαθητής οι μαθητές",
+    "phonetic": "o mathi**TÍS** – i mathi**TÉS**"
+  },
+  {
+    "question": "der Arbeiter die Arbeiter",
+    "answer": "ο εργάτης οι εργάτες",
+    "phonetic": "o er**GÁ**tis – i er**GÁ**tes"
   }
+
+
 ]

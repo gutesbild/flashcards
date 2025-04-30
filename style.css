@@ -7,14 +7,14 @@ body {
   flex-direction: column;
   align-items: center;
   color: black;
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 20px;
+  line-height: 1.6;
 }
 
 select,
 button {
   font-family: Georgia, serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   padding: 0.6rem 1.2rem;
   border: 1px solid black;
   border-radius: 0;
@@ -68,9 +68,20 @@ button {
 }
 
 #question,
-#correctAnswer {
-  font-size: 1rem;
-  margin: 0;
+#correctAnswer,
+.feedback,
+#phonetic,
+#userInput,
+#practiceTipField,
+.overview-question,
+.overview-answer,
+.overview-phonetic,
+.lesson-title,
+.lesson-content,
+#practiceLabel,
+#progress,
+#actionButton {
+  font-size: 1.25rem;
 }
 
 #phonetic {
@@ -90,15 +101,15 @@ button {
   background-color: #e6f0fb;
   border: none;
   padding: 1rem;
-  font-size: 1rem;
   font-family: Georgia, serif;
   box-sizing: border-box;
   margin: 0;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   font-family: Georgia, serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: #666;
 }
 
@@ -112,12 +123,7 @@ input::placeholder, textarea::placeholder {
 
 #actionButton {
   padding: 0.6rem 1.2rem;
-  font-size: 1rem;
   height: 2.8rem;
-}
-
-#progress {
-  font-size: 1rem;
 }
 
 /* Box 3 – Untere Buttons */
@@ -139,7 +145,7 @@ input::placeholder, textarea::placeholder {
   background: white;
   border: 1px solid black;
   padding: 0.6rem 1.2rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   height: 2.8rem;
   display: flex;
   align-items: center;
@@ -170,16 +176,6 @@ input::placeholder, textarea::placeholder {
   border-bottom: none;
 }
 
-.overview-question,
-.lesson-title {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-}
-
 .lesson-title::after {
   content: "\25BC";
   font-size: 0.8rem;
@@ -198,7 +194,6 @@ input::placeholder, textarea::placeholder {
   white-space: pre-line;
   border: none;
   font-family: Georgia, serif;
-  font-size: 1rem;
   box-sizing: border-box;
 }
 
@@ -207,21 +202,6 @@ input::placeholder, textarea::placeholder {
   margin-top: 1rem;
   width: 100%;
   max-width: 400px;
-  box-sizing: border-box;
-}
-
-#practiceLabel {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-#practiceTipField {
-  background-color: #e6f0fb;
-  border: none;
-  padding: 1rem;
-  width: 100%;
-  font-family: Georgia, serif;
-  font-size: 1rem;
   box-sizing: border-box;
 }
 

@@ -246,7 +246,7 @@
          feedback.innerText = "❌ Falsch.";
        }
  
-       document.getElementById("correctAnswer").innerText = "Lösung: " + (reverseMode ? currentCard.question : currentCard.answer);
+       document.getElementById("correctAnswer").innerText = "👉🏻" + (reverseMode ? currentCard.question : currentCard.answer);
        document.getElementById("correctAnswer").style.display = "block";
        document.getElementById("phonetic").innerHTML = renderPhonetic(currentCard.phonetic || "");
        document.getElementById("phonetic").style.display = "block";

@@ -149,28 +149,24 @@ textarea::placeholder {
 /* Box 3 – Untere Buttons */
 #bottom-buttons {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 1.5rem 1rem;
+  width: 100%;
   border: 1px solid black;
   border-top: none;
-  background-color: white;
-  width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
 }
 
 #bottom-buttons button {
-  background: white;
-  border: 1px solid black;
-  padding: 0.6rem 1.2rem;
+  flex: 1;
+  border: none;
+  border-right: 1px solid black;
+  height: 3rem;
   font-size: 1.1rem;
-  height: 2.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
+
+#bottom-buttons button:last-child {
+  border-right: none;
+}
+
 
 /* Zusatzbereiche */
 #overviewContent,

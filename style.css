@@ -42,15 +42,23 @@ button {
 /* Box 1 – Dropdowns oben */
 #control-bar {
   display: flex;
-  gap: 1rem;
-  padding: 1.5rem 1rem;
+  width: 100%;
   border: 1px solid black;
   border-bottom: 1px solid black;
-  width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
-  align-items: center;
 }
+
+#control-bar select {
+  flex: 1;
+  border: none;
+  border-right: 1px solid black;
+  height: 3rem;
+}
+
+#control-bar select:last-child {
+  border-right: none;
+}
+
 
 /* Box 2 – Flashcard */
 #flashcard {

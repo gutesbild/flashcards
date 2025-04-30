@@ -234,28 +234,33 @@
       }
  
       function checkAnswer() {
-        const userInput = normalize(document.getElementById("userInput").value.replace(/\(.*?\)/g, ""));
-        const correct = normalize((reverseMode ? currentCard.question : currentCard.answer).replace(/\(.*?\)/g, ""));
-        const feedback = document.getElementById("feedback");
- 
-        if (userInput === correct) {
-          correctAnswersSet.add(currentCard);
-          remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
-          feedback.innerText = "✅ Richtig!";
-        } else {
-          feedback.innerText = "❌ Falsch.";
-        }
- 
-       
-        document.getElementById("correctAnswer").innerText = "👉🏻" + (reverseMode ? currentCard.question : currentCard.answer);
-        document.getElementById("correctAnswer").style.display = "block";
-        document.getElementById("phonetic").innerHTML = renderPhonetic(currentCard.phonetic || "");
-        document.getElementById("phonetic").style.display = "block";
-        document.getElementById("userInput").disabled = true;
-        document.getElementById("actionButton").innerText = "Next";
-        lastActionWasCheck = true;
-        updateProgress();
-      }
+  const inputEl = document.getElementById("userInput");
+  const userInput = normalize(inputEl.value.replace(/\(.*?\)/g, ""));
+  const correct = normalize((reverseMode ? currentCard.question : currentCard.answer).replace(/\(.*?\)/g, ""));
+  const feedback = document.getElementById("feedback");
+
+  inputEl.classList.remove("correct", "incorrect");
+
+  if (userInput === correct) {
+    inputEl.classList.add("correct");
+    correctAnswersSet.add(currentCard);
+    remainingFlashcards = remainingFlashcards.filter(card => card !== currentCard);
+    feedback.innerText = "✅ Richtig!";
+  } else {
+    inputEl.classList.add("incorrect");
+    feedback.innerText = "❌ Falsch.";
+  }
+
+  document.getElementById("correctAnswer").innerText = "👉🏻" + (reverseMode ? currentCard.question : currentCard.answer);
+  document.getElementById("correctAnswer").style.display = "block";
+  document.getElementById("phonetic").innerHTML = renderPhonetic(currentCard.phonetic || "");
+  document.getElementById("phonetic").style.display = "block";
+  inputEl.disabled = true;
+  document.getElementById("actionButton").innerText = "Next";
+  lastActionWasCheck = true;
+  updateProgress();
+}
+
  
       function showSelfAnswer() {
         const answer = reverseMode ? currentCard.question : currentCard.answer;

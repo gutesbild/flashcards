@@ -206,7 +206,10 @@
         document.getElementById("question").innerText = reverseMode ? currentCard.answer : currentCard.question;
         document.getElementById("phonetic").innerHTML = "";
         document.getElementById("phonetic").style.display = "none";
-        document.getElementById("userInput").value = "";
+ const inputEl = document.getElementById("userInput");
+inputEl.value = "";
+inputEl.classList.remove("correct", "incorrect");
+
         document.getElementById("userInput").style.display = mode === "typing" ? "inline-block" : "none";
         document.getElementById("userInput").disabled = false;
         document.getElementById("feedback").innerText = "";

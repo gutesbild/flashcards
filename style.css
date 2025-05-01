@@ -1,3 +1,10 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+
 body {
   font-family: Georgia, serif;
   background-color: #ffffff;
@@ -96,6 +103,11 @@ button {
 #phonetic {
   font-style: italic;
   display: none;
+  margin-top: 0rem; /* NEU: enger an Lösung */
+}
+
+#correctAnswer {
+  margin-bottom: 0.2rem; /* NEU: enger an Lautschrift */
 }
 
 .feedback {
@@ -133,17 +145,21 @@ textarea::placeholder {
   color: #666;
 }
 
-#check-row {
+/* Feedback + Fortschritt in einer Zeile */
+#feedback-progress-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin: 0;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
-#actionButton {
-  padding: 0.6rem 1.2rem;
-  height: 2.8rem;
+#check-row {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  display: flex;
+  width: 100%;
 }
 
 /* Box 3 – Untere Buttons */

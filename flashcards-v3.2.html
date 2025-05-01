@@ -21,7 +21,7 @@
   <div id="flashcard">
     <div id="question">Lade Karte...</div>
 
-    <!-- Eingabefeld + Button jetzt im Formular -->
+    <!-- Eingabefeld + Button im Formular -->
     <form id="flashcardForm" onsubmit="event.preventDefault(); handleAction();">
       <input
         type="text"
@@ -42,35 +42,39 @@
 
     <p id="correctAnswer" style="display:none;"></p>
     <div id="phonetic"></div>
-    <div class="feedback" id="feedback"></div>
+
+    <!-- Neuer Feedback-Bereich mit Fortschritt -->
+    <div id="feedback-row">
+      <div id="feedback"></div>
+      <div id="progress">Richtig: 0 / 21</div>
+    </div>
 
     <div id="practiceContainer">
       <div id="practiceLabel">Zum Lernen hier die Lösung abtippen:</div>
       <textarea id="practiceTipField" placeholder="Tippe die Lösung ab..."></textarea>
     </div>
-
-    <div id="check-row">
-      <div id="progress">Richtig: 0 / 21</div>
-    </div>
   </div>
 
+  <!-- Fixierte untere Leiste -->
   <div id="bottom-buttons">
     <button onclick="toggleReverse()"><span class="icon-reverse"></span> Richtung</button>
     <button onclick="shuffleCards()"><span class="icon-shuffle"></span> Mischen</button>
     <button onclick="resetProgress()"><span class="icon-reset"></span> Zurücksetzen</button>
   </div>
 
+  <div id="version">German-Greek Flashcards / Version 2.7.1</div>
+
+  <!-- Übersicht -->
   <div id="overviewContent">
     <h2 id="overviewTitle">Übersicht lädt...</h2>
     <div id="overviewCards"></div>
   </div>
 
+  <!-- Lektionen -->
   <div id="lessonsContent">
     <h2 id="lessonsTitle">Griechisch Lektionen</h2>
     <div id="lessonsContainer"></div>
   </div>
-
-  <div id="version">German-Greek Flashcards / Version 2.7.1</div>
 
   <script>
     let allFlashcards = [], remainingFlashcards = [], currentCard = null;

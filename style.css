@@ -2,7 +2,7 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  padding: 0;
+  padding-bottom: 100px; /* Platz für fixierte Buttons unten */
   background: #f4f4f4;
   color: #333;
 }
@@ -22,7 +22,7 @@ select {
   font-size: 1rem;
 }
 
-/* Flashcard */
+/* Flashcard-Container */
 #flashcard {
   display: flex;
   flex-direction: column;
@@ -36,14 +36,15 @@ select {
   text-align: center;
 }
 
-/* Formular für Eingabe */
+/* Eingabeformular */
 form#flashcardForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   max-width: 400px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  gap: 8px;
 }
 
 #userInput {
@@ -52,11 +53,9 @@ form#flashcardForm {
   font-size: 1.2rem;
   border: 2px solid #ccc;
   border-radius: 6px;
-  margin-bottom: 10px;
   box-sizing: border-box;
 }
 
-/* Eingabefarben bei Feedback */
 #userInput.correct {
   border-color: #4caf50;
   background-color: #e8f5e9;
@@ -67,10 +66,10 @@ form#flashcardForm {
   background-color: #ffebee;
 }
 
-button {
+/* Action-Button */
+#actionButton {
   padding: 10px 20px;
   font-size: 1rem;
-  margin: 5px;
   border: none;
   border-radius: 6px;
   background-color: #1976d2;
@@ -78,10 +77,46 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+#actionButton:hover {
   background-color: #1565c0;
 }
 
+/* Feedback + Fortschritt nebeneinander */
+#feedback-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+#feedback {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+#progress {
+  font-size: 0.95rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* Richtige Antwort + Phonetik */
+#correctAnswer {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+#phonetic {
+  margin-top: 4px;
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Selbstbewertungsbuttons */
 #selfAssessButtons {
   display: none;
   justify-content: center;
@@ -90,6 +125,15 @@ button:hover {
 }
 
 #selfAssessButtons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+#selfAssessButtons button:first-child {
   background-color: #f44336;
 }
 
@@ -97,23 +141,7 @@ button:hover {
   background-color: #4caf50;
 }
 
-#correctAnswer {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-#phonetic {
-  margin-top: 5px;
-  font-size: 1rem;
-  color: #777;
-}
-
-#feedback {
-  margin-top: 8px;
-  font-size: 1.1rem;
-}
-
+/* Tipp-Übungsbereich */
 #practiceContainer {
   display: none;
   margin-top: 15px;
@@ -131,30 +159,7 @@ button:hover {
   border-radius: 6px;
 }
 
-/* Fortschritt */
-#progress {
-  margin-top: 10px;
-  font-size: 1rem;
-}
-
-/* Buttons unten */
-#bottom-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 15px;
-}
-
-#bottom-buttons button {
-  background-color: #9e9e9e;
-}
-
-#bottom-buttons button:hover {
-  background-color: #757575;
-}
-
-/* Übersicht & Lektionen */
+/* Übersicht und Lektionen */
 #overviewContent, #lessonsContent {
   padding: 15px;
 }
@@ -190,15 +195,46 @@ button:hover {
   padding: 10px;
 }
 
-/* Footer */
-#version {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #888;
-  margin-top: 20px;
+/* Fixierte untere Buttons */
+#bottom-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px;
+  background: #f8f8f8;
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobilanpassung */
+#bottom-buttons button {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #9e9e9e;
+  color: white;
+  cursor: pointer;
+}
+
+#bottom-buttons button:hover {
+  background-color: #757575;
+}
+
+/* Versionsanzeige fix unten */
+#version {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+  position: fixed;
+  bottom: 5px;
+  width: 100%;
+}
+
+/* Mobiloptimierung */
 @media (max-width: 600px) {
   #question {
     font-size: 1.3rem;
@@ -211,5 +247,10 @@ button:hover {
   button {
     font-size: 0.95rem;
     padding: 10px 16px;
+  }
+
+  #bottom-buttons {
+    flex-direction: column;
+    gap: 8px;
   }
 }

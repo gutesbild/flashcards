@@ -74,26 +74,27 @@
         return text ? text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") : "";
       }
  
-      function toggleMode() {
-        mode = document.getElementById("modeToggle").value;
- 
-        // Alle Modi ausblenden
-        document.getElementById("flashcard").style.display = "none";
-        document.getElementById("overviewContent").style.display = "none";
-        document.getElementById("lessonsContent").style.display = "none";
- 
-        // Gewählten Modus anzeigen
-        if (mode === "overview") {
-          document.getElementById("overviewContent").style.display = "block";
-          showOverview();
-        } else if (mode === "lessons") {
-          document.getElementById("lessonsContent").style.display = "block";
-          loadLessons(); // Lektionen laden
-        } else {
-          document.getElementById("flashcard").style.display = "flex";
-          displayCard();
-        }
-      }
+  function toggleMode() {
+  mode = document.getElementById("modeToggle").value;
+
+  document.body.classList.toggle("lock-scroll", mode !== "overview" && mode !== "lessons");
+
+  document.getElementById("flashcard").style.display = "none";
+  document.getElementById("overviewContent").style.display = "none";
+  document.getElementById("lessonsContent").style.display = "none";
+
+  if (mode === "overview") {
+    document.getElementById("overviewContent").style.display = "block";
+    showOverview();
+  } else if (mode === "lessons") {
+    document.getElementById("lessonsContent").style.display = "block";
+    loadLessons();
+  } else {
+    document.getElementById("flashcard").style.display = "flex";
+    displayCard();
+  }
+}
+
  
       function normalize(text) {
         let normalized = text.toLowerCase()

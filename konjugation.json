@@ -1,0 +1,117 @@
+[
+  {
+    "question": "gehen (πάω) (ganzes Verb)",
+    "answer": "πάω πας πάει πάμε πάτε πάνε",
+    "phonetic": "**PÁ**o – Präsens unregelmäßig"
+  },
+  {
+    "question": "gehen (πηγαίνω) (nur Endung)",
+    "answer": "πηγαίνω εις ει ουμε ετε ουν",
+    "phonetic": "pi**GHÉ**no – Präsens unregelmäßig"
+  },
+  {
+    "question": "sprechen (nur Endung)",
+    "answer": "μιλάω άς άει άμε άτε άνε",
+    "phonetic": "mi**LÁ**o – Präsens regelmäßig"
+  },
+  {
+    "question": "kommen (ganzes Verb)",
+    "answer": "έρχομαι έρχεσαι έρχεται ερχόμαστε έρχεστε έρχονται",
+    "phonetic": "**É**rchomai – Präsens (Medium), unregelmäßig"
+  },
+  {
+    "question": "sagen (ganzes Verb)",
+    "answer": "λέω λες λέει λέμε λέτε λένε",
+    "phonetic": "**LÉ**o – Präsens unregelmäßig"
+  },
+  {
+    "question": "zeichnen (nur Endung)",
+    "answer": "ζωγραφίζω εις ει ουμε ετε ουν",
+    "phonetic": "zo-ghra**FÍ**zo – Präsens regelmäßig"
+  },
+  {
+    "question": "trinken (nur Endung)",
+    "answer": "πίνω εις ει ουμε ετε ουν",
+    "phonetic": "**PÍ**no – Präsens regelmäßig"
+  },
+  {
+    "question": "essen (ganzes Verb)",
+    "answer": "τρώω τρως τρώει τρώμε τρώτε τρώνε",
+    "phonetic": "**TRÓ**o – Präsens unregelmäßig"
+  },
+  {
+    "question": "bezahlen (nur Endung)",
+    "answer": "πληρώνω εις ει ουμε ετε ουν",
+    "phonetic": "pli**RÓ**no – Präsens regelmäßig"
+  },
+  {
+    "question": "fahren (nur Endung)",
+    "answer": "οδηγώ είς εί ούμε είτε ούν",
+    "phonetic": "othi**GÓ** – Präsens regelmäßig"
+  },
+  {
+    "question": "sehen (nur Endung)",
+    "answer": "βλέπω εις ει ουμε ετε ουν",
+    "phonetic": "**VLÉ**po – Präsens regelmäßig"
+  },
+  {
+    "question": "hören (nur Endung)",
+    "answer": "ακούω εις ει ουμε ετε ουν",
+    "phonetic": "a**KÚ**o – Präsens regelmäßig"
+  },
+  {
+    "question": "schreiben (nur Endung)",
+    "answer": "γράφω εις ει ουμε ετε ουν",
+    "phonetic": "**GRÁ**fo – Präsens regelmäßig"
+  },
+  {
+    "question": "lernen (nur Endung)",
+    "answer": "μαθαίνω εις ει ουμε ετε ουν",
+    "phonetic": "ma**THÉ**no – Präsens regelmäßig"
+  },
+  {
+    "question": "sprechen (zweites Mal) (nur Endung)",
+    "answer": "μιλάω άς άει άμε άτε άνε",
+    "phonetic": "mi**LÁ**o – Präsens regelmäßig"
+  },
+  {
+    "question": "wollen (nur Endung)",
+    "answer": "θέλω εις ει ουμε ετε ουν",
+    "phonetic": "**THÉ**lo – Präsens regelmäßig"
+  },
+  {
+    "question": "können (nur Endung)",
+    "answer": "μπορώ είς εί ούμε είτε ούν",
+    "phonetic": "bo**RÓ** – Präsens regelmäßig"
+  },
+  {
+    "question": "schlafen (ganzes Verb)",
+    "answer": "κοιμάμαι κοιμάσαι κοιμάται κοιμόμαστε κοιμάστε κοιμούνται",
+    "phonetic": "ki**MÁ**mai – Präsens Medium, unregelmäßig"
+  },
+  {
+    "question": "müssen (ganzes Verb)",
+    "answer": "πρέπει (nur 3. Person)",
+    "phonetic": "**PRÉ**pi – unpersönlich, nur 3. Person"
+  },
+  {
+    "question": "sein (Aorist) (ganzes Verb)",
+    "answer": "ήμουν ήσουν ήταν ήμασταν ήσασταν ήταν",
+    "phonetic": "**Í**mun – Aorist unregelmäßig"
+  },
+  {
+    "question": "gehen (Aorist) (ganzes Verb)",
+    "answer": "πήγα πήγες πήγε πήγαμε πήγατε πήγαν",
+    "phonetic": "**PÍ**ga – Aorist unregelmäßig"
+  },
+  {
+    "question": "schreiben (Aorist) (nur Endung)",
+    "answer": "έγραψα ες ε αμε ατε αν",
+    "phonetic": "**É**grapsa – Aorist regelmäßig (-ψα)"
+  },
+  {
+    "question": "fragen (nur Endung)",
+    "answer": "ρωτάω άς άει άμε άτε άνε",
+    "phonetic": "ro**TÁ**o – Präsens regelmäßig"
+  }
+]

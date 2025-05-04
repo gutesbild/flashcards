@@ -1,102 +1,127 @@
 [
   {
-    "question": "gehen",
+    "question": "gehen (wiederholt)",
     "answer": "πηγαίνω εις ει ουμε ετε ουν",
-    "phonetic": "pi**GHÉ**no – unregelmäßig: Stamm verändert sich im Aorist"
+    "phonetic": "pi**GHÉ**no – Präsens unregelmäßig"
   },
   {
-    "question": "kommen",
+    "question": "gehen (einmalig)",
+    "answer": "πάω εις ει με τε νε",
+    "phonetic": "**PÁ**o – Präsens vom Aorist-Stamm"
+  },
+  {
+    "question": "kommen (Präsens)",
     "answer": "έρχομαι εσαι εται όμαστε εστε ονται",
-    "phonetic": "**É**rchomai – unregelmäßig, Medium/Passiv-Endungen"
+    "phonetic": "**É**rchomai – Präsens: Medium-Endungen"
   },
   {
-    "question": "essen",
+    "question": "essen (Präsens)",
     "answer": "τρώω εις ει με ετε νε",
-    "phonetic": "**TRÓ**o – unregelmäßig, Stammwechsel in anderen Zeiten"
+    "phonetic": "**TRÓ**o – Präsens unregelmäßig"
   },
   {
-    "question": "trinken",
+    "question": "trinken (Präsens)",
     "answer": "πίνω εις ει ουμε ετε ουν",
-    "phonetic": "**PÍ**no – Vorsicht: Aorist ist irrégulier"
+    "phonetic": "**PÍ**no – regelmäßiges Präsens"
   },
   {
-    "question": "schreiben",
-    "answer": "γράφω εις ει ουμε ετε ουν",
-    "phonetic": "**GRÁ**fo"
-  },
-  {
-    "question": "lesen",
-    "answer": "διαβάζω εις ει ουμε ετε ουν",
-    "phonetic": "diav**Á**zo"
-  },
-  {
-    "question": "sehen",
+    "question": "sehen (Präsens)",
     "answer": "βλέπω εις ει ουμε ετε ουν",
-    "phonetic": "**VLÉ**po"
+    "phonetic": "**VLÉ**po – regelmäßiges Präsens"
   },
   {
-    "question": "hören",
+    "question": "lesen (Präsens)",
+    "answer": "διαβάζω εις ει ουμε ετε ουν",
+    "phonetic": "diav**Á**zo – regelmäßiges Präsens"
+  },
+  {
+    "question": "hören (Präsens)",
     "answer": "ακούω εις ει ουμε ετε ουν",
-    "phonetic": "a**KÚ**o"
+    "phonetic": "a**KÚ**o – Betonung ändert sich im Aorist"
   },
   {
-    "question": "sprechen",
-    "answer": "μιλάω άς άει άμε άτε άνε",
-    "phonetic": "mi**LÁ**o – Konjugation -άω beachten"
-  },
-  {
-    "question": "wohnen",
+    "question": "wohnen (Präsens)",
     "answer": "μένω εις ει ουμε ετε ουν",
-    "phonetic": "**MÉ**no"
+    "phonetic": "**MÉ**no – regelmäßiges Präsens"
   },
   {
-    "question": "arbeiten",
+    "question": "schreiben (Präsens)",
+    "answer": "γράφω εις ει ουμε ετε ουν",
+    "phonetic": "**GRÁ**fo – regelmäßiges Präsens"
+  },
+  {
+    "question": "sprechen (Präsens)",
+    "answer": "μιλάω άς άει άμε άτε άνε",
+    "phonetic": "mi**LÁ**o – -άω-Konjugation"
+  },
+  {
+    "question": "arbeiten (Präsens)",
     "answer": "δουλεύω εις ει ουμε ετε ουν",
-    "phonetic": "thou**LÉ**vo"
+    "phonetic": "thou**LÉ**vo – regelmäßiges Präsens"
   },
   {
-    "question": "öffnen",
-    "answer": "ανοίγω εις ει ουμε ετε ουν",
-    "phonetic": "a**NÍ**go"
+    "question": "lernen (Präsens)",
+    "answer": "μαθαίνω εις ει ουμε ετε ουν",
+    "phonetic": "ma**THÉ**no – Präsens unregelmäßig"
   },
   {
-    "question": "schließen",
-    "answer": "κλείνω εις ει ουμε ετε ουν",
-    "phonetic": "**KLÍ**no"
-  },
-  {
-    "question": "sagen",
-    "answer": "λέω εις ει με ετε νε",
-    "phonetic": "**LÉ**o – sehr unregelmäßig!"
-  },
-  {
-    "question": "wollen",
-    "answer": "θέλω εις ει ουμε ετε ουν",
-    "phonetic": "**THÉ**lo"
-  },
-  {
-    "question": "können",
-    "answer": "μπορώ είς εί ούμε είτε ούν",
-    "phonetic": "bo**RÓ** – Betonung springt, unregelmäßig"
-  },
-  {
-    "question": "wissen",
+    "question": "wissen (Präsens)",
     "answer": "ξέρω εις ει ουμε ετε ουν",
-    "phonetic": "**KSÉ**ro"
+    "phonetic": "**KSÉ**ro – regelmäßiges Präsens"
   },
   {
-    "question": "ich ging",
-    "answer": "πήγα ες ε αμε ατε αν",
-    "phonetic": "**PÍ**ga – Aorist von πηγαίνω (gehen), unregelmäßig"
+    "question": "sagen (Präsens)",
+    "answer": "λέω εις ει με ετε νε",
+    "phonetic": "**LÉ**o – Präsens unregelmäßig"
   },
   {
-    "question": "ich aß",
-    "answer": "έφαγα ες ε αμε ατε αν",
-    "phonetic": "**É**faga – Aorist von τρώω, unregelmäßig"
+    "question": "wollen (Präsens)",
+    "answer": "θέλω εις ει ουμε ετε ουν",
+    "phonetic": "**THÉ**lo – regelmäßiges Präsens"
   },
   {
-    "question": "ich sagte",
+    "question": "können (Präsens)",
+    "answer": "μπορώ είς εί ούμε είτε ούν",
+    "phonetic": "bo**RÓ** – Betonung springt"
+  },
+  {
+    "question": "öffnen (Präsens)",
+    "answer": "ανοίγω εις ει ουμε ετε ουν",
+    "phonetic": "a**NÍ**go – regelmäßiges Präsens"
+  },
+  {
+    "question": "schließen (Präsens)",
+    "answer": "κλείνω εις ει ουμε ετε ουν",
+    "phonetic": "**KLÍ**no – regelmäßiges Präsens"
+  },
+  {
+    "question": "leben (Präsens)",
+    "answer": "ζω εις ει ουμε ετε ουν",
+    "phonetic": "**ZÓ** – kurzer Stamm, Präsens unregelmäßig"
+  },
+  {
+    "question": "ich lernte (Aorist)",
+    "answer": "έμαθα ες ε αμε ατε αν",
+    "phonetic": "**É**matha – Aorist unregelmäßig"
+  },
+  {
+    "question": "ich öffnete (Aorist)",
+    "answer": "άνοιξα ες ε αμε ατε αν",
+    "phonetic": "**Á**niksa – Aorist regelmäßig (-σα)"
+  },
+  {
+    "question": "ich schloss (Aorist)",
+    "answer": "έκλεισα ες ε αμε ατε αν",
+    "phonetic": "**É**klisa – Aorist regelmäßig (-σα)"
+  },
+  {
+    "question": "ich arbeitete (Aorist)",
+    "answer": "δούλεψα ες ε αμε ατε αν",
+    "phonetic": "**DÚ**lepsa – Aorist regelmäßig (-ψα)"
+  },
+  {
+    "question": "ich sagte (Aorist)",
     "answer": "είπα ες ε αμε ατε αν",
-    "phonetic": "**Í**pa – Aorist von λέω, sehr unregelmäßig!"
+    "phonetic": "**Í**pa – Aorist unregelmäßig"
   }
 ]

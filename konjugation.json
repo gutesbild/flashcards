@@ -1,0 +1,102 @@
+[
+  {
+    "question": "gehen",
+    "answer": "πηγαίνω εις ει ουμε ετε ουν",
+    "phonetic": "pi**GHÉ**no – unregelmäßig: Stamm verändert sich im Aorist"
+  },
+  {
+    "question": "kommen",
+    "answer": "έρχομαι εσαι εται όμαστε εστε ονται",
+    "phonetic": "**É**rchomai – unregelmäßig, Medium/Passiv-Endungen"
+  },
+  {
+    "question": "essen",
+    "answer": "τρώω εις ει με ετε νε",
+    "phonetic": "**TRÓ**o – unregelmäßig, Stammwechsel in anderen Zeiten"
+  },
+  {
+    "question": "trinken",
+    "answer": "πίνω εις ει ουμε ετε ουν",
+    "phonetic": "**PÍ**no – Vorsicht: Aorist ist irrégulier"
+  },
+  {
+    "question": "schreiben",
+    "answer": "γράφω εις ει ουμε ετε ουν",
+    "phonetic": "**GRÁ**fo"
+  },
+  {
+    "question": "lesen",
+    "answer": "διαβάζω εις ει ουμε ετε ουν",
+    "phonetic": "diav**Á**zo"
+  },
+  {
+    "question": "sehen",
+    "answer": "βλέπω εις ει ουμε ετε ουν",
+    "phonetic": "**VLÉ**po"
+  },
+  {
+    "question": "hören",
+    "answer": "ακούω εις ει ουμε ετε ουν",
+    "phonetic": "a**KÚ**o"
+  },
+  {
+    "question": "sprechen",
+    "answer": "μιλάω άς άει άμε άτε άνε",
+    "phonetic": "mi**LÁ**o – Konjugation -άω beachten"
+  },
+  {
+    "question": "wohnen",
+    "answer": "μένω εις ει ουμε ετε ουν",
+    "phonetic": "**MÉ**no"
+  },
+  {
+    "question": "arbeiten",
+    "answer": "δουλεύω εις ει ουμε ετε ουν",
+    "phonetic": "thou**LÉ**vo"
+  },
+  {
+    "question": "öffnen",
+    "answer": "ανοίγω εις ει ουμε ετε ουν",
+    "phonetic": "a**NÍ**go"
+  },
+  {
+    "question": "schließen",
+    "answer": "κλείνω εις ει ουμε ετε ουν",
+    "phonetic": "**KLÍ**no"
+  },
+  {
+    "question": "sagen",
+    "answer": "λέω εις ει με ετε νε",
+    "phonetic": "**LÉ**o – sehr unregelmäßig!"
+  },
+  {
+    "question": "wollen",
+    "answer": "θέλω εις ει ουμε ετε ουν",
+    "phonetic": "**THÉ**lo"
+  },
+  {
+    "question": "können",
+    "answer": "μπορώ είς εί ούμε είτε ούν",
+    "phonetic": "bo**RÓ** – Betonung springt, unregelmäßig"
+  },
+  {
+    "question": "wissen",
+    "answer": "ξέρω εις ει ουμε ετε ουν",
+    "phonetic": "**KSÉ**ro"
+  },
+  {
+    "question": "ich ging",
+    "answer": "πήγα ες ε αμε ατε αν",
+    "phonetic": "**PÍ**ga – Aorist von πηγαίνω (gehen), unregelmäßig"
+  },
+  {
+    "question": "ich aß",
+    "answer": "έφαγα ες ε αμε ατε αν",
+    "phonetic": "**É**faga – Aorist von τρώω, unregelmäßig"
+  },
+  {
+    "question": "ich sagte",
+    "answer": "είπα ες ε αμε ατε αν",
+    "phonetic": "**Í**pa – Aorist von λέω, sehr unregelmäßig!"
+  }
+]

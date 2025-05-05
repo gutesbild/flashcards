@@ -7,7 +7,7 @@
   {
     "question": "gehen (wiederholt) (nur Endung)",
     "answer": "πηγαίνω εις ει ουμε ετε ουν",
-    "phonetic": "pi**GHÉ**no – Präsens unregelmäßig"
+    "phonetic": "pi**GHÉ**no – pig henne geht immer Präsens unregelmäßig"
   },
   {
     "question": "sprechen (nur Endung)",
@@ -52,12 +52,12 @@
   {
     "question": "sehen (nur Endung)",
     "answer": "βλέπω εις ει ουμε ετε ουν",
-    "phonetic": "**VLÉ**po – Präsens regelmäßig"
+    "phonetic": "**VLÉ**po – ich sehr opel rückwaerts mit V Präsens regelmäßig"
   },
   {
     "question": "hören (nur Endung)",
     "answer": "ακούω εις ει ουμε ετε ουν",
-    "phonetic": "a**KÚ**o – Präsens regelmäßig"
+    "phonetic": "a**KÚ**o – akkustik Präsens regelmäßig"
   },
   {
     "question": "schreiben (nur Endung)",
@@ -82,12 +82,12 @@
   {
     "question": "können (nur Endung)",
     "answer": "μπορώ είς εί ούμε είτε ούν",
-    "phonetic": "bo**RÓ** – Präsens regelmäßig"
+    "phonetic": "bo**RÓ** – Boros kann's Präsens regelmäßig"
   },
   {
     "question": "schlafen (ganzes Verb)",
     "answer": "κοιμάμαι κοιμάσαι κοιμάται κοιμόμαστε κοιμάστε κοιμούνται",
-    "phonetic": "ki**MÁ**mai – Präsens Medium, unregelmäßig"
+    "phonetic": "ki**MÁ**mai – koma Präsens Medium, unregelmäßig"
   },
   {
     "question": "müssen (ganzes Verb)",
@@ -122,6 +122,6 @@
   {
     "question": "fragen (nur Endung)",
     "answer": "ρωτάω άς άει άμε άτε άνε",
-    "phonetic": "ro**TÁ**o – Präsens regelmäßig"
+    "phonetic": "ro**TÁ**o – rotarier fragen Präsens regelmäßig"
   }
 ]

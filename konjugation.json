@@ -1,11 +1,11 @@
 [
   {
-    "question": "gehen (πάω) (ganzes Verb)",
+    "question": "gehen (einmal) (ganzes Verb)",
     "answer": "πάω πας πάει πάμε πάτε πάνε",
     "phonetic": "**PÁ**o – Präsens unregelmäßig"
   },
   {
-    "question": "gehen (πηγαίνω) (nur Endung)",
+    "question": "gehen (wiederholt) (nur Endung)",
     "answer": "πηγαίνω εις ει ουμε ετε ουν",
     "phonetic": "pi**GHÉ**no – Präsens unregelmäßig"
   },
@@ -17,7 +17,7 @@
   {
     "question": "kommen (ganzes Verb)",
     "answer": "έρχομαι έρχεσαι έρχεται ερχόμαστε έρχεστε έρχονται",
-    "phonetic": "**É**rchomai – Präsens (Medium), unregelmäßig"
+    "phonetic": "**É**rchomai – Präsens , unregelmäßig"
   },
   {
     "question": "sagen (ganzes Verb)",
@@ -93,6 +93,16 @@
     "question": "müssen (ganzes Verb)",
     "answer": "πρέπει (nur 3. Person)",
     "phonetic": "**PRÉ**pi – unpersönlich, nur 3. Person"
+  },
+  {
+    "question": "öffnen (Präsens) (nur Endung)",
+    "answer": "ανοίγω εις ει ουμε ετε ουν",
+    "phonetic": "a**NÍ**go – Präsens regelmäßig"
+  },
+  {
+    "question": "öffnen (Aorist) (nur Endung)",
+    "answer": "άνοιξα ες ε αμε ατε αν",
+    "phonetic": "**Á**niksa – Aorist regelmäßig (-ξα)"
   },
   {
     "question": "sein (Aorist) (ganzes Verb)",

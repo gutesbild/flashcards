@@ -7,7 +7,7 @@ const datasets = [
    { file: "pronounsConjugation.json", label: "🤘Verb+Pronomen" },
      { file: "OsUndIs.json", label: "Os und Is" },
    { file: "plural.json", label: "Plural" },
-  { file: " konjugation.json", label: "Konjugation" },
-  { file: " vonFremdwortn.json", label: "Bekannt aus Fremdwörtern" },
+  { file: "konjugation.json", label: "Konjugation" },
+  { file: "vonFremdwortn.json", label: "Bekannt aus Fremdwörtern" },
 
 ];

@@ -8,6 +8,6 @@ const datasets = [
      { file: "OsUndIs.json", label: "Os und Is" },
    { file: "plural.json", label: "Plural" },
   { file: "konjugation.json", label: "Konjugation" },
-  { file: "vonFremdwortn.json", label: "Bekannt aus Fremdwörtern" },
+  { file: "vonFremdwort.json", label: "Bekannt aus Fremdwörtern" },
 
 ];

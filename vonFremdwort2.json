@@ -1,0 +1,202 @@
+[
+  {
+    "question": "Leben",
+    "answer": "ζωή",
+    "phonetic": "zo**Í**"
+  },
+  {
+    "question": "Wort / Lehre",
+    "answer": "λόγος",
+    "phonetic": "**LÓ**gos"
+  },
+  {
+    "question": "Gott",
+    "answer": "Θεός",
+    "phonetic": "The**Ó**s"
+  },
+  {
+    "question": "Freund",
+    "answer": "φίλος",
+    "phonetic": "**FÍ**los"
+  },
+  {
+    "question": "Stern",
+    "answer": "αστέρι",
+    "phonetic": "a**STÉ**ri"
+  },
+  {
+    "question": "Erde",
+    "answer": "γη",
+    "phonetic": "yi"
+  },
+  {
+    "question": "Schreiben",
+    "answer": "γράφω",
+    "phonetic": "**GRÁ**fo"
+  },
+  {
+    "question": "Zeit",
+    "answer": "χρόνος",
+    "phonetic": "**CHRÓ**nos"
+  },
+  {
+    "question": "Mensch",
+    "answer": "άνθρωπος",
+    "phonetic": "**ÁN**thropos"
+  },
+  {
+    "question": "Angst",
+    "answer": "φόβος",
+    "phonetic": "**FÓ**vos"
+  },
+  {
+    "question": "Kraft",
+    "answer": "δύναμη",
+    "phonetic": "**DÝ**nami"
+  },
+  {
+    "question": "Wasser",
+    "answer": "νερό",
+    "phonetic": "ne**RÓ**"
+  },
+  {
+    "question": "Feuer",
+    "answer": "φωτιά",
+    "phonetic": "fo**TIÁ**"
+  },
+  {
+    "question": "Seele",
+    "answer": "ψυχή",
+    "phonetic": "psi**CHÍ**"
+  },
+  {
+    "question": "Licht",
+    "answer": "φως",
+    "phonetic": "fos"
+  },
+  {
+    "question": "Wissen",
+    "answer": "γνώση",
+    "phonetic": "**GNÓ**si"
+  },
+  {
+    "question": "Kind",
+    "answer": "παιδί",
+    "phonetic": "pe**DÍ**"
+  },
+  {
+    "question": "Tier",
+    "answer": "ζώο",
+    "phonetic": "**ZÓ**o"
+  },
+  {
+    "question": "Welt",
+    "answer": "κόσμος",
+    "phonetic": "**KÓS**mos"
+  },
+  {
+    "question": "Form",
+    "answer": "μορφή",
+    "phonetic": "mor**FÍ**"
+  },
+  {
+    "question": "Sprache",
+    "answer": "γλώσσα",
+    "phonetic": "**GLÓ**ssa"
+  },
+  {
+    "question": "Schule",
+    "answer": "σχολείο",
+    "phonetic": "scho**LÍ**o"
+  },
+  {
+    "question": "Stimme",
+    "answer": "φωνή",
+    "phonetic": "fo**NÍ**"
+  },
+  {
+    "question": "Tod",
+    "answer": "θάνατος",
+    "phonetic": "**THÁ**natos"
+  },
+  {
+    "question": "Luft",
+    "answer": "αέρας",
+    "phonetic": "a**É**ras"
+  },
+  {
+    "question": "Bewegung",
+    "answer": "κίνηση",
+    "phonetic": "**KÍ**nisi"
+  },
+  {
+    "question": "Sehen",
+    "answer": "βλέπω",
+    "phonetic": "**VLÉ**po"
+  },
+  {
+    "question": "Bild",
+    "answer": "εικόνα",
+    "phonetic": "i**KÓ**na"
+  },
+  {
+    "question": "Wärme",
+    "answer": "ζέστη",
+    "phonetic": "**ZÉ**sti"
+  },
+  {
+    "question": "Urteil",
+    "answer": "κρίση",
+    "phonetic": "**KRÍ**si"
+  },
+  {
+    "question": "Energie",
+    "answer": "ενέργεια",
+    "phonetic": "e**NÉR**yeia"
+  },
+  {
+    "question": "Feind",
+    "answer": "εχθρός",
+    "phonetic": "ech**THRÓS**"
+  },
+  {
+    "question": "Körper",
+    "answer": "σώμα",
+    "phonetic": "**SÓ**ma"
+  },
+  {
+    "question": "Herz",
+    "answer": "καρδιά",
+    "phonetic": "kar**DIÁ**"
+  },
+  {
+    "question": "Gehirn",
+    "answer": "εγκέφαλος",
+    "phonetic": "en**GÉ**falos"
+  },
+  {
+    "question": "Lärm",
+    "answer": "θόρυβος",
+    "phonetic": "**THÓ**ryvos"
+  },
+  {
+    "question": "Buch",
+    "answer": "βιβλίο",
+    "phonetic": "vi**VLÍ**o"
+  },
+  {
+    "question": "Stadt",
+    "answer": "πόλη",
+    "phonetic": "**PÓ**li"
+  },
+  {
+    "question": "Zentrum",
+    "answer": "κέντρο",
+    "phonetic": "**KÉN**tro"
+  },
+  {
+    "question": "Farbe",
+    "answer": "χρώμα",
+    "phonetic": "**CHRÓ**ma"
+  }
+]
